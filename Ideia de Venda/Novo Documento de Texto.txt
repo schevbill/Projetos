@@ -1,0 +1,102 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Data.DB,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Datasnap.DBClient;
+
+type
+  TForm1 = class(TForm)
+    ClientDataSet1: TClientDataSet;
+    ClientDataSet1NOME: TStringField;
+    ClientDataSet1valorUnitario: TFloatField;
+    ClientDataSet1quantidade: TFloatField;
+    ClientDataSet1valortotal: TFloatField;
+    Label1: TLabel;
+    DataSource2: TDataSource;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    DBGrid1: TDBGrid;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    Edit5: TEdit;
+    procedure Edit4KeyPress(Sender: TObject; var Key: Char);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Edit3Exit(Sender: TObject);
+  private
+    { Private declarations }
+    SOMA : Double;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+   ClientDataSet1.Close;
+   ClientDataSet1.Open;
+   ClientDataSet1.First;
+
+   while not ClientDataSet1.Eof do
+   begin
+      ShowMessage(ClientDataSet1.FieldByName('NOME').AsString);
+      ClientDataSet1.Next;
+   end;
+
+   SOMA := 0;
+
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+   ClientDataSet1.EmptyDataSet;
+   SOMA := 0;
+end;
+
+procedure TForm1.Edit3Exit(Sender: TObject);
+begin
+   Edit4.Text := FloatToStr(StrToFloat(Edit2.Text) * StrToFloat(Edit3.Text));
+end;
+
+procedure TForm1.Edit4KeyPress(Sender: TObject; var Key: Char);
+begin
+   if key = #13 then
+   begin
+      with ClientDataSet1 do
+      begin
+         Append;
+         FieldByName('NOME').AsString         := Edit1.Text;
+         FieldByName('Valorunitario').AsFloat := StrToFloat(Edit2.Text);
+         FieldByName('quantidade').AsFloat    := StrToFloat(Edit3.Text);
+         FieldByName('valorTotal').AsFloat    := StrToFloat(Edit2.Text) * StrToFloat(Edit3.Text);
+         post;
+
+         SOMA := SOMA + StrToFloat(Edit2.Text) * StrToFloat(Edit3.Text);
+
+         Edit1.SetFocus;
+      end;
+
+      Edit1.Text := '';
+      Edit2.Text := '';
+      Edit3.Text := '';
+      Edit4.Text := '';
+      Edit5.Text := FloatToStr(SOMA);
+   end;
+end;
+
+end.

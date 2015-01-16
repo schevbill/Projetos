@@ -1,0 +1,649 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{1E46B3A9-A89B-4E56-AFCF-8D647B39238A}</ProjectGuid>
+			<MainSource>Caixa.dpr</MainSource>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<TargetedPlatforms>1</TargetedPlatforms>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<ProjectVersion>13.4</ProjectVersion>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+			<Base_Win64>true</Base_Win64>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_UsePackage>vcl;rtl;dbrtl;adortl;vcldb;vclx;bdertl;vcldbx;ibxpress;dsnap;cds;bdecds;qrpt;teeui;teedb;tee;dss;teeqr;visualclx;visualdbclx;dsnapcrba;dsnapcon;VclSmp;vclshlctrls;vclie;xmlrtl;inet;inetdbbde;inetdbxpress;inetdb;nmfast;webdsnap;websnap;soaprtl;dbexpress;dbxcds;indy;dclOffice2k;ACBrComum;ACBrDiversos;ACBrOpenSSL;ACBr_SPED;ACBr_Boleto;synapse;ACBr_BoletoFC_Quick;ACBr_CTe;PCN2;ACBr_NFe2;ACBr_NFe2_Delphi6;gbCob;PacoteCJV;RxDB6;RxCtl6;RxBDE6;WinSkinD6R;JclVcl;Jcl;JvCoreD6R;JvSystemD6R;JvStdCtrlsD6R;JvDBD6R;JvDlgsD6R;halc694dmo_d6;ACBrSerial;ACBrTCP;ACBr_TEFD;ACBr_Sintegra;ACBr_PAF;JvAppFrmD6R;JvBandsD6R;JvBDED6R;JvCmpD6R;JvCryptD6R;JvCtrlsD6R;JvCustomD6R;JvDockingD6R;JvDotNetCtrlsD6R;JvEDID6R;JvGlobusD6R;JvHMID6R;JvInterpreterD6R;JvJansD6R;JvManagedThreadsD6R;JvMMD6R;JvNetD6R;JvPageCompsD6R;JvPluginD6R;JvPrintPreviewD6R;JvRuntimeDesignD6R;JvTimeFrameworkD6R;JvUIBD6R;JvValidatorsD6R;JvWizardD6R;JvXPCtrlsD6R;ZComponent;ZParseSql;ZCore;ZDbc;ZPlain;ZipmasterD6;fs6;fsDB6;fsBDE6;fsADO6;fsIBX6;fsTee6;PNG_D6;PngComponentsD6;PngComponentsD6D;frx6;frxcs6;frxDB6;frxBDE6;frxADO6;frxIBX6;frxDBX6;frxe6;frxTee6;$(DCC_UsePackage)</DCC_UsePackage>
+			<DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;Bde;Data.Win;$(DCC_Namespace)</DCC_Namespace>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<VerInfo_Locale>1046</VerInfo_Locale>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_K>false</DCC_K>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win64)'!=''">
+			<Icon_MainIcon>Caixa_Icon.ico</Icon_MainIcon>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<Icon_MainIcon>Caixa_Icon.ico</Icon_MainIcon>
+			<DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="$(MainSource)">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="UNF_Funcoes.pas"/>
+			<DCCReference Include="UNF_Bematech.pas"/>
+			<DCCReference Include="UNF_Frente.pas">
+				<Form>FRM_Frente</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Fundo.pas">
+				<Form>FRM_Fundo</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Fecha.pas">
+				<Form>FRM_Fecha</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Mesa.pas">
+				<Form>FRM_Mesa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Pergunta.pas">
+				<Form>FRM_Pergunta</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Mensagem.pas">
+				<Form>FRM_Mensagem</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_MensagemDeErro.pas">
+				<Form>FRM_MensagemDeErro</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Manutencao.pas">
+				<Form>FRM_Manutencao</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Login.pas">
+				<Form>FRM_Login</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Menu.pas">
+				<Form>FRM_Menu</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Desconto.pas">
+				<Form>FRM_Desconto</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Senha.pas">
+				<Form>FRM_Senha</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_VerFicha.pas">
+				<Form>FRM_VerFicha</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_MapaMesa.pas">
+				<Form>FRM_MapaMesa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_FiltroFecha.pas">
+				<Form>FRM_FiltroFecha</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_Fecha.pas">
+				<Form>QRP_Fecha</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_Entrada.pas">
+				<Form>FRM_Entrada</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_FechaDia.pas">
+				<Form>FRM_FechaDia</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Modulo.pas">
+				<Form>FRM_Modulo</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_Calendario.pas">
+				<Form>FRM_Calendario</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatorios.pas">
+				<Form>FRM_FilRelatorios</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGTotais.pas">
+				<Form>QRP_RGTotais</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_Rodape.pas">
+				<Form>QRP_Rodape</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_Titulo.pas">
+				<Form>QRP_Titulo</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGCaixa.pas">
+				<Form>QRP_RGCaixa</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGCancelados.pas">
+				<Form>QRP_RGCancelados</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGFormaPagto.pas">
+				<Form>QRP_RGFormaPagto</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGFunCancelados.pas">
+				<Form>QRP_RGFunCancelados</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGGrupo.pas">
+				<Form>QRP_RGGrupo</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGHora.pas">
+				<Form>QRP_RGHora</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGProduto.pas">
+				<Form>QRP_RGProduto</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGQuilo.pas">
+				<Form>QRP_RGQuilo</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilFechaCaixa1.pas">
+				<Form>FRM_FilFechaCaixa1</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_FecCaixaDetalhado.pas">
+				<Form>QRP_FecCaixaDetalhado</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_AtualizaBase.pas">
+				<Form>FRM_AtualizaBase</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGMontana.pas">
+				<Form>QRP_RGMontana</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_FuncoesECF.pas"/>
+			<DCCReference Include="UNF_Daruma32.pas"/>
+			<DCCReference Include="UNF_NewMensagem.pas">
+				<Form>FRM_NewMensagem</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Nota.pas">
+				<Form>FRM_Nota</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_FNCTermica.pas"/>
+			<DCCReference Include="UNF_VariasFormas.pas">
+				<Form>FRM_VariasFormas</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_AbastSangria.pas">
+				<Form>FRM_AbastSangria</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_PesProduto.pas">
+				<Form>FRM_PesProduto</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_PesCliente.pas">
+				<Form>FRM_PesCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_PesCondPagto.pas">
+				<Form>FRM_PesCondPagto</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_FecCaixaDetalhadoNovo.pas">
+				<Form>QRP_FecCaixaDetalhadoNovo</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_LanItem.pas">
+				<Form>FRM_LanItem</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_CancelaItem.pas">
+				<Form>FRM_CancelaItem</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Diarias.pas">
+				<Form>FRM_Diarias</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_LanDiaria.pas">
+				<Form>FRM_LanDiaria</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_FinalizaDiaria.pas">
+				<Form>FRM_FinalizaDiaria</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_ConfMBD.pas">
+				<Form>FRM_ConfMBD</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilFechaCaixa1Novo.pas">
+				<Form>FRM_FilFechaCaixa1Novo</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGFinanceiro.pas">
+				<Form>QRP_RGFinanceiro</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGFunCanceladosFC.pas">
+				<Form>QRP_RGFunCanceladosFC</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGProdutoR.pas">
+				<Form>QRP_RGProdutoR</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGSangriaAbast.pas">
+				<Form>QRP_RGSangriaAbast</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGTroco.pas">
+				<Form>QRP_RGTroco</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatoriosP.pas">
+				<Form>FRM_FilRelatoriosP</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatoriosPe.pas">
+				<Form>FRM_FilRelatoriosPe</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatoriosPeO.pas">
+				<Form>FRM_FilRelatoriosPeO</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatoriosM.pas">
+				<Form>FRM_FilRelatoriosM</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatoriosMO.pas">
+				<Form>FRM_FilRelatoriosMO</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilRelatoriosOD.pas">
+				<Form>FRM_FilRelatoriosOD</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UBQ_RGProducao.pas">
+				<Form>QRP_RGProducao</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGMensalista.pas">
+				<Form>QRP_RGMensalista</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGFichasAbertas.pas">
+				<Form>QRP_RGFichasAbertas</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_Assinatura.pas">
+				<Form>QRP_Assinatura</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_VerFicha2.pas">
+				<Form>FRM_VerFicha2</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_VerFichaF.pas">
+				<Form>FRM_VerFichaF</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_LimpaSujMesa.pas">
+				<Form>FRM_LimpaSujMesa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Toledo.pas"/>
+			<DCCReference Include="UNF_EntregaMa.pas">
+				<Form>FRM_EntregaMa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_EntreBaixa.pas">
+				<Form>FRM_EntreBaixa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_ModeloSF.pas">
+				<Form>FRM_ModeloSF</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Cliente.pas">
+				<Form>FRM_Cliente</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_Cliente.pas">
+				<Form>QRP_Cliente</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_ETQCliente.pas">
+				<Form>FRM_ETQCliente</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_PesLookUp.pas">
+				<Form>FRM_PesLoockUP</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_ETIQCliente.pas">
+				<Form>FRM_ETIQCliente</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_ETIQFicha.pas">
+				<Form>FRM_ETIQFicha</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_ETIQProduto.pas">
+				<Form>FRM_ETIQProduto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_EtiFicha.pas">
+				<Form>FRM_EtiFicha</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_EtiProduto.pas">
+				<Form>FRM_EtiProduto</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Tarifador.pas">
+				<Form>FRM_Tarifador</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_RGDiaria.pas">
+				<Form>QRP_RGDiaria</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_CupDiaria.pas">
+				<Form>FRM_CupDiaria</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_DadosCupom.pas">
+				<Form>FRM_DadosCupom</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_ETIQProdutoGond.pas">
+				<Form>QRP_ETIQProdutoGond</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_DirCliente.pas">
+				<Form>QRP_DirCliente</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_DirCliente.pas">
+				<Form>FRM_DirCliente</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_Autorizacao.pas">
+				<Form>FRM_Autorizacao</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_ExtratoComanda3.pas">
+				<Form>QRP_ExtratoComanda3</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_TransMesa.pas">
+				<Form>FRM_TransMesa</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\IBErros.pas"/>
+			<DCCReference Include="UNF_AgruparItens.pas">
+				<Form>FRM_AgruparItens</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Entrega.pas">
+				<Form>FRM_Entrega</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_TEF.pas"/>
+			<DCCReference Include="UNF_CliPendencia.pas">
+				<Form>FRM_CliPendencia</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Turno.pas">
+				<Form>FRM_Turno</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGProdutoRC.pas">
+				<Form>QRP_RGProdutoRC</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGCortesia.pas">
+				<Form>QRP_RGCortesia</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_ModuloFechaCaixa.pas">
+				<Form>FRM_ModuloFechaCaixa</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_Observacao.pas">
+				<Form>FRM_Observacao</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_LanMesas.pas">
+				<Form>FRM_LanMesas</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_MesaLegenda.pas">
+				<Form>FRM_MesaLegenda</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_FinalizaMesa.pas">
+				<Form>FRM_FinalizaMesa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_TransDiaria.pas">
+				<Form>FRM_TransDiaria</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Imagem.pas">
+				<Form>FRM_Imagem</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_LanComplemento.pas">
+				<Form>FRM_LanComplemento</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_NotaFiscal.pas">
+				<Form>QRP_NotaFiscal</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_NotaFrente.pas">
+				<Form>FRM_NotaFrente</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_GeralRelTotais.pas"/>
+			<DCCReference Include="UNF_GeraGerenciais.pas">
+				<Form>FRM_GeraGerenciais</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_TelQtde.pas">
+				<Form>FRM_TelQtde</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_DadosECF.pas">
+				<Form>FRM_DadosECF</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_FilImpCartelas.pas">
+				<Form>FRM_FilImpCartelas</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_ImpCartelas.pas">
+				<Form>QRP_ImpCartelas</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_Entrega3.pas">
+				<Form>FRM_EntreBaixa2</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Filizola.pas">
+				<Form>frm_Filizola</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_FichaAberto.pas">
+				<Form>QRP_FichaAberto</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_AbertaFicha.pas">
+				<Form>FRM_AbertaFicha</Form>
+			</DCCReference>
+			<DCCReference Include="..\Lib\UNF_MiniImpresora.pas"/>
+			<DCCReference Include="UNF_AgrupaItens.pas">
+				<Form>frm_AgrupaItens</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_DataRegis.pas"/>
+			<DCCReference Include="UNF_FechamentoManualCaixa.pas">
+				<Form>FRM_FechamentoManualCaixa</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_Sweda.pas"/>
+			<DCCReference Include="UNF_Elgin.pas"/>
+			<DCCReference Include="UNF_ImpAniver.pas">
+				<Form>FRM_ImpAniver</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_ImpAniver.pas">
+				<Form>QRP_ImpAniver</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_VariasFormasEntrega.pas">
+				<Form>FRM_VariasFormasEntrega</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_PesPreco.pas">
+				<Form>FRM_PesPreco</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_MesaStatus.pas">
+				<Form>FRM_MesaStatus</Form>
+			</DCCReference>
+			<DCCReference Include="UNQ_MesaStatus.pas">
+				<Form>QRP_MesaStatus</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_TEFDedicado.pas"/>
+			<DCCReference Include="UNF_TEFEdit.pas">
+				<Form>FRM_TEFEdit</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_TEFOpcao.pas">
+				<Form>FRM_TEFOpcao</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_EditCheque.pas">
+				<Form>FRM_EditCheque</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_MensagemL.pas">
+				<Form>FRM_MensagemL</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_TEFEditC.pas">
+				<Form>FRM_TEFEditC</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_MensagemLO.pas">
+				<Form>FRM_MensagemLO</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_TEFModulo.pas">
+				<Form>FRM_TEFModulo</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RGVendas.pas">
+				<Form>QRP_RGVendas</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_GarconItem.pas">
+				<Form>FRM_GarconItem</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_Financeiro.pas">
+				<Form>FRM_Financeiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RelFinanceiro.pas">
+				<Form>QRP_RelFinanceiro</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FilFinanceiro.pas">
+				<Form>FRM_FilFinanceiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_RelFinanceiroSaldo.pas">
+				<Form>QRP_RelFinanceiroSaldo</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_PagtoFinanceiro.pas">
+				<Form>FRM_PagtoFinanceiro</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_PagtoFinanceiroGrupo.pas">
+				<Form>FRM_PagtoFinanceiroGrupo</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_TranfGrupoF.pas">
+				<Form>FRM_TranfGrupoF</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_PagtoConvenio.pas">
+				<Form>FRM_PagtoConvenio</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_Aguardar.pas">
+				<Form>FRM_Aguardar</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FinanceiroAlteraValor.pas">
+				<Form>FRM_FinanceiroAlteraValor</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_FinanceiroSenhaAltVal.pas">
+				<Form>FRM_FinanceiroSenhaAltVal</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_Status.pas">
+				<Form>FRM_Status</Form>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNF_Transf.pas">
+				<Form>FRM_Transf</Form>
+			</DCCReference>
+			<DCCReference Include="..\Lib\UNF_Extenso.pas"/>
+			<DCCReference Include="..\Retaguarda\UNQ_RGMensalista1.pas">
+				<Form>QRP_RGMensalista1</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_Entraga.pas">
+				<Form>QRP_Entrega</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Retaguarda\UNQ_ETIQProdutoGond2.pas">
+				<Form>QRP_ETIQProdutoGond2</Form>
+				<DesignClass>TQuickRep</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UNF_Epson.pas"/>
+			<DCCReference Include="UNF_InfoEntrega.pas">
+				<Form>FRM_InfoEntrega</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_EntregaEditar.pas">
+				<Form>FRM_EntregaEditar</Form>
+			</DCCReference>
+			<DCCReference Include="UNF_BalcaoMesa.pas">
+				<Form>FRM_BalcaoMesa</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Caixa.dpr</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win64">False</Platform>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+	</Project>

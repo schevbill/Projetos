@@ -1,0 +1,11 @@
+Como criar um QR Code em Delphi - Site: Active Delphi (se não entrar fazer o log no site primeiro)
+
+
+http://www.activedelphi.com.br/modules.php?op=modload&name=News&file=article&sid=1293
+
+
+----------------------------------------------------------------------------------------
+
+Alguns Comentarios: 
+
+ http://www.activedelphi.com.br/forum/viewtopic.php?t=71721&sid=95e827c8461d5ae5994b0f8c3c77e89b
