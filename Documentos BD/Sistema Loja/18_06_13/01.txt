@@ -1,0 +1,4 @@
+alter table cidade
+alter COLUMN cidade to descricao;
+
+commit work;

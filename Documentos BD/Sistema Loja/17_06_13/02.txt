@@ -1,0 +1,9 @@
+alter table cidade
+add ID_UF integer not null;
+
+commit work;
+
+ALTER TABLE Cidade ADD CONSTRAINT "FK_CIDADE_UF" FOREIGN KEY (ID_UF) REFERENCES UF (ID_UF) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+commit work;
