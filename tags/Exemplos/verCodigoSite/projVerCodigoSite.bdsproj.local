@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008/12/19 10:40:03.671.pas,C:\Documents and Settings\carlos\Meus documentos\Borland Studio Projects\Unit3.pas=C:\Documents and Settings\carlos\Desktop\verCodigoSite\UniMainBrowser.pas</Transaction>
+    <Transaction>2008/12/19 10:40:03.671.dfm,C:\Documents and Settings\carlos\Meus documentos\Borland Studio Projects\Unit3.dfm=C:\Documents and Settings\carlos\Desktop\verCodigoSite\UniMainBrowser.dfm</Transaction>
+    <Transaction>2008/12/19 10:40:12.875.bdsproj,C:\Documents and Settings\carlos\Meus documentos\Borland Studio Projects\Project2.bdsproj=C:\Documents and Settings\carlos\Desktop\verCodigoSite\ProjVerCodigoSite.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

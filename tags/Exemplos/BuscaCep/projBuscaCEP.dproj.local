@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/03/27 14:21:28.000.056,=C:\Users\Led\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/04/15 14:55:00.000.984,=C:\Users\Led\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/06/03 13:55:04.454,=C:\Users\Led\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/06/03 13:56:11.352,=C:\Users\Led\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2013/06/03 14:01:12.426,D:\BKP_Edson\Alguns Exemplos\BuscaCep\funCEP.pas=C:\Users\Led\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2013/06/03 15:40:02.201,D:\BKP_Edson\Alguns Exemplos\BuscaCep\uPrincipal.pas=C:\Users\Led\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/06/03 15:40:02.206,D:\BKP_Edson\Alguns Exemplos\BuscaCep\uPrincipal.dfm=C:\Users\Led\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2013/06/03 15:40:20.721,D:\BKP_Edson\Alguns Exemplos\BuscaCep\projBuscaCEP.dproj=C:\Users\Led\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

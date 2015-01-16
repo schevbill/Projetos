@@ -1,0 +1,17 @@
+1º PASSO
+
+NÃO ESQUECER DE DESMARCAR A OPÇÃO DENTRO DO DELPHI, APENAS NO MOMENTO DE GERAÇÃO EXE QUE DESMARCA DEPOIS QUE GEROU EXE MARQUE NOVAMENTE A OPÇÃO
+
+* TOOLS -> OPTIONS... -> EMBARCADERO DEBUGGERS -> LANGUAGE EXCEPTIONS
+CHECK -> NOTIFY ON LANGUAGE EXCEPTIONS
+
+***************************************************************************
+
+2º PASSO
+
+PASSA "upxfrontend" NO EXE PARA DIMINUIR O TAMANHO DO EXECUTAVEL
+
+***************************************************************************
+
+3º PASSO
+

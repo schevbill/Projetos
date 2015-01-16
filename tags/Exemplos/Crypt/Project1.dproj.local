@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/09/01 18:12:30.000.274,=C:\Users\Edson Renato\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/09/01 18:17:44.168,=C:\Users\Edson Renato\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/09/01 18:20:07.257,F:\Projeto Higtech System\Exemplos\Crypt\CryptSenha.dfm=C:\Users\Edson Renato\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2013/09/01 18:20:07.257,F:\Projeto Higtech System\Exemplos\Crypt\CryptSenha.pas=C:\Users\Edson Renato\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2013/09/01 18:20:12.359,F:\Projeto Higtech System\Exemplos\Crypt\Project1.dproj=C:\Users\Edson Renato\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

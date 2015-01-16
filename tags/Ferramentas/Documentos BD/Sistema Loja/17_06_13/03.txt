@@ -1,0 +1,4 @@
+alter table funcionario
+add CEP varchar(10);
+
+commit work;

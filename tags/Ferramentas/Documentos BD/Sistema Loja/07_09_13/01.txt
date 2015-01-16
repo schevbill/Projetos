@@ -1,0 +1,7 @@
+/* Domain definitions */
+CREATE DOMAIN TIPODOC AS VARCHAR(1) check (value in('J','F')) NOT NULL;
+
+alter table CLIFOR
+add TIPODOC TIPODOC;
+
+COMMIT WORK;

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/05/24 01:00:35.000.861,C:\Users\EdsonNote\Documents\RAD Studio\Projects\Hightech_System.dproj=C:\Users\EdsonNote\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2013/05/24 01:02:39.000.131,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\ufrmPrincipal.dfm=C:\Users\EdsonNote\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2013/05/24 01:02:43.000.202,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Hightech_System.dproj=C:\Users\EdsonNote\Documents\RAD Studio\Projects\Hightech_System.dproj</Transaction>
+    <Transaction>2013/05/27 21:03:03.000.067,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Unit1.pas=C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\ufrmModeloCad.pas</Transaction>
+    <Transaction>2013/05/27 21:03:03.000.067,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Unit1.dfm=C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\ufrmModeloCad.dfm</Transaction>
+    <Transaction>2013/05/30 19:53:13.000.937,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Retaguarda\uModule.dfm=C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Retaguarda\Unit1.dfm</Transaction>
+    <Transaction>2013/06/09 15:34:38.000.250,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Retaguarda\ufrmEntrada.dfm=C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Retaguarda\Unit1.dfm</Transaction>
+    <Transaction>2013/06/17 22:03:00.000.843,C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Retaguarda\ufrmCadCidade.dfm=C:\Users\EdsonNote\Documents\Hightech_System\Desenvolvimento\branches\Loja\Retaguarda\Unit1.dfm</Transaction>
+    <Transaction>2013/07/01 14:16:25.000.691,D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\Hightech_System.dproj=D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\Hightech_System.dproj</Transaction>
+    <Transaction>2013/07/05 20:10:05.000.600,F:\Projeto Higtech System\branches\Loja\Retaguarda\Unit1.pas=F:\Projeto Higtech System\branches\Loja\Retaguarda\funCEP.pas</Transaction>
+    <Transaction>2013/07/15 13:13:32.000.523,D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\Unit1.dfm=D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\ufrmCadCargo.dfm</Transaction>
+    <Transaction>2013/07/16 21:02:05.000.394,D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\Unit1.dfm=D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\ufrmCadTurno.dfm</Transaction>
+    <Transaction>2013/07/17 20:55:59.000.851,D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\ufrmCadUsuario.dfm=D:\Projetos K2\Projetos Delphi\Projetos Hightech\branches\Loja\Retaguarda\Unit1.dfm</Transaction>
+    <Transaction>2013/09/01 15:41:53.000.870,=D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\Unit1.pas</Transaction>
+    <Transaction>2013/09/01 15:43:02.000.898,D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmClifor.dfm=D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\Unit1.dfm</Transaction>
+    <Transaction>2013/09/01 15:43:02.000.898,D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmClifor.pas=D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\Unit1.pas</Transaction>
+    <Transaction>2013/09/01 19:05:55.000.536,D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmCadClifor.pas=D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmClifor.pas</Transaction>
+    <Transaction>2013/09/01 19:05:55.000.536,D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmCadClifor.dfm=D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmClifor.dfm</Transaction>
+    <Transaction>2013/09/01 19:30:05.000.412,=D:\Projetos K2\Projetos Delphi\Hightech_System\branches\Loja\Retaguarda\ufrmCadClifor.pas</Transaction>
+  </Transactions>
+</BorlandProject>

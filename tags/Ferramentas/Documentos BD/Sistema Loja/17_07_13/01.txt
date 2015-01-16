@@ -1,0 +1,5 @@
+create unique index idx_cpf_funci on funcionario(CPF);
+create unique index idx_nome_funci on funcionario(NOME);
+create unique index idx_razao_clif on Clifor(RAZAOSOCIAL);
+
+commit work;
