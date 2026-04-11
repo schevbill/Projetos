@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"d:\\\\Renato\\\\Desenvolvimento\\\\Projeto Android\\\\Jogo da Cobrinha\")",
+      "Bash(cp \"app/src/main/res/mipmap-hdpi/ic_launcher.xml\" \"app/src/main/res/mipmap-mdpi/ic_launcher.xml\")",
+      "Bash(cp \"app/src/main/res/mipmap-hdpi/ic_launcher.xml\" \"app/src/main/res/mipmap-xhdpi/ic_launcher.xml\")",
+      "Bash(cp \"app/src/main/res/mipmap-hdpi/ic_launcher.xml\" \"app/src/main/res/mipmap-xxhdpi/ic_launcher.xml\")",
+      "Bash(cp \"app/src/main/res/mipmap-hdpi/ic_launcher_round.xml\" \"app/src/main/res/mipmap-mdpi/ic_launcher_round.xml\")",
+      "Bash(cp \"app/src/main/res/mipmap-hdpi/ic_launcher_round.xml\" \"app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml\")"
+    ]
+  }
+}

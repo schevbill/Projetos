@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <!-- Barra de status do jogo (pontuação + pausa) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:background="@color/surface_dark">
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pontuação: 0"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnPause"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="⏸"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:textColor="@color/text_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+    </LinearLayout>
+
+    <!-- Área do jogo (SurfaceView é inserida programaticamente aqui) -->
+    <FrameLayout
+        android:id="@+id/gameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Controles de direção (D-Pad) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/surface_dark"
+        android:padding="8dp">
+
+        <!-- Botão Cima -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUp"
+            style="@style/Widget.SnakeGame.Button.Direction"
+            android:layout_width="64dp"
+            android:layout_height="52dp"
+            android:text="▲" />
+
+        <!-- Linha com Esquerda, vazio, Direita -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLeft"
+                style="@style/Widget.SnakeGame.Button.Direction"
+                android:layout_width="64dp"
+                android:layout_height="52dp"
+                android:text="◀"
+                android:layout_marginEnd="4dp" />
+
+            <!-- Espaço central decorativo -->
+            <View
+                android:layout_width="64dp"
+                android:layout_height="52dp"
+                android:background="@color/button_direction" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRight"
+                style="@style/Widget.SnakeGame.Button.Direction"
+                android:layout_width="64dp"
+                android:layout_height="52dp"
+                android:text="▶"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
+
+        <!-- Botão Baixo -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDown"
+            style="@style/Widget.SnakeGame.Button.Direction"
+            android:layout_width="64dp"
+            android:layout_height="52dp"
+            android:text="▼" />
+
+    </LinearLayout>
+
+</LinearLayout>

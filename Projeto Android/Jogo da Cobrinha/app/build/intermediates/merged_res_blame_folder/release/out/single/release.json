@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.snakegame.app-merged_res-4:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.snakegame.app-main-5:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.snakegame.app-main-5:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.snakegame.app-main-5:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.snakegame.app-main-5:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/layout_activity_settings.xml.flat",
+        "source": "com.snakegame.app-main-5:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/raw_readme_sons.txt.flat",
+        "source": "com.snakegame.app-main-5:/raw/readme_sons.txt"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/layout_activity_game_over.xml.flat",
+        "source": "com.snakegame.app-main-5:/layout/activity_game_over.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/layout_activity_main.xml.flat",
+        "source": "com.snakegame.app-main-5:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-4:/layout_activity_game.xml.flat",
+        "source": "com.snakegame.app-main-5:/layout/activity_game.xml"
+    }
+]

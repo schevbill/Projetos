@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Snake Game</string>
+
+    <!-- Main -->
+    <string name="btn_play">JOGAR</string>
+    <string name="btn_settings">CONFIGURAÇÕES</string>
+    <string name="title_main">SNAKE</string>
+    <string name="subtitle_main">Jogo da Cobrinha</string>
+    <string name="high_score_label">Recorde: %d</string>
+
+    <!-- Game -->
+    <string name="score_label">Pontuação: %d</string>
+    <string name="btn_pause">⏸</string>
+    <string name="btn_resume">▶</string>
+    <string name="btn_up">▲</string>
+    <string name="btn_down">▼</string>
+    <string name="btn_left">◀</string>
+    <string name="btn_right">▶</string>
+
+    <!-- Game Over -->
+    <string name="game_over_title">FIM DE JOGO</string>
+    <string name="your_score">Sua pontuação: %d</string>
+    <string name="new_record">🏆 NOVO RECORDE!</string>
+    <string name="btn_restart">JOGAR NOVAMENTE</string>
+    <string name="btn_main_menu">MENU PRINCIPAL</string>
+
+    <!-- Settings -->
+    <string name="settings_title">CONFIGURAÇÕES</string>
+    <string name="label_difficulty">Dificuldade</string>
+    <string name="label_theme">Tema / Skin</string>
+    <string name="label_sound">Efeitos Sonoros</string>
+    <string name="label_music">Música de Fundo</string>
+    <string name="label_vibration">Vibração</string>
+    <string name="label_wrap_around">Bordas Atravessáveis</string>
+    <string name="btn_save">SALVAR</string>
+    <string name="btn_back">VOLTAR</string>
+</resources>

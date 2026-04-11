@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_gold">#FFD700</color>
+    <color name="accent_red">#FF5722</color>
+    <color name="background_dark">#121212</color>
+    <color name="button_bg">#2E2E2E</color>
+    <color name="button_direction">#263238</color>
+    <color name="overlay_dark">#AA000000</color>
+    <color name="primary_green">#4CAF50</color>
+    <color name="primary_green_light">#81C784</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0BEC5</color>
+    <string name="app_name">Snake Game</string>
+    <string name="btn_back">VOLTAR</string>
+    <string name="btn_down">▼</string>
+    <string name="btn_left">◀</string>
+    <string name="btn_main_menu">MENU PRINCIPAL</string>
+    <string name="btn_pause">⏸</string>
+    <string name="btn_play">JOGAR</string>
+    <string name="btn_restart">JOGAR NOVAMENTE</string>
+    <string name="btn_resume">▶</string>
+    <string name="btn_right">▶</string>
+    <string name="btn_save">SALVAR</string>
+    <string name="btn_settings">CONFIGURAÇÕES</string>
+    <string name="btn_up">▲</string>
+    <string name="game_over_title">FIM DE JOGO</string>
+    <string name="high_score_label">Recorde: %d</string>
+    <string name="label_difficulty">Dificuldade</string>
+    <string name="label_music">Música de Fundo</string>
+    <string name="label_sound">Efeitos Sonoros</string>
+    <string name="label_theme">Tema / Skin</string>
+    <string name="label_vibration">Vibração</string>
+    <string name="label_wrap_around">Bordas Atravessáveis</string>
+    <string name="new_record">🏆 NOVO RECORDE!</string>
+    <string name="score_label">Pontuação: %d</string>
+    <string name="settings_title">CONFIGURAÇÕES</string>
+    <string name="subtitle_main">Jogo da Cobrinha</string>
+    <string name="title_main">SNAKE</string>
+    <string name="your_score">Sua pontuação: %d</string>
+    <style name="Theme.SnakeGame" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorPrimaryVariant">@color/primary_green_light</item>
+        <item name="colorOnPrimary">@color/background_dark</item>
+        <item name="colorSecondary">@color/accent_red</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:statusBarColor">@color/background_dark</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="Theme.SnakeGame.Fullscreen" parent="Theme.SnakeGame">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Widget.SnakeGame.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary_green</item>
+        <item name="android:textColor">@color/background_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    <style name="Widget.SnakeGame.Button.Direction" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/button_direction</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
+    <style name="Widget.SnakeGame.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary_green</item>
+        <item name="android:textColor">@color/primary_green</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+</resources>

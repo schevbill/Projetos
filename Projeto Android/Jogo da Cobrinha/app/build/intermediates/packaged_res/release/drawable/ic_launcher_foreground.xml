@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Cobra estilizada: corpo em S -->
+    <!-- Cabeça -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M64,30 Q74,30 74,40 Q74,50 64,50 L44,50 Q34,50 34,60 Q34,70 44,70 L64,70 Q74,70 74,80 Q74,90 64,90 L44,90"
+        android:strokeColor="#4CAF50"
+        android:strokeWidth="12"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- Olho da cobra (círculo via pathData) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M68,29 a3,3 0 1,0 0.001,0 Z" />
+</vector>

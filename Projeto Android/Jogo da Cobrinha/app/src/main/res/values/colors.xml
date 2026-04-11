@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cores principais do app -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="primary_green">#4CAF50</color>
+    <color name="primary_green_light">#81C784</color>
+    <color name="accent_red">#FF5722</color>
+    <color name="accent_gold">#FFD700</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0BEC5</color>
+    <color name="button_bg">#2E2E2E</color>
+    <color name="button_direction">#263238</color>
+    <color name="overlay_dark">#AA000000</color>
+</resources>
