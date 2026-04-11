@@ -1,0 +1,87 @@
+unit Cadastro.Resources.Conexao;
+
+interface
+
+uses
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Stan.ExprFuncs, FireDAC.UI.Intf,
+  FireDAC.Phys, FireDAC.Phys.Intf, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
+  FireDAC.Phys.MSSQL, FireDAC.Phys.MSSQLDef, FireDAC.VCLUI.Wait, FireDAC.Comp.UI,
+  FireDAC.Comp.Client, Data.DB, Cadastro.Resources.Interfaces;
+
+type
+  TConexao = class(TInterfacedObject, iConexao)
+  private
+    { private declarations }
+    FConn: TFDConnection;
+    procedure ConexaoFirebird;
+    procedure ConexaoSQLServer;
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iconexao;
+    function Connect: TCustomConnection;
+  published
+    { published declarations }
+  end;
+
+implementation
+
+uses
+  System.SysUtils, Vcl.Dialogs;
+
+{ TConexao }
+
+procedure TConexao.ConexaoFirebird;
+begin
+  FConn.Params.DriverID := 'FB';
+  FConn.Params.Database := 'C:\Desenvolvimento\Projetos\ProjetosTeste\BancoDados\TesteProjeto.FDB';
+  FConn.Params.UserName := 'SYSDBA';
+  FConn.Params.Password := 'masterkey';
+end;
+
+procedure TConexao.ConexaoSQLServer;
+begin
+  FConn.Params.DriverID := 'MSSQL';
+  FConn.Params.Database := 'Cliente';
+  FConn.Params.UserName := 'sa';
+  FConn.Params.Password := 'masterkey';
+  FConn.Params.Add('Server=DESKTOP-5RQ4U4P\SQLEXPRESS');  // Pode ser nome ou IP do servidor
+  FConn.Params.Add('Port=1433');
+end;
+
+function TConexao.Connect: TCustomConnection;
+begin
+  Result := FConn;
+end;
+
+constructor TConexao.Create;
+begin
+  FConn := TFDConnection.Create(nil);
+  try
+    FConn.Params.Clear;
+    FConn.LoginPrompt := False;
+    //ConexaoFirebird;
+    ConexaoSQLServer;
+    FConn.Connected := True;
+  except
+    on E: Exception do
+      ShowMessage('Erro ao conectar: ' + E.Message);
+  end;
+end;
+
+destructor TConexao.Destroy;
+begin
+  FConn.Free;
+  inherited;
+end;
+
+class function TConexao.New: iconexao;
+begin
+  result := Self.Create;
+end;
+
+end.

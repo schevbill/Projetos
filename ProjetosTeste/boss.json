@@ -1,0 +1,12 @@
+{
+	"name": "boss i https://github.com/academiadocodigo/Router4Delphi.git",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./src",
+	"projects": [],
+	"dependencies": {
+		"https://github.com/academiadocodigo/router4delphi": "^1.1.3",
+		"https://github.com/academiadocodigo/simpleorm": "^2.02.11"
+	}
+}

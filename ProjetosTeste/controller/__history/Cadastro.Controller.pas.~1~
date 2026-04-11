@@ -1,0 +1,45 @@
+unit Cadastro.Controller;
+
+interface
+
+type
+  iController = interface
+      function Cliente: iClienteDTO;
+  end;
+
+  TController = class(TInterfacedObject, iController)
+    private
+      FCliente: iClienteDTO;
+    public
+      constructor Create;
+      destructor Destroy; override;
+      class function New: iController;
+      function Cliente: iClienteDTO;
+  end;
+
+implementation
+
+{ TController }
+
+function TController.Cliente: iClienteDTO;
+begin
+
+end;
+
+constructor TController.Create;
+begin
+
+end;
+
+destructor TController.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TController.New: iController;
+begin
+  Result := Self.Create;
+end;
+
+end.

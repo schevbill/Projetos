@@ -1,0 +1,60 @@
+unit Cadastro.View.ClientesListar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.ExtCtrls, Router4D, Router4D.Interfaces, Cadastro.Controller;
+
+type
+  TfmClienteListar = class(TForm, iRouter4DComponent)
+    pnlPrincipal: TPanel;
+    pnlButton: TPanel;
+    btnNovo: TButton;
+    btnEditar: TButton;
+    btnExcluir: TButton;
+    DBGrid: TDBGrid;
+    dtsCliente: TDataSource;
+    procedure btnNovoClick(Sender: TObject);
+  private
+    { Private declarations }
+    Fcontroller: iController;
+  public
+    { Public declarations }
+    function Render: TForm;
+    procedure UnRender;
+  end;
+
+var
+  fmClienteListar: TfmClienteListar;
+
+implementation
+
+uses
+   Router4D.Props;
+
+{$R *.dfm}
+
+{ TfmClienteListar }
+
+procedure TfmClienteListar.btnNovoClick(Sender: TObject);
+begin
+  TRouter4D
+    .Link
+    .&To('ClienteEditar',Tprops.Create.PropString('True'));
+end;
+
+function TfmClienteListar.Render: TForm;
+begin
+  Fcontroller := TController.New;
+  dtsCliente.DataSet := Fcontroller.Cliente.Build.Listar;
+  Result := Self;
+end;
+
+procedure TfmClienteListar.UnRender;
+begin
+
+end;
+
+end.
