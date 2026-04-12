@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho - Casa de Ração Mantiqueira</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Checkout Form */
+    .checkout-form {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+    }
+
+    .checkout-form h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1/-1; }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      font-family: var(--font);
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+    }
+
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .payment-method {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .payment-method i {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .payment-method.selected,
+    .payment-method:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(232,82,26,0.04);
+    }
+
+    .security-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .security-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .security-badge i { color: var(--success); }
+
+    .cart-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-clear-cart {
+      font-size: 0.85rem;
+      color: #e74c3c;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-clear-cart:hover { background: #fde8e8; }
+  </style>
+</head>
+<body data-page="carrinho">
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <span><i class="fas fa-truck"></i> Frete grátis em compras acima de R$ 200</span>
+      <span>|</span>
+      <span><i class="fas fa-tag"></i> Cupom <strong>MANTIQUEIRA10</strong> — 10% off</span>
+    </div>
+    <div class="header-main">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-paw"></i></div>
+        Casa de Ração <span>Mantiqueira</span>
+      </a>
+      <div class="header-search">
+        <input type="text" id="header-search" placeholder="Buscar ração, marca, animal..." aria-label="Buscar">
+        <button id="header-search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-actions">
+        <a href="#" class="header-action-btn">
+          <i class="fas fa-user"></i>
+          <span>Conta</span>
+        </a>
+        <a href="#" class="header-action-btn">
+          <i class="fas fa-heart"></i>
+          <span>Favoritos</span>
+        </a>
+        <a href="carrinho.html" class="header-action-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Carrinho</span>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="container">
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a href="produtos.html?category=caes"><i class="fas fa-dog"></i> Cães</a>
+        <a href="produtos.html?category=gatos"><i class="fas fa-cat"></i> Gatos</a>
+        <a href="produtos.html?category=passaros"><i class="fas fa-dove"></i> Pássaros</a>
+        <a href="produtos.html?category=peixes"><i class="fas fa-fish"></i> Peixes</a>
+        <a href="produtos.html?category=roedores"><i class="fas fa-cheese"></i> Roedores</a>
+      </div>
+    </nav>
+    <nav id="mobile-nav">
+      <a href="index.html"><i class="fas fa-home"></i> Início</a>
+      <a href="produtos.html"><i class="fas fa-store"></i> Produtos</a>
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+    </nav>
+  </header>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Início</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Carrinho</span>
+      </nav>
+      <h1><i class="fas fa-shopping-cart"></i> Meu Carrinho</h1>
+      <p>Revise seus itens e finalize a compra</p>
+    </div>
+  </div>
+
+  <!-- CARRINHO LAYOUT -->
+  <div class="cart-layout" style="max-width:1280px; margin:0 auto; padding:40px 20px;">
+
+    <!-- CARRINHO VAZIO -->
+    <div class="empty-cart" id="empty-cart" style="display:none; grid-column:1/-1;">
+      <div class="empty-icon"><i class="fas fa-shopping-cart"></i></div>
+      <h2>Seu carrinho está vazio</h2>
+      <p>Adicione produtos para continuar comprando</p>
+      <a href="produtos.html" class="btn-primary">
+        <i class="fas fa-store"></i> Ver Produtos
+      </a>
+    </div>
+
+    <!-- CONTEÚDO DO CARRINHO -->
+    <div id="cart-content" style="display:none; display:grid; grid-template-columns: 1fr 360px; gap:30px; align-items:start;">
+
+      <!-- ITENS -->
+      <div>
+        <h2 class="cart-section-title">
+          <i class="fas fa-list"></i> Itens do Carrinho
+        </h2>
+        <div id="cart-items"></div>
+
+        <div class="cart-actions">
+          <button class="btn-clear-cart" onclick="clearAllCart()">
+            <i class="fas fa-trash"></i> Limpar Carrinho
+          </button>
+          <a href="produtos.html" style="font-size:0.88rem; color: var(--text-light); display:flex; align-items:center; gap:6px;">
+            <i class="fas fa-arrow-left"></i> Continuar Comprando
+          </a>
+        </div>
+
+        <!-- FORMULÁRIO DE ENTREGA -->
+        <div class="checkout-form" style="margin-top: 28px;">
+          <h3><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome Completo *</label>
+              <input type="text" id="nome" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+              <label for="cpf">CPF *</label>
+              <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" placeholder="seu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone *</label>
+              <input type="tel" id="telefone" placeholder="(11) 9 9999-9999">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cep">CEP *</label>
+              <input type="text" id="cep" placeholder="00000-000" maxlength="9">
+            </div>
+            <div class="form-group">
+              <label for="estado">Estado</label>
+              <select id="estado">
+                <option value="">Selecione</option>
+                <option>SP</option><option>RJ</option><option>MG</option><option>RS</option>
+                <option>PR</option><option>SC</option><option>BA</option><option>GO</option>
+                <option>DF</option><option>CE</option><option>PE</option><option>AM</option>
+                <option>PA</option><option>MA</option><option>MS</option><option>MT</option>
+                <option>ES</option><option>RN</option><option>PB</option><option>AL</option>
+                <option>SE</option><option>PI</option><option>TO</option><option>AC</option>
+                <option>RO</option><option>RR</option><option>AP</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="rua">Rua *</label>
+              <input type="text" id="rua" placeholder="Nome da rua">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="numero">Número *</label>
+              <input type="text" id="numero" placeholder="Nº">
+            </div>
+            <div class="form-group">
+              <label for="complemento">Complemento</label>
+              <input type="text" id="complemento" placeholder="Apto, Bloco...">
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGAMENTO -->
+        <div class="checkout-form">
+          <h3><i class="fas fa-credit-card"></i> Forma de Pagamento</h3>
+          <div class="payment-methods">
+            <div class="payment-method selected" onclick="selectPayment(this)">
+              <i class="fas fa-credit-card"></i> Cartão
+            </div>
+            <div class="payment-method" onclick="selectPayment(this)">
+              <i class="fas fa-barcode"></i> Boleto
+            </div>
+            <div class="payment-method" onclick="selectPayment(this)">
+              <i class="fas fa-qrcode"></i> PIX
+            </div>
+          </div>
+
+          <div id="card-fields">
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Número do Cartão *</label>
+                <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" id="card-number">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Nome no Cartão *</label>
+                <input type="text" placeholder="Nome como está no cartão">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Validade *</label>
+                <input type="text" placeholder="MM/AA" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label>CVV *</label>
+                <input type="text" placeholder="000" maxlength="4">
+              </div>
+            </div>
+          </div>
+
+          <div class="security-badges">
+            <span class="security-badge"><i class="fas fa-lock"></i> Compra Segura</span>
+            <span class="security-badge"><i class="fas fa-shield-halved"></i> SSL Certificado</span>
+            <span class="security-badge"><i class="fas fa-check-circle"></i> Dados Protegidos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUMO DO PEDIDO -->
+      <div>
+        <div class="order-summary">
+          <h2 class="cart-section-title" style="border-bottom:2px solid var(--border); padding-bottom:14px; margin-bottom:16px;">
+            <i class="fas fa-receipt"></i> Resumo do Pedido
+          </h2>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">R$ 0,00</span>
+          </div>
+          <div class="summary-row">
+            <span>Frete</span>
+            <span id="summary-shipping" class="free">Calculando...</span>
+          </div>
+
+          <div id="shipping-msg" class="shipping-msg"></div>
+
+          <div class="summary-row">
+            <span>Desconto</span>
+            <span style="color: var(--success);">—</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="summary-total">R$ 0,00</span>
+          </div>
+
+          <button class="btn-checkout" onclick="handleCheckout()">
+            <i class="fas fa-lock"></i> Finalizar Compra
+          </button>
+
+          <a href="produtos.html" class="btn-continue">
+            <i class="fas fa-arrow-left"></i> Continuar Comprando
+          </a>
+
+          <div class="accepted-cards">
+            <span>VISA</span>
+            <span>MASTER</span>
+            <span>ELO</span>
+            <span>AMEX</span>
+            <span>PIX</span>
+          </div>
+        </div>
+
+        <!-- CUPOM -->
+        <div style="background: white; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-top: 16px;">
+          <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">
+            <i class="fas fa-ticket"></i> Cupom de Desconto
+          </h4>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="coupon-input" placeholder="Digite o cupom" style="flex: 1; padding: 10px 14px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 0.88rem; outline: none; font-family: var(--font); text-transform: uppercase;">
+            <button onclick="applyCoupon()" style="background: var(--secondary); color: white; padding: 10px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; transition: var(--transition);">
+              Aplicar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="margin-top: 40px;">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="margin-bottom: 14px; display: inline-flex;">
+          <div class="logo-icon"><i class="fas fa-paw"></i></div>
+          Casa de Ração <span>Mantiqueira</span>
+        </a>
+        <p>Somos especialistas em nutrição animal.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="produtos.html?category=caes"><i class="fas fa-chevron-right"></i> Cães</a></li>
+          <li><a href="produtos.html?category=gatos"><i class="fas fa-chevron-right"></i> Gatos</a></li>
+          <li><a href="produtos.html?category=peixes"><i class="fas fa-chevron-right"></i> Peixes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Rastrear Pedido</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Trocas e Devoluções</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Fale Conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul class="footer-contact">
+          <li><i class="fas fa-phone"></i> (11) 9 9999-9999</li>
+          <li><i class="fas fa-envelope"></i> contato@casaderacaomantiqueira.com.br</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 <span>Casa de Ração Mantiqueira</span> — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function selectPayment(el) {
+      document.querySelectorAll(".payment-method").forEach(e => e.classList.remove("selected"));
+      el.classList.add("selected");
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById("coupon-input").value.trim().toUpperCase();
+      if (code === "MANTIQUEIRA10") {
+        showToast("Cupom MANTIQUEIRA10 aplicado! 10% de desconto.", "success");
+      } else if (code) {
+        showToast("Cupom inválido ou expirado.", "error");
+      }
+    }
+
+    function clearAllCart() {
+      if (confirm("Deseja realmente limpar o carrinho?")) {
+        Cart.clear();
+        renderCart();
+        showToast("Carrinho esvaziado.", "info");
+      }
+    }
+
+    function handleCheckout() {
+      const nome = document.getElementById("nome")?.value;
+      if (!nome) {
+        showToast("Preencha o formulário de entrega.", "error");
+        return;
+      }
+      showToast("Pedido finalizado com sucesso! Em breve você receberá a confirmação por e-mail.", "success");
+      setTimeout(() => {
+        Cart.clear();
+        renderCart();
+      }, 2000);
+    }
+
+    // Formatar CEP
+    document.getElementById("cep")?.addEventListener("input", function() {
+      let v = this.value.replace(/\D/g, "");
+      if (v.length > 5) v = v.slice(0,5) + "-" + v.slice(5,8);
+      this.value = v;
+    });
+
+    // Formatar CPF
+    document.getElementById("cpf")?.addEventListener("input", function() {
+      let v = this.value.replace(/\D/g, "");
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      this.value = v;
+    });
+
+    // Formatar cartão
+    document.getElementById("card-number")?.addEventListener("input", function() {
+      let v = this.value.replace(/\D/g, "").slice(0, 16);
+      v = v.replace(/(\d{4})(?=\d)/g, "$1 ");
+      this.value = v;
+    });
+  </script>
+</body>
+</html>

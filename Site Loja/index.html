@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa de Ração Mantiqueira | Qualidade e Sabor para seu Pet</title>
+  <meta name="description" content="Loja especializada em ração para cães, gatos, pássaros, peixes e roedores. Melhores marcas com entrega rápida.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body data-page="index">
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container"></div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <span><i class="fas fa-truck"></i> Frete grátis em compras acima de R$ 200</span>
+      <span>|</span>
+      <span><i class="fas fa-tag"></i> Use o cupom <strong>MANTIQUEIRA10</strong> e ganhe 10% off</span>
+    </div>
+    <div class="header-main">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-paw"></i></div>
+        Casa de Ração <span>Mantiqueira</span>
+      </a>
+      <div class="header-search">
+        <input type="text" id="header-search" placeholder="Buscar ração, marca, animal..." aria-label="Buscar">
+        <button id="header-search-btn" aria-label="Pesquisar">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div class="header-actions">
+        <a href="#" class="header-action-btn" title="Minha conta">
+          <i class="fas fa-user"></i>
+          <span>Conta</span>
+        </a>
+        <a href="#" class="header-action-btn" title="Favoritos">
+          <i class="fas fa-heart"></i>
+          <span>Favoritos</span>
+        </a>
+        <a href="carrinho.html" class="header-action-btn" title="Carrinho">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Carrinho</span>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="container">
+        <a href="index.html" class="active"><i class="fas fa-home"></i> Início</a>
+        <a href="produtos.html?category=caes"><i class="fas fa-dog"></i> Cães</a>
+        <a href="produtos.html?category=gatos"><i class="fas fa-cat"></i> Gatos</a>
+        <a href="produtos.html?category=passaros"><i class="fas fa-dove"></i> Pássaros</a>
+        <a href="produtos.html?category=peixes"><i class="fas fa-fish"></i> Peixes</a>
+        <a href="produtos.html?category=roedores"><i class="fas fa-cheese"></i> Roedores</a>
+        <a href="produtos.html" class="nav-promo"><i class="fas fa-fire"></i> Promoções</a>
+      </div>
+    </nav>
+    <nav id="mobile-nav">
+      <a href="index.html"><i class="fas fa-home"></i> Início</a>
+      <a href="produtos.html?category=caes"><i class="fas fa-dog"></i> Cães</a>
+      <a href="produtos.html?category=gatos"><i class="fas fa-cat"></i> Gatos</a>
+      <a href="produtos.html?category=passaros"><i class="fas fa-dove"></i> Pássaros</a>
+      <a href="produtos.html?category=peixes"><i class="fas fa-fish"></i> Peixes</a>
+      <a href="produtos.html?category=roedores"><i class="fas fa-cheese"></i> Roedores</a>
+      <a href="produtos.html"><i class="fas fa-fire"></i> Promoções</a>
+      <a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="tag"><i class="fas fa-award"></i> Loja Especializada em Pets</div>
+        <h1>Nutrição de<br><span>Qualidade</span> para<br>seu Pet</h1>
+        <p>As melhores marcas de ração para cães, gatos, pássaros, peixes e roedores. Entrega rápida para todo o Brasil!</p>
+        <div class="hero-buttons">
+          <a href="produtos.html" class="btn-primary">
+            <i class="fas fa-shopping-bag"></i> Ver Todos os Produtos
+          </a>
+          <a href="produtos.html?category=caes" class="btn-outline">
+            <i class="fas fa-paw"></i> Ver Promoções
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>500+</strong>
+            <small>Produtos</small>
+          </div>
+          <div class="hero-stat">
+            <strong>15k+</strong>
+            <small>Clientes</small>
+          </div>
+          <div class="hero-stat">
+            <strong>4.9</strong>
+            <small>Avaliação</small>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-card">
+          <div class="emoji-grid">
+            <div class="hero-emoji-item">🐶<span>Cães</span></div>
+            <div class="hero-emoji-item">🐱<span>Gatos</span></div>
+            <div class="hero-emoji-item">🐦<span>Pássaros</span></div>
+            <div class="hero-emoji-item">🐠<span>Peixes</span></div>
+            <div class="hero-emoji-item">🐹<span>Roedores</span></div>
+            <div class="hero-emoji-item">🥩<span>Premium</span></div>
+          </div>
+          <div class="hero-promo-badge">
+            <i class="fas fa-truck"></i> Frete Grátis acima de R$ 200
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS RÁPIDOS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-truck-fast"></i></div>
+          <h3>Entrega Rápida</h3>
+          <p>Envio para todo o Brasil em até 5 dias úteis. Frete grátis acima de R$ 200.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-shield-halved"></i></div>
+          <h3>Compra Segura</h3>
+          <p>Pagamento protegido com certificado SSL. Seus dados estão sempre seguros.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-rotate-left"></i></div>
+          <h3>Troca Fácil</h3>
+          <p>Não gostou? Troque em até 7 dias sem complicação e sem custo.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+          <h3>Suporte 24h</h3>
+          <p>Nossa equipe está disponível para ajudar você e seu pet a qualquer hora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Navegue por Animal</span>
+        <h2>Encontre a Ração Ideal</h2>
+        <p>Selecione a categoria do seu pet e descubra os melhores produtos</p>
+      </div>
+      <div class="categories-grid">
+        <a href="produtos.html?category=caes" class="category-card">
+          <div class="category-icon icon-caes">🐶</div>
+          <h3>Cães</h3>
+          <span>4 produtos</span>
+        </a>
+        <a href="produtos.html?category=gatos" class="category-card">
+          <div class="category-icon icon-gatos">🐱</div>
+          <h3>Gatos</h3>
+          <span>3 produtos</span>
+        </a>
+        <a href="produtos.html?category=passaros" class="category-card">
+          <div class="category-icon icon-passaros">🐦</div>
+          <h3>Pássaros</h3>
+          <span>2 produtos</span>
+        </a>
+        <a href="produtos.html?category=peixes" class="category-card">
+          <div class="category-icon icon-peixes">🐠</div>
+          <h3>Peixes</h3>
+          <span>2 produtos</span>
+        </a>
+        <a href="produtos.html?category=roedores" class="category-card">
+          <div class="category-icon icon-roedores">🐹</div>
+          <h3>Roedores</h3>
+          <span>1 produto</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER PROMOÇÃO -->
+  <div class="container">
+    <div class="promo-banner">
+      <div class="promo-banner-text">
+        <h2><i class="fas fa-fire"></i> Oferta Especial de Hoje!</h2>
+        <p>Use o cupom e ganhe 10% de desconto em qualquer produto</p>
+        <div class="promo-code">MANTIQUEIRA10</div>
+      </div>
+      <a href="produtos.html" class="btn-promo">
+        <i class="fas fa-shopping-bag"></i> Aproveitar Agora
+      </a>
+    </div>
+  </div>
+
+  <!-- PRODUTOS DESTAQUE -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Os Mais Pedidos</span>
+        <h2>Produtos em Destaque</h2>
+        <p>Selecionamos os produtos mais amados pelos nossos clientes</p>
+      </div>
+      <div class="products-grid" id="featured-products-grid">
+        <!-- Produtos renderizados via JS -->
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="produtos.html" class="btn-primary">
+          <i class="fas fa-th-large"></i> Ver Todos os Produtos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCAS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Parceiros</span>
+        <h2>Marcas que Confiamos</h2>
+        <p>Trabalhamos somente com marcas reconhecidas e certificadas</p>
+      </div>
+      <div class="brands-grid">
+        <div class="brand-item">Royal Canin</div>
+        <div class="brand-item">Pedigree</div>
+        <div class="brand-item">Premier</div>
+        <div class="brand-item">Golden</div>
+        <div class="brand-item">Whiskas</div>
+        <div class="brand-item">Purina</div>
+        <div class="brand-item">Tetra</div>
+        <div class="brand-item">Nutrópica</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="container">
+      <h2><i class="fas fa-envelope-open-text"></i> Receba Ofertas Exclusivas</h2>
+      <p>Cadastre seu e-mail e receba promoções, dicas de nutrição animal e novidades em primeira mão!</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="Digite seu e-mail" required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="margin-bottom: 14px; display: inline-flex;">
+          <div class="logo-icon"><i class="fas fa-paw"></i></div>
+          Casa de Ração <span>Mantiqueira</span>
+        </a>
+        <p>Somos especialistas em nutrição animal. Oferecemos os melhores produtos para garantir saúde e bem-estar ao seu pet.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="produtos.html?category=caes"><i class="fas fa-chevron-right"></i> Ração para Cães</a></li>
+          <li><a href="produtos.html?category=gatos"><i class="fas fa-chevron-right"></i> Ração para Gatos</a></li>
+          <li><a href="produtos.html?category=passaros"><i class="fas fa-chevron-right"></i> Ração para Pássaros</a></li>
+          <li><a href="produtos.html?category=peixes"><i class="fas fa-chevron-right"></i> Ração para Peixes</a></li>
+          <li><a href="produtos.html?category=roedores"><i class="fas fa-chevron-right"></i> Ração para Roedores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Sobre Nós</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Política de Privacidade</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Termos de Uso</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Trocas e Devoluções</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Rastrear Pedido</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul class="footer-contact">
+          <li><i class="fas fa-map-marker-alt"></i> Rua dos Pets, 123 – São Paulo, SP</li>
+          <li><i class="fas fa-phone"></i> (11) 9 9999-9999</li>
+          <li><i class="fas fa-envelope"></i> contato@casaderacaomantiqueira.com.br</li>
+          <li><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h<br>Sáb: 8h às 13h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 <span>Casa de Ração Mantiqueira</span> — Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleNewsletter(e) {
+      e.preventDefault();
+      showToast("E-mail cadastrado com sucesso! Bem-vindo(a)!", "success");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

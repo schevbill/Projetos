@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"c:/Desenvolvimento/Projetos/Site Loja/index.html\")"
+    ]
+  }
+}
