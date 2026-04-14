@@ -1,38 +1,98 @@
 [
     {
-        "merged": "com.snakegame.app-merged_res-4:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.snakegame.app-main-5:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.snakegame.app-main-5:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.snakegame.app-merged_res-40:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.snakegame.app-main-41:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.snakegame.app-main-5:/drawable/ic_launcher_background.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.snakegame.app-main-5:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/layout_activity_settings.xml.flat",
-        "source": "com.snakegame.app-main-5:/layout/activity_settings.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/raw_readme_sons.txt.flat",
-        "source": "com.snakegame.app-main-5:/raw/readme_sons.txt"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-hdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/layout_activity_game_over.xml.flat",
-        "source": "com.snakegame.app-main-5:/layout/activity_game_over.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/layout_activity_main.xml.flat",
-        "source": "com.snakegame.app-main-5:/layout/activity_main.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xxhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.snakegame.app-merged_res-4:/layout_activity_game.xml.flat",
-        "source": "com.snakegame.app-main-5:/layout/activity_game.xml"
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/layout_activity_main.xml.flat",
+        "source": "com.snakegame.app-main-41:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/raw_readme_sons.txt.flat",
+        "source": "com.snakegame.app-main-41:/raw/readme_sons.txt"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/layout_activity_game.xml.flat",
+        "source": "com.snakegame.app-main-41:/layout/activity_game.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/layout_activity_settings.xml.flat",
+        "source": "com.snakegame.app-main-41:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.snakegame.app-main-41:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.snakegame.app-main-41:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.snakegame.app-merged_res-40:/layout_activity_game_over.xml.flat",
+        "source": "com.snakegame.app-main-41:/layout/activity_game_over.xml"
     }
 ]

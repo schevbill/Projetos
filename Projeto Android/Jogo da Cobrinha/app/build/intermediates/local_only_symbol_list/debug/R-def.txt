@@ -13,6 +13,7 @@ color text_primary
 color text_secondary
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id adView
 id btnBackSettings
 id btnDown
 id btnLeft
@@ -40,11 +41,13 @@ id tvNewRecord
 id tvScore
 id tvSubtitle
 id tvTitle
+id tvVersion
 layout activity_game
 layout activity_game_over
 layout activity_main
 layout activity_settings
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw readme_sons
 string app_name

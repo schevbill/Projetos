@@ -22,6 +22,7 @@ public class PreferencesManager {
     private static final String KEY_MUSIC_ENABLED  = "music_enabled";
     private static final String KEY_VIBRATION      = "vibration_enabled";
     private static final String KEY_SHOW_GRID      = "show_grid";
+    private static final String KEY_ADS_REMOVED     = "ads_removed";
 
     private final SharedPreferences prefs;
 
@@ -102,5 +103,14 @@ public class PreferencesManager {
 
     public void setVibrationEnabled(boolean enabled) {
         prefs.edit().putBoolean(KEY_VIBRATION, enabled).apply();
+    }
+
+    // ── Remoção de Anúncios ──────────────────────────────────────
+    public boolean isAdsRemoved() {
+        return prefs.getBoolean(KEY_ADS_REMOVED, false);
+    }
+
+    public void setAdsRemoved(boolean removed) {
+        prefs.edit().putBoolean(KEY_ADS_REMOVED, removed).apply();
     }
 }

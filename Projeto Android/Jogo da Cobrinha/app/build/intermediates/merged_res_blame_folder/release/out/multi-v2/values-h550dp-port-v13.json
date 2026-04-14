@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.snakegame.app-mergeReleaseResources-2:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "outputFile": "com.snakegame.app-mergeReleaseResources-38:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Renato\\.gradle\\caches\\transforms-3\\7078c37ce8cd3af2f2ed60babd87ea3b\\transformed\\material-1.11.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\Renato\\.gradle\\caches\\transforms-3\\323f159c69224d5e1640dba887d53aae\\transformed\\material-1.11.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

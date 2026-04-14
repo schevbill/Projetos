@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.snakegame",
+  "applicationId": "com.bill.gamesnake",
   "variantName": "debug",
   "elements": [
     {

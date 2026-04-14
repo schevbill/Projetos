@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.snakegame.app-mergeDebugResources-2:/values-v22/values-v22.xml",
+            "outputFile": "com.snakegame.app-mergeDebugResources-38:/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Renato\\.gradle\\caches\\transforms-3\\6c6ffd2b5c140a59a107fe5eaa0e19c4\\transformed\\appcompat-1.6.1\\res\\values-v22\\values-v22.xml",
+                    "source": "C:\\Users\\Renato\\.gradle\\caches\\transforms-3\\27f944d5dd141e8c451c2518b7151c40\\transformed\\appcompat-1.6.1\\res\\values-v22\\values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

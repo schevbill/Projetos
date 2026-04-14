@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.snakegame",
+  "applicationId": "com.bill.gamesnake",
   "variantName": "release",
   "elements": []
 }

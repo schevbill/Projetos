@@ -37,6 +37,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <!-- Adicionar AdMob App ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7122197502551297~3157685994"/>
+
     </application>
 
 </manifest>
