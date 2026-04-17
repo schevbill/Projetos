@@ -60,7 +60,7 @@ export default function ConfiguracoesPage() {
 
       <form onSubmit={handleSave} className="card p-6 mb-6 space-y-4">
         <h2 className="text-lg font-bold text-gray-700 flex items-center gap-2">
-          <QrCode size={20} className="text-orange-500" /> Dados da Chave PIX
+          <QrCode size={20} className="text-brand-500" /> Dados da Chave PIX
         </h2>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -104,7 +104,7 @@ export default function ConfiguracoesPage() {
       {/* Teste do PIX */}
       <div className="card p-6">
         <h2 className="text-lg font-bold text-gray-700 mb-4 flex items-center gap-2">
-          <RefreshCw size={20} className="text-orange-500" /> Testar QR Code PIX
+          <RefreshCw size={20} className="text-brand-500" /> Testar QR Code PIX
         </h2>
         <div className="flex gap-3 mb-4">
           <div className="flex-1">

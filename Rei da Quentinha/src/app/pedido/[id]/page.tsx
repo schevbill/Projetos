@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic'
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   PENDING: { label: 'Aguardando confirmação', color: 'text-yellow-600' },
   CONFIRMED: { label: 'Confirmado', color: 'text-blue-600' },
-  PREPARING: { label: 'Em preparo', color: 'text-orange-600' },
+  PREPARING: { label: 'Em preparo', color: 'text-brand-600' },
   READY: { label: 'Pronto para entrega', color: 'text-purple-600' },
   DELIVERING: { label: 'Saiu para entrega', color: 'text-indigo-600' },
   DELIVERED: { label: 'Entregue', color: 'text-green-600' },
@@ -39,7 +39,7 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
 
         <div className="card p-6 mb-4">
           <h2 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <Package size={18} className="text-orange-500" /> Itens do Pedido
+            <Package size={18} className="text-brand-500" /> Itens do Pedido
           </h2>
           <div className="space-y-2">
             {order.items.map(item => (
@@ -60,7 +60,7 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
             )}
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span className="text-orange-500">
+              <span className="text-brand-500">
                 {order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
               </span>
             </div>
@@ -69,7 +69,7 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
 
         <div className="card p-6 mb-4">
           <h2 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <Truck size={18} className="text-orange-500" /> Entrega
+            <Truck size={18} className="text-brand-500" /> Entrega
           </h2>
           <p className="text-gray-600 text-sm">{order.customerName}</p>
           <p className="text-gray-600 text-sm">{order.customerPhone}</p>
@@ -82,7 +82,7 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
 
         <div className="card p-6 mb-6">
           <h2 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <Clock size={18} className="text-orange-500" /> Acompanhe seu pedido
+            <Clock size={18} className="text-brand-500" /> Acompanhe seu pedido
           </h2>
           <div className="space-y-2">
             {['PENDING','CONFIRMED','PREPARING','READY','DELIVERING','DELIVERED'].map((s, i) => {
@@ -90,8 +90,8 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
               const currentIdx = statuses.indexOf(order.status)
               const isDone = i <= currentIdx
               return (
-                <div key={s} className={`flex items-center gap-3 text-sm ${isDone ? 'text-orange-500' : 'text-gray-300'}`}>
-                  <div className={`w-3 h-3 rounded-full ${isDone ? 'bg-orange-500' : 'bg-gray-200'}`} />
+                <div key={s} className={`flex items-center gap-3 text-sm ${isDone ? 'text-brand-500' : 'text-gray-300'}`}>
+                  <div className={`w-3 h-3 rounded-full ${isDone ? 'bg-brand-500' : 'bg-gray-200'}`} />
                   {STATUS_LABELS[s]?.label || s}
                 </div>
               )

@@ -20,7 +20,7 @@ const STATUS_LABELS: Record<string, string> = {
 }
 const STATUS_COLORS: Record<string, string> = {
   PENDING: 'bg-yellow-100 text-yellow-700', CONFIRMED: 'bg-blue-100 text-blue-700',
-  PREPARING: 'bg-orange-100 text-orange-700', READY: 'bg-purple-100 text-purple-700',
+  PREPARING: 'bg-brand-100 text-brand-700', READY: 'bg-purple-100 text-purple-700',
   DELIVERING: 'bg-indigo-100 text-indigo-700', DELIVERED: 'bg-green-100 text-green-700',
   CANCELLED: 'bg-red-100 text-red-700',
 }
@@ -132,11 +132,11 @@ export default function AdminOrders() {
       </div>
 
       <div className="flex gap-2 mb-6 flex-wrap">
-        <button onClick={() => setFilter('')} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${!filter ? 'bg-orange-500 text-white' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+        <button onClick={() => setFilter('')} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${!filter ? 'bg-brand-500 text-white' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
           Todos
         </button>
         {STATUSES.map(s => (
-          <button key={s} onClick={() => setFilter(s)} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === s ? 'bg-orange-500 text-white' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
+          <button key={s} onClick={() => setFilter(s)} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === s ? 'bg-brand-500 text-white' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
             {STATUS_LABELS[s]}
           </button>
         ))}
@@ -155,7 +155,7 @@ export default function AdminOrders() {
                 <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${STATUS_COLORS[order.status]}`}>
                   {STATUS_LABELS[order.status]}
                 </span>
-                <p className="text-lg font-bold text-orange-500 mt-1">
+                <p className="text-lg font-bold text-brand-500 mt-1">
                   {order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </p>
               </div>
@@ -176,7 +176,7 @@ export default function AdminOrders() {
                 value={order.status}
                 onChange={e => updateStatus(order.id, e.target.value)}
                 disabled={loading}
-                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-orange-400"
+                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-brand-400"
               >
                 {STATUSES.map(s => <option key={s} value={s}>{STATUS_LABELS[s]}</option>)}
               </select>
@@ -184,7 +184,7 @@ export default function AdminOrders() {
               <select
                 value={order.paymentStatus}
                 onChange={e => updatePayment(order.id, e.target.value)}
-                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-orange-400"
+                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-brand-400"
               >
                 <option value="PENDING">Pagto. Pendente</option>
                 <option value="PAID">Pago</option>
@@ -194,7 +194,7 @@ export default function AdminOrders() {
               <select
                 value={order.motoboyId || ''}
                 onChange={e => assignMotoboy(order.id, e.target.value)}
-                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-orange-400"
+                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-brand-400"
               >
                 <option value="">Motoboy...</option>
                 {motoboys.filter(m => m).map(m => <option key={m.id} value={m.id}>{m.name}</option>)}

@@ -18,7 +18,7 @@ interface DashboardData {
 const STATUS_COLORS: Record<string, string> = {
   PENDING: 'bg-yellow-100 text-yellow-700',
   CONFIRMED: 'bg-blue-100 text-blue-700',
-  PREPARING: 'bg-orange-100 text-orange-700',
+  PREPARING: 'bg-brand-100 text-brand-700',
   READY: 'bg-purple-100 text-purple-700',
   DELIVERING: 'bg-indigo-100 text-indigo-700',
   DELIVERED: 'bg-green-100 text-green-700',
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
 
   if (loading) return (
     <div className="p-8 flex items-center justify-center h-full">
-      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-orange-500" />
+      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-brand-500" />
     </div>
   )
 
@@ -50,7 +50,7 @@ export default function AdminDashboard() {
     { label: 'Pedidos Hoje', value: data.todayOrders, icon: ShoppingBag, color: 'bg-blue-500' },
     { label: 'Faturamento Hoje', value: (data.todayRevenue || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), icon: DollarSign, color: 'bg-green-500' },
     { label: 'Pedidos Pendentes', value: data.pendingOrders, icon: Clock, color: 'bg-yellow-500' },
-    { label: 'Faturamento Total', value: (data.totalRevenue || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), icon: TrendingUp, color: 'bg-orange-500' },
+    { label: 'Faturamento Total', value: (data.totalRevenue || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), icon: TrendingUp, color: 'bg-brand-500' },
   ]
 
   return (
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
                     <td className="py-2 text-gray-600 text-xs">
                       {order.items.map(i => `${i.quantity}x ${i.product.name}`).join(', ')}
                     </td>
-                    <td className="py-2 font-bold text-orange-500">
+                    <td className="py-2 font-bold text-brand-500">
                       {order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </td>
                     <td className="py-2">
@@ -110,12 +110,12 @@ export default function AdminDashboard() {
 
         <div className="card p-6">
           <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <Star size={18} className="text-orange-500" /> Mais Vendidos
+            <Star size={18} className="text-brand-500" /> Mais Vendidos
           </h2>
           <div className="space-y-3">
             {data.topProducts.map((item, i) => (
               <div key={item.productId} className="flex items-center gap-3">
-                <span className="w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">
+                <span className="w-6 h-6 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center text-xs font-bold">
                   {i + 1}
                 </span>
                 <div className="flex-1">

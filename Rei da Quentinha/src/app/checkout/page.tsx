@@ -347,7 +347,7 @@ export default function CheckoutPage() {
 
                 {/* Preview do endereço */}
                 {addressFull && (
-                  <div className="sm:col-span-2 bg-orange-50 border border-orange-200 rounded-lg px-4 py-2 text-sm text-orange-700">
+                  <div className="sm:col-span-2 bg-brand-50 border border-brand-200 rounded-lg px-4 py-2 text-sm text-brand-700">
                     <span className="font-medium">Endereço: </span>{addressFull}
                   </div>
                 )}
@@ -380,7 +380,7 @@ export default function CheckoutPage() {
                     }}
                     className={`flex items-center gap-3 p-3 rounded-lg border-2 transition-colors ${
                       form.paymentMethod === value
-                        ? 'border-orange-500 bg-orange-50 text-orange-700'
+                        ? 'border-brand-500 bg-brand-50 text-brand-700'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -395,14 +395,14 @@ export default function CheckoutPage() {
                 <div className="mt-5">
                   {pixLoading ? (
                     <div className="flex flex-col items-center py-6 gap-3 text-gray-400">
-                      <Loader2 size={36} className="animate-spin text-orange-400" />
+                      <Loader2 size={36} className="animate-spin text-brand-400" />
                       <span className="text-sm">Gerando QR Code PIX...</span>
                     </div>
                   ) : pixData ? (
                     <div className="flex flex-col items-center gap-3 bg-green-50 border border-green-200 rounded-xl p-5">
                       <p className="text-sm font-semibold text-green-700">Escaneie o QR Code para pagar</p>
                       <img src={pixData.qrCode} alt="QR Code PIX" className="w-52 h-52 rounded-lg shadow" />
-                      <p className="text-lg font-bold text-orange-500">
+                      <p className="text-lg font-bold text-brand-600">
                         {finalTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                       </p>
                       <div className="w-full">
@@ -462,7 +462,7 @@ export default function CheckoutPage() {
             {/* Cupom */}
             <div className="card p-6">
               <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <Tag size={20} className="text-orange-500" />
+                <Tag size={20} className="text-brand-600" />
                 Cupom de Desconto
               </h2>
               <div className="flex gap-2">
@@ -510,7 +510,7 @@ export default function CheckoutPage() {
               )}
               <div className="flex justify-between font-bold text-lg text-gray-800 border-t pt-2">
                 <span>Total</span>
-                <span className="text-orange-500">
+                <span className="text-brand-600">
                   {finalTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </span>
               </div>

@@ -114,10 +114,10 @@ export default function RegisterPage() {
   const docLabel = form.cpfCnpj.replace(/\D/g, '').length > 11 ? 'CNPJ' : 'CPF'
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center p-4 py-10">
+    <div className="min-h-screen bg-gradient-to-br bg-cream flex items-center justify-center p-4 py-10">
       <div className="card w-full max-w-lg p-8">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-orange-500 font-bold text-2xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-brand-600 font-extrabold text-2xl">
             <UtensilsCrossed size={32} />
             Rei da Quentinha
           </Link>
@@ -320,7 +320,7 @@ export default function RegisterPage() {
 
             {/* Preview */}
             {addressFull && (
-              <div className="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-xs text-orange-700">
+              <div className="bg-brand-50 border border-brand-200 rounded-lg px-3 py-2 text-xs text-brand-700">
                 <span className="font-medium">Endereço: </span>{addressFull}
               </div>
             )}
@@ -368,7 +368,7 @@ export default function RegisterPage() {
 
         <p className="text-center text-gray-600 mt-6 text-sm">
           Já tem conta?{' '}
-          <Link href="/auth/login" className="text-orange-500 font-semibold hover:underline">Entrar</Link>
+          <Link href="/auth/login" className="text-brand-600 font-semibold hover:underline">Entrar</Link>
         </p>
       </div>
     </div>

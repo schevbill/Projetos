@@ -76,8 +76,8 @@ export default function AdminCoupons() {
               <tr key={c.id} className="border-t hover:bg-gray-50">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <Tag size={16} className="text-orange-400" />
-                    <span className="font-mono font-bold text-orange-600">{c.code}</span>
+                    <Tag size={16} className="text-brand-400" />
+                    <span className="font-mono font-bold text-brand-600">{c.code}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 font-bold">

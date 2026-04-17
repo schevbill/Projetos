@@ -75,7 +75,7 @@ export default function AdminPrinters() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {printers.map(p => (
-          <div key={p.id} className={`card p-5 ${p.isDefault ? 'ring-2 ring-orange-400' : ''}`}>
+          <div key={p.id} className={`card p-5 ${p.isDefault ? 'ring-2 ring-brand-400' : ''}`}>
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
@@ -84,7 +84,7 @@ export default function AdminPrinters() {
                 <div>
                   <h3 className="font-bold text-gray-800 flex items-center gap-1">
                     {p.name}
-                    {p.isDefault && <Star size={14} className="text-orange-400 fill-orange-400" />}
+                    {p.isDefault && <Star size={14} className="text-brand-400 fill-brand-400" />}
                   </h3>
                   <p className="text-xs text-gray-500">{p.type}</p>
                 </div>
@@ -98,7 +98,7 @@ export default function AdminPrinters() {
             )}
             <div className="flex gap-2 flex-wrap">
               {!p.isDefault && (
-                <button onClick={() => setDefault(p.id)} className="text-xs border border-orange-300 text-orange-600 px-2 py-1 rounded-lg hover:bg-orange-50 flex items-center gap-1">
+                <button onClick={() => setDefault(p.id)} className="text-xs border border-brand-300 text-brand-600 px-2 py-1 rounded-lg hover:bg-brand-50 flex items-center gap-1">
                   <Star size={12} /> Definir padrão
                 </button>
               )}

@@ -73,8 +73,8 @@ export default function AdminProducts() {
               <tr key={p.id} className="border-t hover:bg-gray-50">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <Package size={18} className="text-orange-400" />
+                    <div className="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                      <Package size={18} className="text-brand-400" />
                     </div>
                     <div>
                       <p className="font-medium text-gray-800">{p.name}</p>
@@ -83,7 +83,7 @@ export default function AdminProducts() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-gray-600">{p.category || '—'}</td>
-                <td className="px-6 py-4 font-bold text-orange-500">
+                <td className="px-6 py-4 font-bold text-brand-500">
                   {p.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </td>
                 <td className="px-6 py-4">

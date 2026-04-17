@@ -26,16 +26,16 @@ export default function CartPage() {
             <div className="lg:col-span-2 space-y-4">
               {items.map(item => (
                 <div key={item.id} className="card p-4 flex items-center gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     {item.image ? (
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" />
                     ) : (
-                      <ShoppingBag size={24} className="text-orange-400" />
+                      <ShoppingBag size={24} className="text-brand-400" />
                     )}
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-800">{item.name}</h3>
-                    <p className="text-orange-500 font-bold">
+                    <p className="text-brand-600 font-bold">
                       {item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </p>
                   </div>
@@ -79,7 +79,7 @@ export default function CartPage() {
               <div className="border-t pt-4">
                 <div className="flex justify-between font-bold text-lg text-gray-800">
                   <span>Total</span>
-                  <span className="text-orange-500">
+                  <span className="text-brand-600">
                     {total().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                   </span>
                 </div>

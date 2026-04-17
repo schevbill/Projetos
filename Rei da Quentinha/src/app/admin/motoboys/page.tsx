@@ -63,8 +63,8 @@ export default function AdminMotoboys() {
           <div key={m.id} className="card p-5">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                  <Bike size={24} className="text-orange-500" />
+                <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
+                  <Bike size={24} className="text-brand-500" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800">{m.name}</h3>

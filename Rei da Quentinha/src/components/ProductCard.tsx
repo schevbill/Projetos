@@ -1,7 +1,7 @@
 'use client'
 import { useCart } from '@/store/cart'
 import toast from 'react-hot-toast'
-import { ShoppingCart, Package } from 'lucide-react'
+import { ShoppingCart, Flame } from 'lucide-react'
 
 interface Product {
   id: string
@@ -22,33 +22,40 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="card overflow-hidden hover:shadow-md transition-shadow">
-      <div className="h-40 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+    <div className="group card overflow-hidden hover:shadow-hover transition-all duration-200 hover:-translate-y-0.5">
+      <div className="h-44 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center overflow-hidden relative">
         {product.image ? (
-          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+          <img src={product.image} alt={product.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
         ) : (
-          <Package size={48} className="text-orange-400" />
+          <Flame size={52} className="text-brand-300" />
+        )}
+        {!product.available && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <span className="bg-gray-800 text-white text-xs font-bold px-3 py-1 rounded-full">Indisponível</span>
+          </div>
         )}
       </div>
       <div className="p-4">
         {product.category && (
-          <span className="text-xs text-orange-500 font-semibold uppercase tracking-wide">{product.category}</span>
+          <span className="text-xs text-brand-500 font-bold uppercase tracking-wider">{product.category}</span>
         )}
-        <h3 className="font-bold text-gray-800 mt-1">{product.name}</h3>
+        <h3 className="font-bold text-gray-900 mt-1 text-base">{product.name}</h3>
         {product.description && (
-          <p className="text-gray-500 text-sm mt-1 line-clamp-2">{product.description}</p>
+          <p className="text-gray-500 text-sm mt-1 line-clamp-2 leading-relaxed">{product.description}</p>
         )}
         <div className="flex items-center justify-between mt-4">
-          <span className="text-xl font-bold text-orange-500">
-            {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-          </span>
+          <div>
+            <span className="text-2xl font-extrabold text-brand-600">
+              {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+            </span>
+          </div>
           <button
             onClick={handleAdd}
             disabled={!product.available}
-            className="btn-primary flex items-center gap-2 py-1.5 px-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-primary flex items-center gap-1.5 py-2 px-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <ShoppingCart size={16} />
-            {product.available ? 'Adicionar' : 'Indisponível'}
+            <ShoppingCart size={15} />
+            Adicionar
           </button>
         </div>
       </div>

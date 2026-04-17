@@ -38,10 +38,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-cream flex items-center justify-center p-4">
       <div className="card w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-orange-500 font-bold text-2xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-brand-600 font-extrabold text-2xl">
             <UtensilsCrossed size={32} />
             Rei da Quentinha
           </Link>
@@ -91,7 +91,7 @@ export default function LoginPage() {
 
         <p className="text-center text-gray-600 mt-6 text-sm">
           Não tem conta?{' '}
-          <Link href="/auth/register" className="text-orange-500 font-semibold hover:underline">
+          <Link href="/auth/register" className="text-brand-600 font-semibold hover:underline">
             Cadastre-se
           </Link>
         </p>
