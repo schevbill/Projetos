@@ -3,13 +3,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Package, Tag, Users, Truck, Printer,
-  ClipboardList, UtensilsCrossed, LogOut, Settings
+  ClipboardList, UtensilsCrossed, LogOut, Settings, LayoutList
 } from 'lucide-react'
 
 const links = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/orders', label: 'Pedidos', icon: ClipboardList },
   { href: '/admin/products', label: 'Produtos', icon: Package },
+  { href: '/admin/categories', label: 'Categorias', icon: LayoutList },
   { href: '/admin/coupons', label: 'Cupons', icon: Tag },
   { href: '/admin/users', label: 'Usuários', icon: Users },
   { href: '/admin/motoboys', label: 'Motoboys', icon: Truck },

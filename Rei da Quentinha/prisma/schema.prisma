@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -22,6 +22,13 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
 model Product {
   id          String      @id @default(cuid())
   name        String
@@ -29,6 +36,8 @@ model Product {
   price       Float
   image       String?
   category    String?
+  categoryId  String?
+  categoryRel Category?   @relation(fields: [categoryId], references: [id])
   available   Boolean     @default(true)
   orderItems  OrderItem[]
   createdAt   DateTime    @default(now())
@@ -101,4 +110,12 @@ model Printer {
   type      String   @default("THERMAL")
   isDefault Boolean  @default(false)
   createdAt DateTime @default(now())
+}
+
+model ConfigPix {
+  id        String   @id @default("default")
+  pixKey    String   @default("")
+  pixName   String   @default("")
+  pixCity   String   @default("")
+  updatedAt DateTime @updatedAt
 }

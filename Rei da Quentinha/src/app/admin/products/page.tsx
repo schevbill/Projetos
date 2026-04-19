@@ -1,34 +1,59 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import toast from 'react-hot-toast'
-import { Plus, Pencil, Trash2, Package } from 'lucide-react'
+import { Plus, Pencil, Trash2, Package, ImagePlus, X } from 'lucide-react'
 
-interface Product { id: string; name: string; description?: string | null; price: number; category?: string | null; available: boolean }
+interface Product { id: string; name: string; description?: string | null; price: number; category?: string | null; categoryId?: string | null; categoryRel?: { name: string } | null; available: boolean; image?: string | null }
+interface Category { id: string; name: string }
 
-const emptyForm = { name: '', description: '', price: '', category: '', available: true, image: '' }
+const emptyForm = { name: '', description: '', price: '', categoryId: '', available: true, image: '' }
 
 export default function AdminProducts() {
   const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
   const [showModal, setShowModal] = useState(false)
   const [editing, setEditing] = useState<Product | null>(null)
   const [form, setForm] = useState(emptyForm)
   const [loading, setLoading] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
 
-  const load = () => fetch('/api/products').then(r => r.json()).then(setProducts)
-  useEffect(() => { load() }, [])
+  const load = () => fetch('/api/products?withCategory=1').then(r => r.json()).then(setProducts)
+  const loadCategories = () => fetch('/api/categories').then(r => r.json()).then(setCategories)
+  useEffect(() => { load(); loadCategories() }, [])
 
   const openCreate = () => { setEditing(null); setForm(emptyForm); setShowModal(true) }
   const openEdit = (p: Product) => {
     setEditing(p)
-    setForm({ name: p.name, description: p.description || '', price: p.price.toString(), category: p.category || '', available: p.available, image: '' })
+    setForm({ name: p.name, description: p.description || '', price: p.price.toString(), categoryId: p.categoryId || '', available: p.available, image: p.image || '' })
     setShowModal(true)
+  }
+
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    try {
+      const fd = new FormData()
+      fd.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', body: fd })
+      const data = await res.json()
+      if (!res.ok) { toast.error(data.error || 'Erro no upload'); return }
+      setForm(f => ({ ...f, image: data.url }))
+      toast.success('Imagem carregada!')
+    } catch {
+      toast.error('Erro ao enviar imagem')
+    } finally {
+      setUploading(false)
+      if (fileRef.current) fileRef.current.value = ''
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     try {
-      const body = { ...form, price: parseFloat(form.price) }
+      const body = { ...form, price: parseFloat(form.price), categoryId: form.categoryId || null }
       const res = editing
         ? await fetch(`/api/products/${editing.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
         : await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
@@ -73,8 +98,10 @@ export default function AdminProducts() {
               <tr key={p.id} className="border-t hover:bg-gray-50">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center">
-                      <Package size={18} className="text-brand-400" />
+                    <div className="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+                      {p.image
+                        ? <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                        : <Package size={18} className="text-brand-400" />}
                     </div>
                     <div>
                       <p className="font-medium text-gray-800">{p.name}</p>
@@ -82,7 +109,7 @@ export default function AdminProducts() {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-gray-600">{p.category || '—'}</td>
+                <td className="px-6 py-4 text-gray-600">{p.categoryRel?.name || p.category || '—'}</td>
                 <td className="px-6 py-4 font-bold text-brand-500">
                   {p.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </td>
@@ -106,9 +133,41 @@ export default function AdminProducts() {
 
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="card w-full max-w-md p-6">
+          <div className="card w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-bold text-gray-800 mb-4">{editing ? 'Editar' : 'Novo'} Produto</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
+
+              {/* Imagem */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Imagem do produto</label>
+                <div
+                  className="relative border-2 border-dashed border-gray-300 rounded-xl overflow-hidden cursor-pointer hover:border-brand-400 transition-colors"
+                  style={{ height: 160 }}
+                  onClick={() => fileRef.current?.click()}
+                >
+                  {form.image ? (
+                    <>
+                      <img src={form.image} alt="preview" className="w-full h-full object-cover" />
+                      <button
+                        type="button"
+                        className="absolute top-2 right-2 bg-white/80 hover:bg-white rounded-full p-1 shadow"
+                        onClick={e => { e.stopPropagation(); setForm(f => ({ ...f, image: '' })) }}
+                      >
+                        <X size={14} className="text-gray-600" />
+                      </button>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full gap-2 text-gray-400">
+                      {uploading
+                        ? <><div className="w-6 h-6 border-2 border-brand-400 border-t-transparent rounded-full animate-spin" /><span className="text-sm">Enviando...</span></>
+                        : <><ImagePlus size={28} /><span className="text-sm">Clique para selecionar a imagem</span><span className="text-xs">JPG, PNG, WEBP — máx. 5MB</span></>
+                      }
+                    </div>
+                  )}
+                </div>
+                <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nome *</label>
                 <input className="input-field" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required />
@@ -124,7 +183,12 @@ export default function AdminProducts() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Categoria</label>
-                  <input className="input-field" value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))} />
+                  <select className="input-field" value={form.categoryId} onChange={e => setForm(f => ({ ...f, categoryId: e.target.value }))}>
+                    <option value="">Sem categoria</option>
+                    {categories.map(c => (
+                      <option key={c.id} value={c.id}>{c.name}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -132,7 +196,7 @@ export default function AdminProducts() {
                 <label htmlFor="available" className="text-sm text-gray-700">Disponível para venda</label>
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="submit" disabled={loading} className="btn-primary flex-1">{loading ? 'Salvando...' : 'Salvar'}</button>
+                <button type="submit" disabled={loading || uploading} className="btn-primary flex-1">{loading ? 'Salvando...' : 'Salvar'}</button>
                 <button type="button" onClick={() => setShowModal(false)} className="btn-secondary flex-1">Cancelar</button>
               </div>
             </form>

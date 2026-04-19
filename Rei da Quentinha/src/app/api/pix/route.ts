@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server'
 import { buildPixPayload } from '@/lib/pix'
+import { prisma } from '@/lib/prisma'
 import QRCode from 'qrcode'
 
 export async function POST(req: Request) {
   try {
     const { amount, txid } = await req.json()
 
-    const key = process.env.PIX_KEY || ''
-    const name = process.env.PIX_NAME || 'Rei da Quentinha'
-    const city = process.env.PIX_CITY || 'Brasil'
+    const config = await prisma.configPix.findUnique({ where: { id: 'default' } })
+    const key = config?.pixKey || process.env.PIX_KEY || ''
+    const name = config?.pixName || process.env.PIX_NAME || 'Rei da Quentinha'
+    const city = config?.pixCity || process.env.PIX_CITY || 'Brasil'
 
     if (!key) {
       return NextResponse.json({ error: 'Chave PIX não configurada' }, { status: 400 })

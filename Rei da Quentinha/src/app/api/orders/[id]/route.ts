@@ -3,26 +3,27 @@ import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth'
 import { printToThermal } from '@/lib/print'
 
-export async function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const order = await prisma.order.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: { items: { include: { product: true } }, motoboy: true, coupon: true },
   })
   if (!order) return NextResponse.json({ error: 'Not found' }, { status: 404 })
   return NextResponse.json(order)
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     await requireAdmin()
+    const { id } = await params
     const data = await req.json()
     const order = await prisma.order.update({
-      where: { id: params.id },
+      where: { id },
       data,
       include: { items: { include: { product: true } }, motoboy: true },
     })
 
-    // Print label when status changes to CONFIRMED or PREPARING
     if ((data.status === 'CONFIRMED' || data.status === 'PREPARING') && !order.printedLabel) {
       try {
         const printer = await prisma.printer.findFirst({ where: { isDefault: true } })

@@ -10,6 +10,7 @@ interface Product {
   price: number
   image?: string | null
   category?: string | null
+  categoryRel?: { name: string } | null
   available: boolean
 }
 
@@ -36,8 +37,8 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="p-4">
-        {product.category && (
-          <span className="text-xs text-brand-500 font-bold uppercase tracking-wider">{product.category}</span>
+        {(product.categoryRel?.name || product.category) && (
+          <span className="text-xs text-brand-500 font-bold uppercase tracking-wider">{product.categoryRel?.name || product.category}</span>
         )}
         <h3 className="font-bold text-gray-900 mt-1 text-base">{product.name}</h3>
         {product.description && (

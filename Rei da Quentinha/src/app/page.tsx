@@ -8,9 +8,10 @@ export const dynamic = 'force-dynamic'
 export default async function HomePage() {
   const products = await prisma.product.findMany({
     orderBy: { createdAt: 'asc' },
+    include: { categoryRel: true },
   })
 
-  const categories = [...new Set(products.map(p => p.category).filter(Boolean))]
+  const categories = [...new Set(products.map(p => p.categoryRel?.name || p.category).filter(Boolean))]
 
   return (
     <div className="min-h-screen bg-cream">
@@ -66,7 +67,7 @@ export default async function HomePage() {
           <>
             {categories.length > 0 ? (
               categories.map(category => {
-                const catProducts = products.filter(p => p.category === category)
+                const catProducts = products.filter(p => (p.categoryRel?.name || p.category) === category)
                 return (
                   <section key={category} className="mb-12">
                     <div className="flex items-center justify-between mb-6">

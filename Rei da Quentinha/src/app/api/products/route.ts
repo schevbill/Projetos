@@ -2,8 +2,13 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth'
 
-export async function GET() {
-  const products = await prisma.product.findMany({ orderBy: { createdAt: 'asc' } })
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url)
+  const withCategory = searchParams.get('withCategory') === '1'
+  const products = await prisma.product.findMany({
+    orderBy: { createdAt: 'asc' },
+    include: withCategory ? { categoryRel: true } : undefined,
+  })
   return NextResponse.json(products)
 }
 
