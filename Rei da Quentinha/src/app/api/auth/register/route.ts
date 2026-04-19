@@ -7,9 +7,9 @@ import { validateEmail, validateCpfCnpj } from '@/lib/validators'
 
 export async function POST(req: Request) {
   try {
-    const { name, email, cpfCnpj, phone, address, password } = await req.json()
+    const { name, email, cpfCnpj, phone, birthDate, address, password } = await req.json()
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !birthDate) {
       return NextResponse.json({ error: 'Campos obrigatórios ausentes' }, { status: 400 })
     }
 
@@ -26,11 +26,11 @@ export async function POST(req: Request) {
 
     const hashed = await bcrypt.hash(password, 10)
     const user = await prisma.user.create({
-      data: { name, email, cpfCnpj: cpfCnpj || null, phone, address, password: hashed },
+      data: { name, email, cpfCnpj: cpfCnpj || null, phone, birthDate: birthDate ? new Date(birthDate) : null, address, password: hashed },
     })
 
     const token = await signToken({ id: user.id, email: user.email, role: user.role, name: user.name })
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     cookieStore.set('auth-token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',

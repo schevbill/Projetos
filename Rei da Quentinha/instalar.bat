@@ -54,7 +54,7 @@ echo Acesse: http://localhost:3000
 echo Admin:  http://localhost:3000/admin
 echo.
 echo Login admin:
-echo   Email: admin@marmitashop.com
+echo   Email: admin@rei-da-quentinha.com
 echo   Senha: admin123
 echo.
 pause

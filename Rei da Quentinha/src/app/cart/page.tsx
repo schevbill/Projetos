@@ -2,10 +2,29 @@
 import { useCart } from '@/store/cart'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, LogIn } from 'lucide-react'
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, total } = useCart()
+  const router = useRouter()
+  const [user, setUser] = useState<{ name: string } | null | undefined>(undefined)
+
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => setUser(data?.user ?? null))
+      .catch(() => setUser(null))
+  }, [])
+
+  const handleCheckout = () => {
+    if (!user) {
+      router.push('/auth/login?redirect=/checkout')
+    } else {
+      router.push('/checkout')
+    }
+  }
 
   return (
     <div className="min-h-screen">
@@ -84,13 +103,30 @@ export default function CartPage() {
                   </span>
                 </div>
               </div>
-              <Link
-                href="/checkout"
-                className="btn-primary w-full mt-6 flex items-center justify-center gap-2"
-              >
-                Finalizar Pedido
-                <ArrowRight size={18} />
-              </Link>
+              {user === undefined ? (
+                <div className="btn-primary w-full mt-6 flex items-center justify-center gap-2 opacity-50 cursor-wait">
+                  Carregando...
+                </div>
+              ) : user ? (
+                <button
+                  onClick={handleCheckout}
+                  className="btn-primary w-full mt-6 flex items-center justify-center gap-2"
+                >
+                  Finalizar Pedido
+                  <ArrowRight size={18} />
+                </button>
+              ) : (
+                <div className="mt-6 space-y-2">
+                  <p className="text-sm text-center text-gray-500">Faça login para finalizar o pedido</p>
+                  <button
+                    onClick={handleCheckout}
+                    className="btn-primary w-full flex items-center justify-center gap-2"
+                  >
+                    <LogIn size={18} />
+                    Entrar para Finalizar
+                  </button>
+                </div>
+              )}
               <Link href="/" className="btn-secondary w-full mt-2 flex items-center justify-center text-sm">
                 Continuar Comprando
               </Link>

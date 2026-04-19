@@ -1,13 +1,15 @@
 'use client'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { UtensilsCrossed, CheckCircle, XCircle } from 'lucide-react'
 import { validateEmail } from '@/lib/validators'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirect = searchParams.get('redirect') || null
   const [form, setForm] = useState({ email: '', password: '' })
   const [emailTouched, setEmailTouched] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -29,7 +31,7 @@ export default function LoginPage() {
       const data = await res.json()
       if (!res.ok) { toast.error(data.error || 'Erro ao entrar'); return }
       toast.success('Bem-vindo!')
-      router.push(data.user.role === 'ADMIN' ? '/admin' : '/')
+      router.push(data.user.role === 'ADMIN' ? '/admin' : (redirect ?? '/'))
     } catch {
       toast.error('Erro de conexão')
     } finally {
@@ -37,6 +39,51 @@ export default function LoginPage() {
     }
   }
 
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+        <div className="relative">
+          <input
+            type="email"
+            className={`input-field pr-9 ${emailError ? 'border-red-400 focus:ring-red-300' : emailOk ? 'border-green-400 focus:ring-green-300' : ''}`}
+            value={form.email}
+            onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+            onBlur={() => setEmailTouched(true)}
+            autoComplete="email"
+            required
+          />
+          {form.email && (
+            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+              {emailOk
+                ? <CheckCircle size={16} className="text-green-500" />
+                : <XCircle size={16} className="text-red-400" />}
+            </div>
+          )}
+        </div>
+        {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+        <input
+          type="password"
+          className="input-field"
+          value={form.password}
+          onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
+          required
+          autoComplete="current-password"
+        />
+      </div>
+
+      <button type="submit" disabled={loading} className="btn-primary w-full py-3 text-lg">
+        {loading ? 'Entrando...' : 'Entrar'}
+      </button>
+    </form>
+  )
+}
+
+export default function LoginPage() {
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center p-4">
       <div className="card w-full max-w-md p-8">
@@ -48,46 +95,9 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold text-gray-800 mt-4">Entrar</h1>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-            <div className="relative">
-              <input
-                type="email"
-                className={`input-field pr-9 ${emailError ? 'border-red-400 focus:ring-red-300' : emailOk ? 'border-green-400 focus:ring-green-300' : ''}`}
-                value={form.email}
-                onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                onBlur={() => setEmailTouched(true)}
-                autoComplete="email"
-                required
-              />
-              {form.email && (
-                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                  {emailOk
-                    ? <CheckCircle size={16} className="text-green-500" />
-                    : <XCircle size={16} className="text-red-400" />}
-                </div>
-              )}
-            </div>
-            {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-            <input
-              type="password"
-              className="input-field"
-              value={form.password}
-              onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
-              required
-              autoComplete="current-password"
-            />
-          </div>
-
-          <button type="submit" disabled={loading} className="btn-primary w-full py-3 text-lg">
-            {loading ? 'Entrando...' : 'Entrar'}
-          </button>
-        </form>
+        <Suspense fallback={<div className="animate-pulse h-48 bg-gray-100 rounded-lg" />}>
+          <LoginForm />
+        </Suspense>
 
         <p className="text-center text-gray-600 mt-6 text-sm">
           Não tem conta?{' '}

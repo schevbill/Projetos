@@ -13,6 +13,7 @@ model User {
   email     String   @unique
   cpfCnpj   String?
   phone     String?
+  birthDate DateTime?
   address   String?
   password  String
   role      String   @default("CUSTOMER")

@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     const valid = await bcrypt.compare(password, user.password)
     if (!valid) return NextResponse.json({ error: 'E-mail ou senha incorretos' }, { status: 401 })
     const token = await signToken({ id: user.id, email: user.email, role: user.role, name: user.name })
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     cookieStore.set('auth-token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',

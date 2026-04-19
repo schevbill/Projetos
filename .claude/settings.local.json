@@ -9,7 +9,12 @@
       "Bash(npm install *)",
       "Bash(powershell.exe -Command \"Remove-Item -Recurse -Force 'D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\MarmitaShop\\\\.git'; Rename-Item -Path 'D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\MarmitaShop' -NewName 'Rei da Quentinha'; Write-Host 'OK'\")",
       "Bash(powershell.exe -Command \"Get-Process -Name 'node' -ErrorAction SilentlyContinue | Stop-Process -Force; Write-Host 'Processos node encerrados'\")",
-      "Bash(powershell.exe -Command \"Rename-Item -Path 'D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\MarmitaShop' -NewName 'Rei da Quentinha'; Write-Host 'OK'\")"
+      "Bash(powershell.exe -Command \"Rename-Item -Path 'D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\MarmitaShop' -NewName 'Rei da Quentinha'; Write-Host 'OK'\")",
+      "Bash(Get-Process node *)",
+      "Bash(Stop-Process -Force)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(npx prisma *)",
+      "Bash(npx tsx *)"
     ]
   }
 }

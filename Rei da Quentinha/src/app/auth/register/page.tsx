@@ -3,19 +3,20 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-import { UtensilsCrossed, CheckCircle, XCircle, Search, Loader2 } from 'lucide-react'
-import { validateEmail, validateCpfCnpj, formatCpfCnpj, validatePhone, formatPhone } from '@/lib/validators'
+import { UtensilsCrossed, CheckCircle, XCircle, Search, Loader2, Eye, EyeOff } from 'lucide-react'
+import { validateEmail, validateCpfCnpj, formatCpfCnpj, validatePhone, formatPhone, validatePassword, checkPasswordRules } from '@/lib/validators'
 
 export default function RegisterPage() {
   const router = useRouter()
   const [form, setForm] = useState({
-    name: '', email: '', cpfCnpj: '', phone: '',
+    name: '', email: '', cpfCnpj: '', phone: '', birthDate: '',
     cep: '', logradouro: '', numero: '', complemento: '', bairro: '', cidade: '', estado: '',
     password: '', confirmPassword: '',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [cepLoading, setCepLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const setField = (key: string, value: string) => {
     setForm(f => ({ ...f, [key]: value }))
@@ -25,6 +26,16 @@ export default function RegisterPage() {
   const validate = () => {
     const newErrors: Record<string, string> = {}
     if (!form.name.trim()) newErrors.name = 'Nome obrigatório'
+    if (!form.birthDate) {
+      newErrors.birthDate = 'Data de nascimento obrigatória'
+    } else {
+      const birth = new Date(form.birthDate)
+      const today = new Date()
+      const age = today.getFullYear() - birth.getFullYear() - (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate()) ? 1 : 0)
+      if (isNaN(birth.getTime())) newErrors.birthDate = 'Data inválida'
+      else if (age < 18) newErrors.birthDate = 'É necessário ter 18 anos ou mais para se cadastrar'
+      else if (age > 120) newErrors.birthDate = 'Data de nascimento inválida'
+    }
     const emailErr = validateEmail(form.email)
     if (emailErr) newErrors.email = emailErr
     const cpfErr = validateCpfCnpj(form.cpfCnpj)
@@ -37,8 +48,8 @@ export default function RegisterPage() {
     if (!form.bairro.trim()) newErrors.bairro = 'Bairro obrigatório'
     if (!form.cidade.trim()) newErrors.cidade = 'Cidade obrigatória'
     if (!form.estado.trim()) newErrors.estado = 'Estado obrigatório'
-    if (!form.password) newErrors.password = 'Senha obrigatória'
-    else if (form.password.length < 6) newErrors.password = 'Mínimo 6 caracteres'
+    const pwErr = validatePassword(form.password)
+    if (pwErr) newErrors.password = pwErr
     if (form.password !== form.confirmPassword) newErrors.confirmPassword = 'Senhas não conferem'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -94,7 +105,7 @@ export default function RegisterPage() {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, address: addressFull }),
+        body: JSON.stringify({ ...form, address: addressFull, birthDate: form.birthDate }),
       })
       const data = await res.json()
       if (!res.ok) { toast.error(data.error || 'Erro ao cadastrar'); return }
@@ -111,7 +122,8 @@ export default function RegisterPage() {
   const emailOk = form.email && !validateEmail(form.email)
   const cpfCnpjError = errors.cpfCnpj
   const cpfCnpjOk = form.cpfCnpj && !validateCpfCnpj(form.cpfCnpj)
-  const docLabel = form.cpfCnpj.replace(/\D/g, '').length > 11 ? 'CNPJ' : 'CPF'
+  const cleanDoc = form.cpfCnpj.replace(/[.\-\/]/g, '').replace(/[^A-Z0-9]/gi, '')
+  const docLabel = cleanDoc.length > 11 || /[A-Z]/i.test(cleanDoc) ? 'CNPJ' : 'CPF'
 
   return (
     <div className="min-h-screen bg-gradient-to-br bg-cream flex items-center justify-center p-4 py-10">
@@ -138,26 +150,6 @@ export default function RegisterPage() {
             {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
 
-          {/* E-mail */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">E-mail *</label>
-            <div className="relative">
-              <input
-                type="email"
-                className={`input-field pr-9 ${emailError ? 'border-red-400 focus:ring-red-300' : emailOk ? 'border-green-400 focus:ring-green-300' : ''}`}
-                value={form.email}
-                onChange={e => setField('email', e.target.value)}
-                autoComplete="email"
-              />
-              {form.email && (
-                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                  {emailOk ? <CheckCircle size={16} className="text-green-500" /> : <XCircle size={16} className="text-red-400" />}
-                </div>
-              )}
-            </div>
-            {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
-          </div>
-
           {/* CPF / CNPJ */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -167,14 +159,15 @@ export default function RegisterPage() {
             <div className="relative">
               <input
                 type="text"
-                inputMode="numeric"
-                className={`input-field pr-9 ${cpfCnpjError ? 'border-red-400 focus:ring-red-300' : cpfCnpjOk ? 'border-green-400 focus:ring-green-300' : ''}`}
+                inputMode="text"
+                autoCapitalize="characters"
+                className={`input-field pr-9 uppercase ${cpfCnpjError ? 'border-red-400 focus:ring-red-300' : cpfCnpjOk ? 'border-green-400 focus:ring-green-300' : ''}`}
                 placeholder="000.000.000-00 ou 00.000.000/0000-00"
                 maxLength={18}
                 value={form.cpfCnpj}
                 onChange={e => {
-                  const digits = e.target.value.replace(/\D/g, '').slice(0, 14)
-                  setField('cpfCnpj', formatCpfCnpj(digits))
+                  const raw = e.target.value.toUpperCase().replace(/[^A-Z0-9.\-\/]/g, '').slice(0, 18)
+                  setField('cpfCnpj', formatCpfCnpj(raw))
                 }}
               />
               {form.cpfCnpj && (
@@ -187,9 +180,21 @@ export default function RegisterPage() {
             {cpfCnpjOk && <p className="text-green-600 text-xs mt-1">{docLabel} válido</p>}
           </div>
 
-          {/* Celular */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Celular *</label>
+          {/* Data de Nascimento + Celular */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Data de nascimento *</label>
+              <input
+                type="date"
+                className={`input-field ${errors.birthDate ? 'border-red-400 focus:ring-red-300' : form.birthDate && !errors.birthDate ? 'border-green-400 focus:ring-green-300' : ''}`}
+                value={form.birthDate}
+                max={new Date().toISOString().split('T')[0]}
+                onChange={e => setField('birthDate', e.target.value)}
+              />
+              {errors.birthDate && <p className="text-red-500 text-xs mt-1">{errors.birthDate}</p>}
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Celular *</label>
             <div className="relative">
               <input
                 type="tel"
@@ -210,6 +215,27 @@ export default function RegisterPage() {
               )}
             </div>
             {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+            </div>
+          </div>
+
+          {/* E-mail */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">E-mail *</label>
+            <div className="relative">
+              <input
+                type="email"
+                className={`input-field pr-9 ${emailError ? 'border-red-400 focus:ring-red-300' : emailOk ? 'border-green-400 focus:ring-green-300' : ''}`}
+                value={form.email}
+                onChange={e => setField('email', e.target.value)}
+                autoComplete="email"
+              />
+              {form.email && (
+                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                  {emailOk ? <CheckCircle size={16} className="text-green-500" /> : <XCircle size={16} className="text-red-400" />}
+                </div>
+              )}
+            </div>
+            {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
           </div>
 
           {/* Endereço com busca CEP */}
@@ -329,17 +355,53 @@ export default function RegisterPage() {
           {/* Senha */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Senha *</label>
-            <input
-              type="password"
-              className={`input-field ${errors.password ? 'border-red-400 focus:ring-red-300' : ''}`}
-              value={form.password}
-              onChange={e => { setForm(f => ({ ...f, password: e.target.value })); setErrors(p => ({ ...p, password: '' })) }}
-              autoComplete="new-password"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                className={`input-field pr-10 ${errors.password ? 'border-red-400 focus:ring-red-300' : form.password && !validatePassword(form.password) ? 'border-green-400 focus:ring-green-300' : ''}`}
+                value={form.password}
+                onChange={e => { setForm(f => ({ ...f, password: e.target.value })); setErrors(p => ({ ...p, password: '' })) }}
+                autoComplete="new-password"
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                onMouseDown={() => setShowPassword(true)}
+                onMouseUp={() => setShowPassword(false)}
+                onMouseLeave={() => setShowPassword(false)}
+                onTouchStart={() => setShowPassword(true)}
+                onTouchEnd={() => setShowPassword(false)}
+                title="Segure para ver a senha"
+              >
+                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
+            </div>
+            {form.password && (() => {
+              const rules = checkPasswordRules(form.password)
+              const items = [
+                { ok: rules.minLength, label: 'Mínimo 8 caracteres' },
+                { ok: rules.hasUpper,  label: '1 letra maiúscula' },
+                { ok: rules.hasNumber, label: '1 número' },
+                { ok: rules.hasSpecial, label: '1 caractere especial (!@#$...)' },
+              ]
+              return (
+                <div className="mt-2 grid grid-cols-2 gap-1">
+                  {items.map(item => (
+                    <div key={item.label} className={`flex items-center gap-1.5 text-xs font-medium transition-colors ${item.ok ? 'text-green-600' : 'text-gray-400'}`}>
+                      <div className={`w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0 ${item.ok ? 'bg-green-500' : 'bg-gray-200'}`}>
+                        {item.ok && <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3 5.5L6.5 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                      </div>
+                      {item.label}
+                    </div>
+                  ))}
+                </div>
+              )
+            })()}
             {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
           </div>
 
           {/* Confirmar senha */}
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Confirmar senha *</label>
             <div className="relative">

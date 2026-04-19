@@ -248,7 +248,7 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                 {/* CEP */}
-                <div>
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">CEP *</label>
                   <div className="relative">
                     <input
@@ -267,22 +267,9 @@ export default function CheckoutPage() {
                   <p className="text-xs text-gray-400 mt-1">Preenchimento automático ao digitar</p>
                 </div>
 
-                {/* Estado */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-                  <input
-                    type="text"
-                    className="input-field"
-                    placeholder="SP"
-                    maxLength={2}
-                    value={form.estado}
-                    onChange={e => setForm(f => ({ ...f, estado: e.target.value.toUpperCase() }))}
-                  />
-                </div>
-
                 {/* Logradouro */}
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Endereço (Rua/Av.) *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Rua / Avenida *</label>
                   <input
                     type="text"
                     className="input-field"
@@ -320,7 +307,7 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Bairro */}
-                <div>
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Bairro *</label>
                   <input
                     type="text"
@@ -345,6 +332,19 @@ export default function CheckoutPage() {
                   />
                 </div>
 
+                {/* Estado */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Estado *</label>
+                  <input
+                    type="text"
+                    className="input-field uppercase"
+                    placeholder="SP"
+                    maxLength={2}
+                    value={form.estado}
+                    onChange={e => setForm(f => ({ ...f, estado: e.target.value.toUpperCase() }))}
+                  />
+                </div>
+
                 {/* Preview do endereço */}
                 {addressFull && (
                   <div className="sm:col-span-2 bg-brand-50 border border-brand-200 rounded-lg px-4 py-2 text-sm text-brand-700">
@@ -353,16 +353,18 @@ export default function CheckoutPage() {
                 )}
               </div>
 
-              <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Observações do pedido</label>
-                <textarea
-                  className="input-field resize-none"
-                  rows={2}
-                  placeholder="Sem cebola, sem pimenta, campainha não funciona..."
-                  value={form.notes}
-                  onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
-                />
-              </div>
+            </div>
+
+            {/* Observações */}
+            <div className="card p-6">
+              <h2 className="text-lg font-bold text-gray-800 mb-4">Observações do Pedido</h2>
+              <textarea
+                className="input-field resize-none"
+                rows={3}
+                placeholder="Sem cebola, sem pimenta, campainha não funciona..."
+                value={form.notes}
+                onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
+              />
             </div>
 
             {/* Pagamento */}

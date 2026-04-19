@@ -44,7 +44,8 @@ export async function GET() {
       topProducts: topProductsWithNames,
       recentOrders,
     })
-  } catch {
+  } catch (err) {
+    console.error('[dashboard]', err)
     return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
   }
 }
