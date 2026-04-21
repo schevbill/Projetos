@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getSession, requireAdmin } from '@/lib/auth'
 import { printToThermal } from '@/lib/print'
+import { writeLog } from '@/lib/logger'
 
 export async function GET(req: Request) {
   try {
@@ -52,7 +53,15 @@ export async function POST(req: Request) {
       await prisma.coupon.update({ where: { id: couponId }, data: { uses: { increment: 1 } } })
     }
 
-    // Try to print label if default printer configured
+    await writeLog({
+      action: 'CREATE', entity: 'ORDER', entityId: order.id,
+      description: `Pedido #${order.id.slice(-6).toUpperCase()} — ${customerName} — R$ ${total.toFixed(2)}`,
+      userId: session?.id as string | undefined,
+      userName: session?.name as string | undefined,
+      userRole: session?.role as string | undefined,
+      req,
+    })
+
     try {
       const printer = await prisma.printer.findFirst({ where: { isDefault: true } })
       if (printer?.ip) {

@@ -3,10 +3,11 @@ import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { signToken } from '@/lib/auth'
 import { cookies } from 'next/headers'
+import { writeLog } from '@/lib/logger'
 
 const attempts = new Map<string, { count: number; resetAt: number }>()
 const MAX_ATTEMPTS = 5
-const WINDOW_MS = 15 * 60 * 1000 // 15 minutos
+const WINDOW_MS = 15 * 60 * 1000
 
 function getIp(req: Request): string {
   return req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
@@ -52,6 +53,9 @@ export async function POST(req: Request) {
       maxAge: 60 * 60 * 24 * 7,
       path: '/',
     })
+
+    await writeLog({ action: 'LOGIN', entity: 'USER', entityId: user.id, description: `Login: ${user.name} (${user.email})`, userId: user.id, userName: user.name, userRole: user.role, req })
+
     return NextResponse.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } })
   } catch {
     return NextResponse.json({ error: 'Erro interno' }, { status: 500 })

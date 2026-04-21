@@ -5,14 +5,9 @@ import { ShoppingCart, Menu, X, Flame } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Navbar() {
-  const { itemCount } = useCart()
+  const count = useCart(state => state.items.reduce((sum, i) => sum + i.quantity, 0))
   const [menuOpen, setMenuOpen] = useState(false)
-  const [count, setCount] = useState(0)
   const [user, setUser] = useState<{ name: string; role: string } | null>(null)
-
-  useEffect(() => {
-    setCount(itemCount())
-  }, [itemCount])
 
   useEffect(() => {
     fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(data => {
@@ -47,7 +42,7 @@ export default function Navbar() {
                 {user.role === 'ADMIN' && (
                   <Link href="/admin" className="text-gray-300 hover:text-white transition-colors">Admin</Link>
                 )}
-                <span className="text-gray-400">Olá, {user.name.split(' ')[0]}</span>
+                <Link href="/perfil" className="text-gray-300 hover:text-white transition-colors">Olá, {user.name.split(' ')[0]}</Link>
                 <button onClick={handleLogout} className="text-gray-400 hover:text-white transition-colors">Sair</button>
               </>
             ) : (
@@ -89,6 +84,7 @@ export default function Navbar() {
             {user ? (
               <>
                 {user.role === 'ADMIN' && <Link href="/admin" onClick={() => setMenuOpen(false)} className="text-gray-300 hover:text-white">Admin</Link>}
+                <Link href="/perfil" onClick={() => setMenuOpen(false)} className="text-gray-300 hover:text-white">Meu Cadastro</Link>
                 <button onClick={handleLogout} className="text-left text-gray-400 hover:text-white">Sair ({user.name.split(' ')[0]})</button>
               </>
             ) : (

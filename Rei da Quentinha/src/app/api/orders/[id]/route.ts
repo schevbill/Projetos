@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth'
 import { printToThermal } from '@/lib/print'
+import { writeLogFromSession } from '@/lib/logger'
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -23,6 +24,9 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       data,
       include: { items: { include: { product: true } }, motoboy: true },
     })
+
+    const fields = Object.keys(data).join(', ')
+    await writeLogFromSession({ action: 'UPDATE', entity: 'ORDER', entityId: id, description: `Pedido #${id.slice(-6).toUpperCase()} atualizado — ${fields}`, req })
 
     if ((data.status === 'CONFIRMED' || data.status === 'PREPARING') && !order.printedLabel) {
       try {

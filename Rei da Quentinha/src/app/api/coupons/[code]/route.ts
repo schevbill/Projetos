@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth'
+import { writeLogFromSession } from '@/lib/logger'
 
 export async function GET(_req: Request, { params }: { params: Promise<{ code: string }> }) {
   const { code } = await params
@@ -21,17 +22,19 @@ export async function PUT(req: Request, { params }: { params: Promise<{ code: st
     const { code } = await params
     const data = await req.json()
     const coupon = await prisma.coupon.update({ where: { code }, data })
+    await writeLogFromSession({ action: 'UPDATE', entity: 'COUPON', entityId: coupon.id, description: `Cupom editado: ${code}`, req })
     return NextResponse.json(coupon)
   } catch {
     return NextResponse.json({ error: 'Erro' }, { status: 400 })
   }
 }
 
-export async function DELETE(_req: Request, { params }: { params: Promise<{ code: string }> }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ code: string }> }) {
   try {
     await requireAdmin()
     const { code } = await params
     await prisma.coupon.delete({ where: { code } })
+    await writeLogFromSession({ action: 'DELETE', entity: 'COUPON', entityId: code, description: `Cupom excluído: ${code}`, req })
     return NextResponse.json({ ok: true })
   } catch {
     return NextResponse.json({ error: 'Erro' }, { status: 400 })

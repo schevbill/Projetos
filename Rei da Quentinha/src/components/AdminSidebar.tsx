@@ -3,19 +3,19 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Package, Tag, Users, Truck, Printer,
-  ClipboardList, UtensilsCrossed, LogOut, Settings, LayoutList
+  ClipboardList, UtensilsCrossed, LogOut, Settings, ScrollText
 } from 'lucide-react'
 
 const links = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/orders', label: 'Pedidos', icon: ClipboardList },
   { href: '/admin/products', label: 'Produtos', icon: Package },
-  { href: '/admin/categories', label: 'Categorias', icon: LayoutList },
   { href: '/admin/coupons', label: 'Cupons', icon: Tag },
   { href: '/admin/users', label: 'Usuários', icon: Users },
   { href: '/admin/motoboys', label: 'Motoboys', icon: Truck },
   { href: '/admin/printers', label: 'Impressoras', icon: Printer },
   { href: '/admin/configuracoes', label: 'Config. PIX', icon: Settings },
+  { href: '/admin/logs', label: 'Logs', icon: ScrollText },
 ]
 
 export default function AdminSidebar() {

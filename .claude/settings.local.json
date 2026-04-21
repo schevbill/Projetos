@@ -7,7 +7,13 @@
       "Bash(npx tsx *)",
       "Bash(npx ts-node *)",
       "Bash(taskkill /F /IM node.exe)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(del /F \"d:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\Rei da Quentinha\\\\node_modules\\\\.prisma\\\\client\\\\query_engine-windows.dll.node\")",
+      "Bash(cmd /c \"netstat -ano | findstr :4000 | findstr LISTENING\")",
+      "Bash(cmd /c \"netstat -ano | findstr :4000\")",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(git -C \"d:/Renato/Desenvolvimento/Projetos/Rei da Quentinha\" log --oneline --all -- .env)",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(64\\).toString\\('hex'\\)\\)\")"
     ]
   }
 }

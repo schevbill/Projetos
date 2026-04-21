@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import { signToken } from '@/lib/auth'
 import { cookies } from 'next/headers'
 import { validateEmail, validateCpfCnpj } from '@/lib/validators'
+import { writeLog } from '@/lib/logger'
 
 export async function POST(req: Request) {
   try {
@@ -37,6 +38,8 @@ export async function POST(req: Request) {
       maxAge: 60 * 60 * 24 * 7,
       path: '/',
     })
+
+    await writeLog({ action: 'CREATE', entity: 'USER', entityId: user.id, description: `Cadastro: ${user.name} (${user.email})`, userId: user.id, userName: user.name, userRole: user.role, req })
 
     return NextResponse.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } })
   } catch {

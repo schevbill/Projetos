@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth'
+import { writeLogFromSession } from '@/lib/logger'
 
 export async function GET() {
   try {
@@ -17,6 +18,7 @@ export async function POST(req: Request) {
     await requireAdmin()
     const data = await req.json()
     const coupon = await prisma.coupon.create({ data: { ...data, code: data.code.toUpperCase() } })
+    await writeLogFromSession({ action: 'CREATE', entity: 'COUPON', entityId: coupon.id, description: `Cupom criado: ${coupon.code}`, req })
     return NextResponse.json(coupon)
   } catch {
     return NextResponse.json({ error: 'Erro ao criar cupom' }, { status: 400 })

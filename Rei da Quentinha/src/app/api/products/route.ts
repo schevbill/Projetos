@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth'
+import { writeLogFromSession } from '@/lib/logger'
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
@@ -17,6 +18,7 @@ export async function POST(req: Request) {
     await requireAdmin()
     const data = await req.json()
     const product = await prisma.product.create({ data })
+    await writeLogFromSession({ action: 'CREATE', entity: 'PRODUCT', entityId: product.id, description: `Produto criado: ${product.name}`, req })
     return NextResponse.json(product)
   } catch {
     return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })

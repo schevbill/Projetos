@@ -3,19 +3,19 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-import { UtensilsCrossed, CheckCircle, XCircle, Search, Loader2, Eye, EyeOff } from 'lucide-react'
+import { UtensilsCrossed, CheckCircle, XCircle, Eye, EyeOff } from 'lucide-react'
 import { validateEmail, validateCpfCnpj, formatCpfCnpj, validatePhone, formatPhone, validatePassword, checkPasswordRules } from '@/lib/validators'
+import AddressManager, { type AddressData } from '@/components/AddressManager'
 
 export default function RegisterPage() {
   const router = useRouter()
   const [form, setForm] = useState({
     name: '', email: '', cpfCnpj: '', phone: '', birthDate: '',
-    cep: '', logradouro: '', numero: '', complemento: '', bairro: '', cidade: '', estado: '',
     password: '', confirmPassword: '',
   })
+  const [addresses, setAddresses] = useState<AddressData[]>([])
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
-  const [cepLoading, setCepLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
   const setField = (key: string, value: string) => {
@@ -42,60 +42,13 @@ export default function RegisterPage() {
     if (cpfErr) newErrors.cpfCnpj = cpfErr
     const phoneErr = validatePhone(form.phone)
     if (phoneErr) newErrors.phone = phoneErr
-    if (!form.cep || form.cep.replace(/\D/g, '').length !== 8) newErrors.cep = 'CEP obrigatório (8 dígitos)'
-    if (!form.logradouro.trim()) newErrors.logradouro = 'Rua obrigatória'
-    if (!form.numero.trim()) newErrors.numero = 'Número obrigatório'
-    if (!form.bairro.trim()) newErrors.bairro = 'Bairro obrigatório'
-    if (!form.cidade.trim()) newErrors.cidade = 'Cidade obrigatória'
-    if (!form.estado.trim()) newErrors.estado = 'Estado obrigatório'
     const pwErr = validatePassword(form.password)
     if (pwErr) newErrors.password = pwErr
     if (form.password !== form.confirmPassword) newErrors.confirmPassword = 'Senhas não conferem'
+    if (addresses.length === 0) newErrors.addresses = 'Cadastre pelo menos um endereço de entrega'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
-
-  const buscarCep = async (cep: string) => {
-    const digits = cep.replace(/\D/g, '')
-    if (digits.length !== 8) return
-    setCepLoading(true)
-    try {
-      const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`)
-      const data = await res.json()
-      if (data.erro) { toast.error('CEP não encontrado'); return }
-      setForm(f => ({
-        ...f,
-        logradouro: data.logradouro || '',
-        bairro: data.bairro || '',
-        cidade: data.localidade || '',
-        estado: data.uf || '',
-        complemento: data.complemento || f.complemento,
-      }))
-      toast.success('Endereço encontrado!')
-      setTimeout(() => document.getElementById('reg-numero')?.focus(), 100)
-    } catch {
-      toast.error('Erro ao buscar CEP')
-    } finally {
-      setCepLoading(false)
-    }
-  }
-
-  const handleCep = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let digits = e.target.value.replace(/\D/g, '').slice(0, 8)
-    const formatted = digits.length > 5 ? `${digits.slice(0, 5)}-${digits.slice(5)}` : digits
-    setForm(f => ({ ...f, cep: formatted }))
-    if (digits.length === 8) buscarCep(digits)
-  }
-
-  const addressFull = [
-    form.logradouro,
-    form.numero && `nº ${form.numero}`,
-    form.complemento,
-    form.bairro,
-    form.cidade,
-    form.estado,
-    form.cep,
-  ].filter(Boolean).join(', ')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -105,10 +58,20 @@ export default function RegisterPage() {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, address: addressFull, birthDate: form.birthDate }),
+        body: JSON.stringify({ ...form, birthDate: form.birthDate }),
       })
       const data = await res.json()
       if (!res.ok) { toast.error(data.error || 'Erro ao cadastrar'); return }
+
+      // salva endereços após registro (sessão já existe)
+      for (const addr of addresses) {
+        await fetch('/api/addresses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(addr),
+        })
+      }
+
       toast.success('Cadastro realizado!')
       router.push('/')
     } catch {
@@ -195,26 +158,26 @@ export default function RegisterPage() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Celular *</label>
-            <div className="relative">
-              <input
-                type="tel"
-                inputMode="numeric"
-                className={`input-field pr-9 ${errors.phone ? 'border-red-400 focus:ring-red-300' : form.phone && !validatePhone(form.phone) ? 'border-green-400 focus:ring-green-300' : ''}`}
-                placeholder="(11) 99999-9999"
-                maxLength={15}
-                value={form.phone}
-                onChange={e => {
-                  setForm(f => ({ ...f, phone: formatPhone(e.target.value) }))
-                  setErrors(p => ({ ...p, phone: '' }))
-                }}
-              />
-              {form.phone && (
-                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                  {!validatePhone(form.phone) ? <CheckCircle size={16} className="text-green-500" /> : <XCircle size={16} className="text-red-400" />}
-                </div>
-              )}
-            </div>
-            {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+              <div className="relative">
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  className={`input-field pr-9 ${errors.phone ? 'border-red-400 focus:ring-red-300' : form.phone && !validatePhone(form.phone) ? 'border-green-400 focus:ring-green-300' : ''}`}
+                  placeholder="(11) 99999-9999"
+                  maxLength={15}
+                  value={form.phone}
+                  onChange={e => {
+                    setForm(f => ({ ...f, phone: formatPhone(e.target.value) }))
+                    setErrors(p => ({ ...p, phone: '' }))
+                  }}
+                />
+                {form.phone && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    {!validatePhone(form.phone) ? <CheckCircle size={16} className="text-green-500" /> : <XCircle size={16} className="text-red-400" />}
+                  </div>
+                )}
+              </div>
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
           </div>
 
@@ -238,118 +201,13 @@ export default function RegisterPage() {
             {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
           </div>
 
-          {/* Endereço com busca CEP */}
-          <div className="border border-gray-200 rounded-xl p-4 space-y-3 bg-gray-50">
-            <p className="text-sm font-semibold text-gray-700">Endereço padrão</p>
-
-            {/* CEP */}
-            <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">CEP *</label>
-              <div className="relative">
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  className={`input-field pr-9 text-sm ${errors.cep ? 'border-red-400 focus:ring-red-300' : ''}`}
-                  placeholder="00000-000"
-                  maxLength={9}
-                  value={form.cep}
-                  onChange={handleCep}
-                />
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                  {cepLoading ? <Loader2 size={14} className="animate-spin" /> : <Search size={14} />}
-                </div>
-              </div>
-              {errors.cep
-                ? <p className="text-red-500 text-xs mt-0.5">{errors.cep}</p>
-                : <p className="text-xs text-gray-400 mt-0.5">Preenchimento automático</p>
-              }
-            </div>
-
-            {/* Logradouro */}
-            <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Rua / Avenida *</label>
-              <input
-                type="text"
-                className={`input-field text-sm ${errors.logradouro ? 'border-red-400 focus:ring-red-300' : ''}`}
-                placeholder="Rua das Flores"
-                value={form.logradouro}
-                onChange={e => setForm(f => ({ ...f, logradouro: e.target.value }))}
-              />
-              {errors.logradouro && <p className="text-red-500 text-xs mt-0.5">{errors.logradouro}</p>}
-            </div>
-
-            {/* Número + Complemento */}
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Número *</label>
-                <input
-                  id="reg-numero"
-                  type="text"
-                  className={`input-field text-sm ${errors.numero ? 'border-red-400 focus:ring-red-300' : ''}`}
-                  placeholder="123"
-                  value={form.numero}
-                  onChange={e => setForm(f => ({ ...f, numero: e.target.value }))}
-                />
-                {errors.numero && <p className="text-red-500 text-xs mt-0.5">{errors.numero}</p>}
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Complemento</label>
-                <input
-                  type="text"
-                  className="input-field text-sm"
-                  placeholder="Apto 12"
-                  value={form.complemento}
-                  onChange={e => setForm(f => ({ ...f, complemento: e.target.value }))}
-                />
-              </div>
-            </div>
-
-            {/* Bairro */}
-            <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Bairro *</label>
-              <input
-                type="text"
-                className={`input-field text-sm ${errors.bairro ? 'border-red-400 focus:ring-red-300' : ''}`}
-                placeholder="Centro"
-                value={form.bairro}
-                onChange={e => setForm(f => ({ ...f, bairro: e.target.value }))}
-              />
-              {errors.bairro && <p className="text-red-500 text-xs mt-0.5">{errors.bairro}</p>}
-            </div>
-
-            {/* Cidade + Estado */}
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Cidade *</label>
-                <input
-                  type="text"
-                  className={`input-field text-sm ${errors.cidade ? 'border-red-400 focus:ring-red-300' : ''}`}
-                  placeholder="São Paulo"
-                  value={form.cidade}
-                  onChange={e => setForm(f => ({ ...f, cidade: e.target.value }))}
-                />
-                {errors.cidade && <p className="text-red-500 text-xs mt-0.5">{errors.cidade}</p>}
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Estado *</label>
-                <input
-                  type="text"
-                  className={`input-field text-sm uppercase ${errors.estado ? 'border-red-400 focus:ring-red-300' : ''}`}
-                  placeholder="SP"
-                  maxLength={2}
-                  value={form.estado}
-                  onChange={e => setForm(f => ({ ...f, estado: e.target.value.toUpperCase() }))}
-                />
-                {errors.estado && <p className="text-red-500 text-xs mt-0.5">{errors.estado}</p>}
-              </div>
-            </div>
-
-            {/* Preview */}
-            {addressFull && (
-              <div className="bg-brand-50 border border-brand-200 rounded-lg px-3 py-2 text-xs text-brand-700">
-                <span className="font-medium">Endereço: </span>{addressFull}
-              </div>
-            )}
+          {/* Endereços */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Endereços de entrega <span className="text-red-500">*</span>
+            </label>
+            <AddressManager addresses={addresses} onChange={(list) => { setAddresses(list); setErrors(p => ({ ...p, addresses: '' })) }} persist={false} />
+            {errors.addresses && <p className="text-red-500 text-xs mt-2">{errors.addresses}</p>}
           </div>
 
           {/* Senha */}
@@ -401,7 +259,6 @@ export default function RegisterPage() {
           </div>
 
           {/* Confirmar senha */}
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Confirmar senha *</label>
             <div className="relative">

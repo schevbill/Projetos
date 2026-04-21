@@ -4,8 +4,10 @@ import { useCart } from '@/store/cart'
 import Navbar from '@/components/Navbar'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-import { CreditCard, Smartphone, Banknote, Tag, CheckCircle, Search, Loader2, Copy, XCircle } from 'lucide-react'
+import { CreditCard, Smartphone, Banknote, Tag, CheckCircle, Search, Loader2, Copy, XCircle, MapPin } from 'lucide-react'
 import { validatePhone, formatPhone } from '@/lib/validators'
+
+interface SavedAddress { id: string; label: string; cep: string | null; logradouro: string; numero: string; complemento: string | null; bairro: string | null; cidade: string; estado: string | null }
 
 const PAYMENT_METHODS = [
   { value: 'PIX', label: 'PIX', icon: Smartphone },
@@ -16,6 +18,8 @@ const PAYMENT_METHODS = [
 export default function CheckoutPage() {
   const { items, total, clearCart } = useCart()
   const router = useRouter()
+  const [user, setUser] = useState<{ name: string; phone: string } | null>(null)
+  const [savedAddresses, setSavedAddresses] = useState<SavedAddress[]>([])
   const [loading, setLoading] = useState(false)
   const [cepLoading, setCepLoading] = useState(false)
   const [couponCode, setCouponCode] = useState('')
@@ -41,11 +45,9 @@ export default function CheckoutPage() {
   useEffect(() => {
     fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(data => {
       if (data?.user) {
-        setForm(f => ({
-          ...f,
-          customerName: data.user.name,
-          customerPhone: data.user.phone || '',
-        }))
+        setUser({ name: data.user.name, phone: data.user.phone || '' })
+        setForm(f => ({ ...f, customerName: data.user.name, customerPhone: data.user.phone || '' }))
+        fetch('/api/addresses').then(r => r.ok ? r.json() : []).then(setSavedAddresses)
       }
     })
   }, [])
@@ -163,6 +165,7 @@ export default function CheckoutPage() {
           subtotal,
           discount,
           total: finalTotal,
+          paymentMethod: form.paymentMethod,
           couponId: couponData?.id || null,
           notes: form.notes,
           changeFor: form.paymentMethod === 'CASH' && form.changeFor ? parseFloat(form.changeFor) : null,
@@ -206,41 +209,87 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Nome completo *</label>
-                  <input
-                    type="text"
-                    className="input-field"
-                    value={form.customerName}
-                    onChange={e => setForm(f => ({ ...f, customerName: e.target.value }))}
-                    required
-                  />
+                  {user ? (
+                    <div className="input-field bg-gray-50 text-gray-700 cursor-default select-none">{user.name}</div>
+                  ) : (
+                    <input
+                      type="text"
+                      className="input-field"
+                      value={form.customerName}
+                      onChange={e => setForm(f => ({ ...f, customerName: e.target.value }))}
+                      required
+                    />
+                  )}
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Celular *</label>
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      inputMode="numeric"
-                      className={`input-field pr-9 ${form.customerPhone && validatePhone(form.customerPhone) ? 'border-red-400 focus:ring-red-300' : form.customerPhone && !validatePhone(form.customerPhone) ? 'border-green-400 focus:ring-green-300' : ''}`}
-                      placeholder="(11) 99999-9999"
-                      maxLength={15}
-                      value={form.customerPhone}
-                      onChange={e => setForm(f => ({ ...f, customerPhone: formatPhone(e.target.value) }))}
-                      required
-                    />
-                    {form.customerPhone && (
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                        {!validatePhone(form.customerPhone)
-                          ? <CheckCircle size={16} className="text-green-500" />
-                          : <XCircle size={16} className="text-red-400" />}
-                      </div>
-                    )}
-                  </div>
-                  {form.customerPhone && validatePhone(form.customerPhone) && (
+                  {user ? (
+                    <div className="input-field bg-gray-50 text-gray-700 cursor-default select-none">{user.phone || '—'}</div>
+                  ) : (
+                    <div className="relative">
+                      <input
+                        type="tel"
+                        inputMode="numeric"
+                        className={`input-field pr-9 ${form.customerPhone && validatePhone(form.customerPhone) ? 'border-red-400 focus:ring-red-300' : form.customerPhone && !validatePhone(form.customerPhone) ? 'border-green-400 focus:ring-green-300' : ''}`}
+                        placeholder="(11) 99999-9999"
+                        maxLength={15}
+                        value={form.customerPhone}
+                        onChange={e => setForm(f => ({ ...f, customerPhone: formatPhone(e.target.value) }))}
+                        required
+                      />
+                      {form.customerPhone && (
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                          {!validatePhone(form.customerPhone)
+                            ? <CheckCircle size={16} className="text-green-500" />
+                            : <XCircle size={16} className="text-red-400" />}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {!user && form.customerPhone && validatePhone(form.customerPhone) && (
                     <p className="text-red-500 text-xs mt-1">{validatePhone(form.customerPhone)}</p>
                   )}
                 </div>
               </div>
             </div>
+
+            {/* Endereços salvos */}
+            {savedAddresses.length > 0 && (
+              <div className="card p-6">
+                <h2 className="text-lg font-bold text-gray-800 mb-3">Usar endereço salvo</h2>
+                <div className="space-y-2">
+                  {savedAddresses.map(addr => {
+                    const full = [addr.logradouro, `nº ${addr.numero}`, addr.complemento, addr.bairro, addr.cidade, addr.estado, addr.cep].filter(Boolean).join(', ')
+                    const selected = form.logradouro === addr.logradouro && form.numero === addr.numero && form.cidade === addr.cidade
+                    return (
+                      <button
+                        key={addr.id}
+                        type="button"
+                        onClick={() => setForm(f => ({
+                          ...f,
+                          cep: addr.cep || '',
+                          logradouro: addr.logradouro,
+                          numero: addr.numero,
+                          complemento: addr.complemento || '',
+                          bairro: addr.bairro || '',
+                          cidade: addr.cidade,
+                          estado: addr.estado || '',
+                        }))}
+                        className={`w-full text-left flex items-start gap-3 px-4 py-3 rounded-xl border-2 transition-colors ${selected ? 'border-brand-500 bg-brand-50' : 'border-gray-200 hover:border-brand-300 bg-white'}`}
+                      >
+                        <MapPin size={16} className={`flex-shrink-0 mt-0.5 ${selected ? 'text-brand-500' : 'text-gray-400'}`} />
+                        <div>
+                          <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${selected ? 'bg-brand-100 text-brand-700' : 'bg-gray-100 text-gray-600'}`}>{addr.label}</span>
+                          <p className="text-sm text-gray-700 mt-1 leading-snug">{full}</p>
+                        </div>
+                        {selected && <CheckCircle size={16} className="text-brand-500 ml-auto flex-shrink-0 mt-0.5" />}
+                      </button>
+                    )
+                  })}
+                </div>
+                <p className="text-xs text-gray-400 mt-3">Ou preencha manualmente abaixo</p>
+              </div>
+            )}
 
             {/* Endereço com busca de CEP */}
             <div className="card p-6">

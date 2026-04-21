@@ -8,18 +8,33 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   name      String
-  email     String   @unique
+  email     String    @unique
   cpfCnpj   String?
   phone     String?
   birthDate DateTime?
-  address   String?
   password  String
-  role      String   @default("CUSTOMER")
+  role      String    @default("CUSTOMER")
   orders    Order[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  addresses Address[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Address {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label       String   @default("Casa")
+  cep         String?
+  logradouro  String
+  numero      String
+  complemento String?
+  bairro      String?
+  cidade      String
+  estado      String?
+  createdAt   DateTime @default(now())
 }
 
 model Category {
@@ -91,15 +106,39 @@ model OrderItem {
   product   Product @relation(fields: [productId], references: [id])
 }
 
+model VehicleType {
+  id        String           @id @default(cuid())
+  name      String           @unique
+  vehicles  MotoboyVehicle[]
+  createdAt DateTime         @default(now())
+}
+
 model Motoboy {
-  id        String   @id @default(cuid())
-  name      String
-  phone     String
-  vehicle   String?
-  plate     String?
-  active    Boolean  @default(true)
-  orders    Order[]
-  createdAt DateTime @default(now())
+  id          String           @id @default(cuid())
+  name        String
+  phone       String
+  cpfCnpj     String?
+  cep         String?
+  logradouro  String?
+  numero      String?
+  complemento String?
+  bairro      String?
+  cidade      String?
+  estado      String?
+  vehicles    MotoboyVehicle[]
+  active      Boolean          @default(true)
+  orders      Order[]
+  createdAt   DateTime         @default(now())
+}
+
+model MotoboyVehicle {
+  id            String       @id @default(cuid())
+  motoboyId     String
+  motoboy       Motoboy      @relation(fields: [motoboyId], references: [id], onDelete: Cascade)
+  vehicleTypeId String?
+  vehicleType   VehicleType? @relation(fields: [vehicleTypeId], references: [id])
+  plate         String?
+  createdAt     DateTime     @default(now())
 }
 
 model Printer {
@@ -118,4 +157,21 @@ model ConfigPix {
   pixName   String   @default("")
   pixCity   String   @default("")
   updatedAt DateTime @updatedAt
+}
+
+model Log {
+  id          String   @id @default(cuid())
+  action      String   // CREATE | UPDATE | DELETE | LOGIN
+  entity      String   // USER | ORDER | PRODUCT | COUPON | ADDRESS | MOTOBOY | PRINTER | CONFIG
+  entityId    String?
+  description String
+  userId      String?
+  userName    String?
+  userRole    String?
+  ip          String?
+  createdAt   DateTime @default(now())
+
+  @@index([entity])
+  @@index([createdAt])
+  @@index([userId])
 }
