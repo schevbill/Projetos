@@ -50,7 +50,6 @@ model Product {
   description String?
   price       Float
   image       String?
-  category    String?
   categoryId  String?
   categoryRel Category?   @relation(fields: [categoryId], references: [id])
   available   Boolean     @default(true)
@@ -159,6 +158,17 @@ model ConfigPix {
   updatedAt DateTime @updatedAt
 }
 
+model ConfigEmail {
+  id        String   @id @default("default")
+  host      String   @default("smtp.gmail.com")
+  port      Int      @default(587)
+  user      String   @default("")
+  pass      String   @default("")
+  from      String   @default("")
+  active    Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+}
+
 model Log {
   id          String   @id @default(cuid())
   action      String   // CREATE | UPDATE | DELETE | LOGIN
@@ -169,6 +179,8 @@ model Log {
   userName    String?
   userRole    String?
   ip          String?
+  before      Json?
+  after       Json?
   createdAt   DateTime @default(now())
 
   @@index([entity])

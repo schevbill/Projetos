@@ -14,7 +14,7 @@ const links = [
   { href: '/admin/users', label: 'Usuários', icon: Users },
   { href: '/admin/motoboys', label: 'Motoboys', icon: Truck },
   { href: '/admin/printers', label: 'Impressoras', icon: Printer },
-  { href: '/admin/configuracoes', label: 'Config. PIX', icon: Settings },
+  { href: '/admin/configuracoes', label: 'Configurações', icon: Settings },
   { href: '/admin/logs', label: 'Logs', icon: ScrollText },
 ]
 

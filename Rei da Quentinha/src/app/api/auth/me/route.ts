@@ -25,11 +25,22 @@ export async function PUT(req: Request) {
   if (phone !== undefined) data.phone = phone
   if (password) data.password = await bcrypt.hash(password, 10)
 
+  const prev = await prisma.user.findUnique({
+    where: { id: session.id as string },
+    select: { name: true, phone: true },
+  })
+
   const user = await prisma.user.update({
     where: { id: session.id as string },
     data,
     select: { id: true, name: true, email: true, phone: true, cpfCnpj: true, birthDate: true, role: true },
   })
-  await writeLogFromSession({ action: 'UPDATE', entity: 'USER', entityId: user.id, description: `Perfil atualizado: ${user.name} (${user.email})`, req })
+  await writeLogFromSession({
+    action: 'UPDATE', entity: 'USER', entityId: user.id,
+    description: `Perfil atualizado: ${user.name} (${user.email})`,
+    before: prev ?? undefined,
+    after: { name: data.name, phone: data.phone },
+    req,
+  })
   return NextResponse.json({ user })
 }

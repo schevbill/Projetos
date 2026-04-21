@@ -1,18 +1,14 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { encrypt, decrypt } from '@/lib/crypto'
 import { writeLogFromSession } from '@/lib/logger'
 
 async function getConfig() {
-  return prisma.configPix.upsert({
+  return prisma.configEmail.upsert({
     where: { id: 'default' },
     update: {},
-    create: {
-      id: 'default',
-      pixKey: process.env.PIX_KEY || '',
-      pixName: process.env.PIX_NAME || '',
-      pixCity: process.env.PIX_CITY || '',
-    },
+    create: { id: 'default' },
   })
 }
 
@@ -21,9 +17,12 @@ export async function GET() {
     await requireAdmin()
     const config = await getConfig()
     return NextResponse.json({
-      pixKey: config.pixKey,
-      pixName: config.pixName,
-      pixCity: config.pixCity,
+      host: config.host,
+      port: config.port,
+      user: config.user,
+      pass: decrypt(config.pass),
+      from: config.from,
+      active: config.active,
     })
   } catch {
     return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
@@ -33,28 +32,24 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     await requireAdmin()
-    const { pixKey, pixName, pixCity } = await req.json()
+    const { host, port, user, pass, from, active } = await req.json()
 
-    const prev = await prisma.configPix.findUnique({
+    const prev = await prisma.configEmail.findUnique({
       where: { id: 'default' },
-      select: { pixKey: true, pixName: true, pixCity: true },
+      select: { host: true, port: true, user: true, from: true, active: true },
     })
 
-    await prisma.configPix.upsert({
+    await prisma.configEmail.upsert({
       where: { id: 'default' },
-      update: { pixKey, pixName, pixCity },
-      create: { id: 'default', pixKey, pixName, pixCity },
+      update: { host, port: Number(port), user, pass: encrypt(pass), from, active },
+      create: { id: 'default', host, port: Number(port), user, pass: encrypt(pass), from, active },
     })
-
-    process.env.PIX_KEY = pixKey
-    process.env.PIX_NAME = pixName
-    process.env.PIX_CITY = pixCity
 
     await writeLogFromSession({
-      action: 'UPDATE', entity: 'CONFIG', entityId: 'pix',
-      description: 'Configurações PIX atualizadas',
+      action: 'UPDATE', entity: 'CONFIG', entityId: 'email',
+      description: 'Configurações de e-mail atualizadas',
       before: prev ?? undefined,
-      after: { pixKey, pixName, pixCity },
+      after: { host, port: Number(port), user, from, active },
       req,
     })
 

@@ -1,11 +1,11 @@
 'use client'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import toast from 'react-hot-toast'
-import { Plus, Pencil, Trash2, Package, ImagePlus, X, LayoutList, Check } from 'lucide-react'
+import { Plus, Pencil, Trash2, Package, ImagePlus, X, LayoutList } from 'lucide-react'
 
 interface Product {
   id: string; name: string; description?: string | null; price: number
-  category?: string | null; categoryId?: string | null; categoryRel?: { name: string } | null
+  categoryId?: string | null; categoryRel?: { name: string } | null
   available: boolean; image?: string | null
 }
 interface Category { id: string; name: string; _count?: { products: number } }
@@ -27,14 +27,14 @@ export default function AdminProducts() {
   // Categorias
   const [categories, setCategories] = useState<Category[]>([])
   const [newName, setNewName] = useState('')
-  const [editingCatId, setEditingCatId] = useState<string | null>(null)
-  const [editCatName, setEditCatName] = useState('')
+  const [editingCat, setEditingCat] = useState<Category | null>(null)
   const [catLoading, setCatLoading] = useState(false)
+  const [showCatModal, setShowCatModal] = useState(false)
 
   const loadProducts = useCallback(() =>
-    fetch('/api/products?withCategory=1').then(r => r.json()).then(d => setProducts(Array.isArray(d) ? d : [])), [])
+    fetch('/api/products?withCategory=1', { cache: 'no-store' }).then(r => r.json()).then(d => setProducts(Array.isArray(d) ? d : [])), [])
   const loadCategories = useCallback(() =>
-    fetch('/api/categories').then(r => r.json()).then(d => setCategories(Array.isArray(d) ? d : [])), [])
+    fetch('/api/categories', { cache: 'no-store' }).then(r => r.json()).then(d => setCategories(Array.isArray(d) ? d : [])), [])
 
   useEffect(() => { loadProducts(); loadCategories() }, [loadProducts, loadCategories])
 
@@ -76,7 +76,15 @@ export default function AdminProducts() {
         : await fetch('/api/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
       if (!res.ok) throw new Error()
       toast.success(editing ? 'Produto atualizado!' : 'Produto criado!')
-      setShowModal(false); loadProducts()
+      if (editing) {
+        const categoryRel = body.categoryId
+          ? (categories.find(c => c.id === body.categoryId) ?? null)
+          : null
+        setProducts(ps => ps.map(p => p.id === editing.id ? { ...p, ...body, categoryRel } : p))
+      } else {
+        await loadProducts()
+      }
+      setShowModal(false)
     } catch {
       toast.error('Erro ao salvar produto')
     } finally {
@@ -92,33 +100,23 @@ export default function AdminProducts() {
   }
 
   // ── Categorias CRUD ────────────────────────────────
-  const handleCreateCat = async (e: React.FormEvent) => {
+
+  const handleSaveCat = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!newName.trim()) return
     setCatLoading(true)
     try {
-      const res = await fetch('/api/categories', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: newName }) })
+      const url = editingCat ? `/api/categories/${editingCat.id}` : '/api/categories'
+      const method = editingCat ? 'PUT' : 'POST'
+      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: newName }) })
       const data = await res.json()
       if (!res.ok) { toast.error(data.error); return }
-      toast.success('Categoria criada!')
-      setNewName(''); loadCategories()
+      toast.success(editingCat ? 'Categoria atualizada!' : 'Categoria criada!')
+      setShowCatModal(false); loadCategories()
     } catch {
-      toast.error('Erro ao criar categoria')
+      toast.error('Erro ao salvar')
     } finally {
       setCatLoading(false)
-    }
-  }
-
-  const handleEditCat = async (id: string) => {
-    if (!editCatName.trim()) return
-    try {
-      const res = await fetch(`/api/categories/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: editCatName }) })
-      const data = await res.json()
-      if (!res.ok) { toast.error(data.error); return }
-      toast.success('Categoria atualizada!')
-      setEditingCatId(null); loadCategories()
-    } catch {
-      toast.error('Erro ao atualizar')
     }
   }
 
@@ -137,6 +135,11 @@ export default function AdminProducts() {
         {tab === 'products' && (
           <button onClick={openCreate} className="btn-primary flex items-center gap-2">
             <Plus size={18} /> Novo Produto
+          </button>
+        )}
+        {tab === 'categories' && (
+          <button onClick={() => { setEditingCat(null); setNewName(''); setShowCatModal(true) }} className="btn-primary flex items-center gap-2">
+            <Plus size={18} /> Nova Categoria
           </button>
         )}
       </div>
@@ -181,7 +184,7 @@ export default function AdminProducts() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-gray-600">{p.categoryRel?.name || p.category || '—'}</td>
+                  <td className="px-6 py-4 text-gray-600">{p.categoryRel?.name || '—'}</td>
                   <td className="px-6 py-4 font-bold text-brand-500">
                     {p.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                   </td>
@@ -206,53 +209,41 @@ export default function AdminProducts() {
 
       {/* ── Tab Categorias ── */}
       {tab === 'categories' && (
-        <div className="max-w-lg">
-          <form onSubmit={handleCreateCat} className="flex gap-3 mb-4">
-            <input
-              className="input-field flex-1"
-              placeholder="Nome da nova categoria..."
-              value={newName}
-              onChange={e => setNewName(e.target.value)}
-              required
-            />
-            <button type="submit" disabled={catLoading} className="btn-primary flex items-center gap-2 whitespace-nowrap">
-              <Plus size={16} /> Adicionar
-            </button>
-          </form>
-
-          {categories.length === 0 ? (
-            <div className="text-center py-16 text-gray-400">
-              <LayoutList size={48} className="mx-auto mb-2" />Nenhuma categoria cadastrada
-            </div>
-          ) : (
-            <div className="card divide-y divide-gray-100">
+        <div className="card overflow-x-auto">
+          <table className="w-full text-sm min-w-[400px]">
+            <thead className="bg-gray-50">
+              <tr>
+                {['Categoria', 'Produtos', 'Ações'].map(h => (
+                  <th key={h} className="text-left px-6 py-3 text-gray-600 font-semibold">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
               {categories.map(cat => (
-                <div key={cat.id} className="flex items-center gap-3 px-5 py-3">
-                  {editingCatId === cat.id ? (
-                    <>
-                      <input
-                        className="input-field flex-1 py-1.5 text-sm"
-                        value={editCatName}
-                        onChange={e => setEditCatName(e.target.value)}
-                        onKeyDown={e => e.key === 'Enter' && handleEditCat(cat.id)}
-                        autoFocus
-                      />
-                      <button onClick={() => handleEditCat(cat.id)} className="p-1.5 text-green-600 hover:bg-green-50 rounded"><Check size={16} /></button>
-                      <button onClick={() => setEditingCatId(null)} className="p-1.5 text-gray-400 hover:bg-gray-100 rounded"><X size={16} /></button>
-                    </>
-                  ) : (
-                    <>
-                      <div className="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <LayoutList size={15} className="text-brand-500" />
+                <tr key={cat.id} className="border-t hover:bg-gray-50">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <LayoutList size={18} className="text-brand-400" />
                       </div>
-                      <span className="flex-1 font-medium text-gray-800">{cat.name}</span>
-                      <button onClick={() => { setEditingCatId(cat.id); setEditCatName(cat.name) }} className="p-1.5 text-gray-400 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors"><Pencil size={15} /></button>
-                      <button onClick={() => handleDeleteCat(cat.id, cat.name)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={15} /></button>
-                    </>
-                  )}
-                </div>
+                      <p className="font-medium text-gray-800">{cat.name}</p>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-gray-500">
+                    {cat._count?.products ?? 0} produto{(cat._count?.products ?? 0) !== 1 ? 's' : ''}
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex gap-2">
+                      <button onClick={() => { setEditingCat(cat); setNewName(cat.name); setShowCatModal(true) }} className="p-1.5 text-blue-500 hover:bg-blue-50 rounded"><Pencil size={16} /></button>
+                      <button onClick={() => handleDeleteCat(cat.id, cat.name)} className="p-1.5 text-red-500 hover:bg-red-50 rounded"><Trash2 size={16} /></button>
+                    </div>
+                  </td>
+                </tr>
               ))}
-            </div>
+            </tbody>
+          </table>
+          {categories.length === 0 && (
+            <div className="text-center py-12 text-gray-400">Nenhuma categoria cadastrada</div>
           )}
         </div>
       )}
@@ -321,6 +312,32 @@ export default function AdminProducts() {
               <div className="flex gap-3 pt-2">
                 <button type="submit" disabled={loading || uploading} className="btn-primary flex-1">{loading ? 'Salvando...' : 'Salvar'}</button>
                 <button type="button" onClick={() => setShowModal(false)} className="btn-secondary flex-1">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* ── Modal Nova Categoria ── */}
+      {showCatModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="card w-full max-w-sm p-6">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">{editingCat ? 'Editar' : 'Nova'} Categoria</h2>
+            <form onSubmit={handleSaveCat} className="space-y-3">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nome *</label>
+                <input
+                  className="input-field"
+                  placeholder="Ex: Fitness, Tradicional..."
+                  value={newName}
+                  onChange={e => setNewName(e.target.value)}
+                  required
+                  autoFocus
+                />
+              </div>
+              <div className="flex gap-3 pt-2">
+                <button type="submit" disabled={catLoading} className="btn-primary flex-1">{catLoading ? 'Salvando...' : 'Salvar'}</button>
+                <button type="button" onClick={() => { setShowCatModal(false); setEditingCat(null) }} className="btn-secondary flex-1">Cancelar</button>
               </div>
             </form>
           </div>

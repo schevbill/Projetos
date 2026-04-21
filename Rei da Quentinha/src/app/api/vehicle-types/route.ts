@@ -14,7 +14,12 @@ export async function POST(req: Request) {
     const { name } = await req.json()
     if (!name?.trim()) return NextResponse.json({ error: 'Nome obrigatório' }, { status: 400 })
     const type = await prisma.vehicleType.create({ data: { name: name.trim() } })
-    await writeLogFromSession({ action: 'CREATE', entity: 'MOTOBOY', entityId: type.id, description: `Tipo de veículo criado: ${type.name}`, req })
+    await writeLogFromSession({
+      action: 'CREATE', entity: 'VEHICLE_TYPE', entityId: type.id,
+      description: `Tipo de veículo criado: ${type.name}`,
+      after: { name: type.name },
+      req,
+    })
     return NextResponse.json(type)
   } catch {
     return NextResponse.json({ error: 'Erro ao criar tipo de veículo' }, { status: 400 })

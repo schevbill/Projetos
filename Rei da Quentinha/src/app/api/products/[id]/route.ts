@@ -8,8 +8,21 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     await requireAdmin()
     const { id } = await params
     const data = await req.json()
+
+    const prev = await prisma.product.findUnique({
+      where: { id },
+      select: { name: true, description: true, price: true, categoryId: true, available: true },
+    })
+
     const product = await prisma.product.update({ where: { id }, data })
-    await writeLogFromSession({ action: 'UPDATE', entity: 'PRODUCT', entityId: id, description: `Produto editado: ${product.name}`, req })
+
+    await writeLogFromSession({
+      action: 'UPDATE', entity: 'PRODUCT', entityId: id,
+      description: `Produto editado: ${product.name}`,
+      before: prev ?? undefined,
+      after: { name: data.name, description: data.description, price: data.price, categoryId: data.categoryId, available: data.available },
+      req,
+    })
     return NextResponse.json(product)
   } catch (err) {
     console.error('[products PUT]', err)

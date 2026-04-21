@@ -13,6 +13,8 @@ interface LogOptions {
   userName?: string
   userRole?: string
   req?: Request
+  before?: Record<string, unknown>
+  after?: Record<string, unknown>
 }
 
 function getIp(req?: Request): string | undefined {
@@ -34,6 +36,8 @@ export async function writeLog(opts: LogOptions) {
         userName: opts.userName,
         userRole: opts.userRole,
         ip: opts.req ? getIp(opts.req) : undefined,
+        before: opts.before ?? undefined,
+        after: opts.after ?? undefined,
       },
     })
   } catch {

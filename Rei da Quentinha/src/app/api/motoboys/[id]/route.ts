@@ -13,22 +13,20 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     const { id } = await params
     const { name, phone, cpfCnpj, cep, logradouro, numero, complemento, bairro, cidade, estado, active, vehicles } = await req.json()
 
-    // Replace all vehicles: delete existing, create new
+    const prev = await prisma.motoboy.findUnique({
+      where: { id },
+      select: { name: true, phone: true, cpfCnpj: true, cep: true, logradouro: true, numero: true, complemento: true, bairro: true, cidade: true, estado: true, active: true },
+    })
+
     await prisma.motoboyVehicle.deleteMany({ where: { motoboyId: id } })
 
     const motoboy = await prisma.motoboy.update({
       where: { id },
       data: {
-        name,
-        phone,
+        name, phone,
         cpfCnpj: cpfCnpj || null,
-        cep: cep || null,
-        logradouro: logradouro || null,
-        numero: numero || null,
-        complemento: complemento || null,
-        bairro: bairro || null,
-        cidade: cidade || null,
-        estado: estado || null,
+        cep: cep || null, logradouro: logradouro || null, numero: numero || null,
+        complemento: complemento || null, bairro: bairro || null, cidade: cidade || null, estado: estado || null,
         active,
         vehicles: {
           create: (vehicles ?? []).map((v: { vehicleTypeId?: string; plate?: string }) => ({
@@ -39,7 +37,14 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       },
       include: includeVehicles,
     })
-    await writeLogFromSession({ action: 'UPDATE', entity: 'MOTOBOY', entityId: id, description: `Motoboy editado: ${motoboy.name}`, req })
+
+    await writeLogFromSession({
+      action: 'UPDATE', entity: 'MOTOBOY', entityId: id,
+      description: `Motoboy editado: ${motoboy.name}`,
+      before: prev ?? undefined,
+      after: { name, phone, cpfCnpj: cpfCnpj || null, cep: cep || null, logradouro: logradouro || null, numero: numero || null, complemento: complemento || null, bairro: bairro || null, cidade: cidade || null, estado: estado || null, active },
+      req,
+    })
     return NextResponse.json(motoboy)
   } catch {
     return NextResponse.json({ error: 'Erro ao atualizar motoboy' }, { status: 400 })

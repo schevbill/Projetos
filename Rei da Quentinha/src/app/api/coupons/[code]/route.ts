@@ -21,8 +21,21 @@ export async function PUT(req: Request, { params }: { params: Promise<{ code: st
     await requireAdmin()
     const { code } = await params
     const data = await req.json()
+
+    const prev = await prisma.coupon.findUnique({
+      where: { code },
+      select: { code: true, discount: true, type: true, maxUses: true, expiresAt: true, active: true },
+    })
+
     const coupon = await prisma.coupon.update({ where: { code }, data })
-    await writeLogFromSession({ action: 'UPDATE', entity: 'COUPON', entityId: coupon.id, description: `Cupom editado: ${code}`, req })
+
+    await writeLogFromSession({
+      action: 'UPDATE', entity: 'COUPON', entityId: coupon.id,
+      description: `Cupom editado: ${code}`,
+      before: prev ? { ...prev, expiresAt: prev.expiresAt?.toISOString() ?? null } : undefined,
+      after: { code: data.code, discount: data.discount, type: data.type, maxUses: data.maxUses, expiresAt: data.expiresAt, active: data.active },
+      req,
+    })
     return NextResponse.json(coupon)
   } catch {
     return NextResponse.json({ error: 'Erro' }, { status: 400 })

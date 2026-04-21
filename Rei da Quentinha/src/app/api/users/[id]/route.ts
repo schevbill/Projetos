@@ -15,9 +15,13 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       if (conflict) return NextResponse.json({ error: 'E-mail já está em uso' }, { status: 400 })
     }
 
+    const prev = await prisma.user.findUnique({
+      where: { id },
+      select: { name: true, email: true, phone: true, cpfCnpj: true, birthDate: true, role: true },
+    })
+
     const updateData: Record<string, unknown> = {
-      name,
-      email,
+      name, email,
       phone: phone || null,
       cpfCnpj: cpfCnpj || null,
       birthDate: birthDate ? new Date(birthDate) : null,
@@ -30,7 +34,14 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       data: updateData,
       select: { id: true, name: true, email: true, cpfCnpj: true, phone: true, role: true, createdAt: true },
     })
-    await writeLogFromSession({ action: 'UPDATE', entity: 'USER', entityId: id, description: `Admin editou usuário: ${user.name} (${user.email})`, req })
+
+    await writeLogFromSession({
+      action: 'UPDATE', entity: 'USER', entityId: id,
+      description: `Admin editou usuário: ${user.name} (${user.email})`,
+      before: prev ? { ...prev, birthDate: prev.birthDate?.toISOString().split('T')[0] ?? null } : undefined,
+      after: { name, email, phone: phone || null, cpfCnpj: cpfCnpj || null, birthDate: birthDate || null, role },
+      req,
+    })
     return NextResponse.json(user)
   } catch {
     return NextResponse.json({ error: 'Erro ao atualizar usuário' }, { status: 400 })
