@@ -5,14 +5,15 @@ import { requireAdmin } from '@/lib/auth'
 export async function GET() {
   try {
     await requireAdmin()
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
+    const todayStr = new Date().toISOString().split('T')[0]
+    const today = new Date(todayStr + 'T00:00:00.000Z')
 
-    const [totalOrders, todayOrders, pendingOrders, totalRevenue, todayRevenue, topProducts, recentOrders] =
+    const [totalOrders, todayOrders, pendingOrders, deliveredOrders, totalRevenue, todayRevenue, topProducts, recentOrders] =
       await Promise.all([
         prisma.order.count({ where: { paymentStatus: 'PAID' } }),
         prisma.order.count({ where: { createdAt: { gte: today } } }),
         prisma.order.count({ where: { status: { in: ['PENDING', 'CONFIRMED', 'PREPARING'] } } }),
+        prisma.order.count({ where: { status: 'DELIVERED' } }),
         prisma.order.aggregate({ where: { paymentStatus: 'PAID' }, _sum: { total: true } }),
         prisma.order.aggregate({ where: { createdAt: { gte: today }, paymentStatus: 'PAID' }, _sum: { total: true } }),
         prisma.orderItem.groupBy({
@@ -39,6 +40,7 @@ export async function GET() {
       totalOrders,
       todayOrders,
       pendingOrders,
+      deliveredOrders,
       totalRevenue: totalRevenue._sum.total || 0,
       todayRevenue: todayRevenue._sum.total || 0,
       topProducts: topProductsWithNames,

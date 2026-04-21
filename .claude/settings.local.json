@@ -15,7 +15,9 @@
       "Bash(git -C \"d:/Renato/Desenvolvimento/Projetos/Rei da Quentinha\" log --oneline --all -- .env)",
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(64\\).toString\\('hex'\\)\\)\")",
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('hex'\\)\\)\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const d=new Date\\(\\); d.setDate\\(d.getDate\\(\\)-29\\); console.log\\(d.toISOString\\(\\).split\\('T'\\)[0]\\)\")",
+      "Bash(node -e \"console.log\\(new Date\\(\\).toISOString\\(\\).split\\('T'\\)[0]\\)\")"
     ]
   }
 }
