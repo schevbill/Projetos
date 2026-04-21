@@ -2,9 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { jwtVerify } from 'jose'
 
-const secret = new TextEncoder().encode(process.env.JWT_SECRET || 'fallback-secret')
-
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (pathname.startsWith('/admin')) {
@@ -13,6 +11,8 @@ export async function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL('/auth/login?redirect=/admin', request.url))
     }
     try {
+      if (!process.env.JWT_SECRET) throw new Error('JWT_SECRET não definido')
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET)
       const { payload } = await jwtVerify(token, secret)
       if (payload.role !== 'ADMIN') {
         return NextResponse.redirect(new URL('/', request.url))
