@@ -8,18 +8,20 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  name      String
-  email     String    @unique
-  cpfCnpj   String?
-  phone     String?
-  birthDate DateTime?
-  password  String
-  role      String    @default("CUSTOMER")
-  orders    Order[]
-  addresses Address[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id               String    @id @default(cuid())
+  name             String
+  email            String    @unique
+  cpfCnpj          String?
+  phone            String?
+  birthDate        DateTime?
+  password         String
+  role             String    @default("CUSTOMER")
+  orders           Order[]
+  addresses        Address[]
+  sessionToken     String?
+  sessionExpiresAt DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 }
 
 model Address {
@@ -167,6 +169,14 @@ model ConfigEmail {
   from      String   @default("")
   active    Boolean  @default(false)
   updatedAt DateTime @updatedAt
+}
+
+model ConfigSystem {
+  id                 String   @id @default("default")
+  whatsappCustomer   Boolean  @default(true)
+  whatsappMotoboy    Boolean  @default(true)
+  logRetentionDays   Int      @default(30)
+  updatedAt          DateTime @updatedAt
 }
 
 model Log {

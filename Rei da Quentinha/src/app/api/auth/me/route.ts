@@ -3,6 +3,7 @@ import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { writeLogFromSession } from '@/lib/logger'
+import { validatePassword } from '@/lib/validators'
 
 export async function GET() {
   const session = await getSession()
@@ -20,8 +21,16 @@ export async function PUT(req: Request) {
 
   const { name, phone, password } = await req.json()
 
+  if (name !== undefined && !name?.trim()) {
+    return NextResponse.json({ error: 'Nome não pode ser vazio' }, { status: 400 })
+  }
+  if (password) {
+    const passErr = validatePassword(password)
+    if (passErr) return NextResponse.json({ error: passErr }, { status: 400 })
+  }
+
   const data: Record<string, unknown> = {}
-  if (name) data.name = name
+  if (name?.trim()) data.name = name.trim()
   if (phone !== undefined) data.phone = phone
   if (password) data.password = await bcrypt.hash(password, 10)
 

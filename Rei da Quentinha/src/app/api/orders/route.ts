@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getSession, requireAdmin } from '@/lib/auth'
 import { printToThermal } from '@/lib/print'
-import { writeLog } from '@/lib/logger'
+import { writeLog, writeErrorLog } from '@/lib/logger'
 
 export async function GET(req: Request) {
   try {
@@ -20,24 +20,43 @@ export async function GET(req: Request) {
   }
 }
 
+const VALID_PAYMENT_METHODS = ['PIX', 'CREDIT_CARD', 'DEBIT_CARD', 'CASH']
+
 export async function POST(req: Request) {
   try {
     const session = await getSession()
     const body = await req.json()
     const { customerName, customerPhone, address, items, subtotal, discount, total, paymentMethod, couponId, notes, changeFor } = body
 
+    // Validações de entrada
+    if (!customerName?.trim()) return NextResponse.json({ error: 'Nome do cliente obrigatório' }, { status: 400 })
+    if (!customerPhone?.trim()) return NextResponse.json({ error: 'Telefone obrigatório' }, { status: 400 })
+    if (!address?.trim()) return NextResponse.json({ error: 'Endereço obrigatório' }, { status: 400 })
+    if (!Array.isArray(items) || items.length === 0) return NextResponse.json({ error: 'Pedido sem itens' }, { status: 400 })
+    if (!VALID_PAYMENT_METHODS.includes(paymentMethod)) return NextResponse.json({ error: 'Forma de pagamento inválida' }, { status: 400 })
+    if (typeof total !== 'number' || total <= 0) return NextResponse.json({ error: 'Total inválido' }, { status: 400 })
+    if (typeof subtotal !== 'number' || subtotal <= 0) return NextResponse.json({ error: 'Subtotal inválido' }, { status: 400 })
+    for (const item of items) {
+      if (!item.productId || typeof item.quantity !== 'number' || item.quantity < 1) {
+        return NextResponse.json({ error: 'Item inválido no pedido' }, { status: 400 })
+      }
+      if (typeof item.price !== 'number' || item.price < 0) {
+        return NextResponse.json({ error: 'Preço inválido no pedido' }, { status: 400 })
+      }
+    }
+
     const order = await prisma.order.create({
       data: {
         userId: session?.id as string || null,
-        customerName,
-        customerPhone,
-        address,
+        customerName: customerName.trim(),
+        customerPhone: customerPhone.trim(),
+        address: address.trim(),
         subtotal,
-        discount: discount || 0,
+        discount: typeof discount === 'number' && discount >= 0 ? discount : 0,
         total,
         paymentMethod,
         couponId: couponId || null,
-        notes,
+        notes: notes?.trim() || null,
         items: {
           create: items.map((item: { productId: string; quantity: number; price: number }) => ({
             productId: item.productId,
@@ -88,7 +107,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(order)
   } catch (err) {
-    console.error(err)
+    await writeErrorLog({ description: 'Erro ao criar pedido', entity: 'ORDER', req, error: err })
     return NextResponse.json({ error: 'Erro ao criar pedido' }, { status: 500 })
   }
 }

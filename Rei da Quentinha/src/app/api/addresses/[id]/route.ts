@@ -8,6 +8,10 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
   const { id } = await params
   const { label, cep, logradouro, numero, complemento, bairro, cidade, estado } = await req.json()
 
+  if (!logradouro?.trim()) return NextResponse.json({ error: 'Logradouro obrigatório' }, { status: 400 })
+  if (!numero?.trim()) return NextResponse.json({ error: 'Número obrigatório' }, { status: 400 })
+  if (!cidade?.trim()) return NextResponse.json({ error: 'Cidade obrigatória' }, { status: 400 })
+
   const existing = await prisma.address.findUnique({ where: { id } })
   const isAdmin = (session as { role?: string }).role === 'ADMIN'
   if (!existing || (existing.userId !== session.id && !isAdmin)) {
@@ -16,7 +20,16 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
   const address = await prisma.address.update({
     where: { id },
-    data: { label, cep, logradouro, numero, complemento, bairro, cidade, estado },
+    data: {
+      label: label?.trim() || 'Casa',
+      cep: cep?.trim() || null,
+      logradouro: logradouro.trim(),
+      numero: numero.trim(),
+      complemento: complemento?.trim() || null,
+      bairro: bairro?.trim() || null,
+      cidade: cidade.trim(),
+      estado: estado?.trim() || null,
+    },
   })
   return NextResponse.json(address)
 }

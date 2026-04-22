@@ -1,10 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
-import { Save, QrCode, RefreshCw, Mail, Settings, Send, Eye, EyeOff } from 'lucide-react'
+import { Save, QrCode, RefreshCw, Mail, Settings, Send, Eye, EyeOff, MessageCircle, Bike, Trash2 } from 'lucide-react'
 
 export default function ConfiguracoesPage() {
-  const [tab, setTab] = useState<'pix' | 'email'>('pix')
+  const [tab, setTab] = useState<'pix' | 'email' | 'sistema'>('sistema')
 
   // PIX
   const [pixForm, setPixForm] = useState({ pixKey: '', pixName: '', pixCity: '' })
@@ -12,6 +12,11 @@ export default function ConfiguracoesPage() {
   const [testAmount, setTestAmount] = useState('10.00')
   const [testPix, setTestPix] = useState<{ qrCode: string; payload: string } | null>(null)
   const [testPixLoading, setTestPixLoading] = useState(false)
+
+  // Sistema
+  const [systemForm, setSystemForm] = useState({ whatsappCustomer: true, whatsappMotoboy: true, logRetentionDays: 30 })
+  const [logRetentionStr, setLogRetentionStr] = useState('30')
+  const [systemLoading, setSystemLoading] = useState(false)
 
   // Email
   const [emailForm, setEmailForm] = useState({
@@ -25,6 +30,12 @@ export default function ConfiguracoesPage() {
     fetch('/api/config').then(r => r.ok ? r.json() : null).then(d => { if (d) setPixForm(d) })
     fetch('/api/config-email').then(r => r.ok ? r.json() : null).then(d => {
       if (d) setEmailForm({ host: d.host, port: String(d.port), user: d.user, pass: d.pass, from: d.from, active: d.active })
+    })
+    fetch('/api/config-system').then(r => r.ok ? r.json() : null).then(d => {
+      if (d) {
+        setSystemForm({ whatsappCustomer: d.whatsappCustomer, whatsappMotoboy: d.whatsappMotoboy, logRetentionDays: d.logRetentionDays ?? 30 })
+        setLogRetentionStr(String(d.logRetentionDays ?? 30))
+      }
     })
   }, [])
 
@@ -59,6 +70,19 @@ export default function ConfiguracoesPage() {
     } catch { toast.error('Erro ao salvar') } finally { setEmailLoading(false) }
   }
 
+  const handleSaveSystem = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSystemLoading(true)
+    const logRetentionDays = logRetentionStr.trim() === '' ? 0 : Math.max(0, parseInt(logRetentionStr) || 0)
+    try {
+      const res = await fetch('/api/config-system', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...systemForm, logRetentionDays }) })
+      if (!res.ok) throw new Error()
+      setSystemForm(f => ({ ...f, logRetentionDays }))
+      setLogRetentionStr(logRetentionDays === 0 ? '0' : String(logRetentionDays))
+      toast.success('Configurações do sistema salvas!')
+    } catch { toast.error('Erro ao salvar') } finally { setSystemLoading(false) }
+  }
+
   const handleTestEmail = async () => {
     setTestEmailLoading(true)
     try {
@@ -75,23 +99,29 @@ export default function ConfiguracoesPage() {
         <Settings size={28} className="text-brand-500" />
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Configurações</h1>
-          <p className="text-gray-500 text-sm mt-0.5">PIX e notificações por e-mail</p>
+          <p className="text-gray-500 text-sm mt-0.5">Sistema, PIX e notificações por e-mail</p>
         </div>
       </div>
 
       {/* Tabs */}
       <div className="flex gap-1 bg-gray-100 p-1 rounded-xl mb-8 w-fit">
         <button
-          onClick={() => setTab('pix')}
-          className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all ${tab === 'pix' ? 'bg-white shadow text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}
+          onClick={() => setTab('sistema')}
+          className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all ${tab === 'sistema' ? 'bg-white shadow text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}
         >
-          <QrCode size={15} /> PIX
+          <Settings size={15} /> Sistema
         </button>
         <button
           onClick={() => setTab('email')}
           className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all ${tab === 'email' ? 'bg-white shadow text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}
         >
           <Mail size={15} /> E-mail
+        </button>
+        <button
+          onClick={() => setTab('pix')}
+          className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-all ${tab === 'pix' ? 'bg-white shadow text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}
+        >
+          <QrCode size={15} /> PIX
         </button>
       </div>
 
@@ -147,6 +177,92 @@ export default function ConfiguracoesPage() {
             )}
           </div>
         </>
+      )}
+
+      {/* ── SISTEMA ── */}
+      {tab === 'sistema' && (
+        <form onSubmit={handleSaveSystem} className="space-y-6">
+
+          {/* Card WhatsApp */}
+          <div className="card p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-base font-bold text-gray-700 flex items-center gap-2">
+                <MessageCircle size={18} className="text-brand-500" /> Notificações via WhatsApp
+              </h2>
+            </div>
+
+            {/* WhatsApp Cliente */}
+            <div className="flex items-start justify-between gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div className="flex items-start gap-3">
+                <div className="bg-green-100 text-green-600 p-2 rounded-lg mt-0.5">
+                  <MessageCircle size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">WhatsApp para o Cliente</p>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    Ao alterar o status do pedido, abre o WhatsApp com mensagem pré-preenchida para o cliente.
+                  </p>
+                </div>
+              </div>
+              <div
+                onClick={() => setSystemForm(f => ({ ...f, whatsappCustomer: !f.whatsappCustomer }))}
+                className={`w-10 h-6 rounded-full transition-colors relative cursor-pointer flex-shrink-0 mt-1 ${systemForm.whatsappCustomer ? 'bg-green-500' : 'bg-gray-300'}`}
+              >
+                <div className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-all ${systemForm.whatsappCustomer ? 'left-5' : 'left-1'}`} />
+              </div>
+            </div>
+
+            {/* WhatsApp Motoboy */}
+            <div className="flex items-start justify-between gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div className="flex items-start gap-3">
+                <div className="bg-indigo-100 text-indigo-600 p-2 rounded-lg mt-0.5">
+                  <Bike size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">WhatsApp para o Motoboy</p>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    Ao atribuir um motoboy ao pedido, abre o WhatsApp com os detalhes do pedido para o entregador.
+                  </p>
+                </div>
+              </div>
+              <div
+                onClick={() => setSystemForm(f => ({ ...f, whatsappMotoboy: !f.whatsappMotoboy }))}
+                className={`w-10 h-6 rounded-full transition-colors relative cursor-pointer flex-shrink-0 mt-1 ${systemForm.whatsappMotoboy ? 'bg-green-500' : 'bg-gray-300'}`}
+              >
+                <div className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-all ${systemForm.whatsappMotoboy ? 'left-5' : 'left-1'}`} />
+              </div>
+            </div>
+          </div>
+
+          {/* Card Limpeza de Logs */}
+          <div className="card p-6 space-y-4">
+            <h2 className="text-base font-bold text-gray-700 flex items-center gap-2">
+              <Trash2 size={18} className="text-brand-500" /> Limpeza Automática de Logs
+            </h2>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Manter logs dos últimos (dias)</label>
+              <input
+                type="number"
+                min={0}
+                max={3650}
+                placeholder="0"
+                value={logRetentionStr}
+                onChange={e => setLogRetentionStr(e.target.value)}
+                className="input-field w-36"
+              />
+              <p className="text-xs text-gray-400 mt-1">
+                {logRetentionStr.trim() === '' || parseInt(logRetentionStr) === 0
+                  ? '⚠️ Valor 0 ou em branco: logs nunca serão apagados automaticamente.'
+                  : `Logs com mais de ${logRetentionStr} dias serão removidos automaticamente.`}
+              </p>
+            </div>
+          </div>
+
+          <button type="submit" disabled={systemLoading} className="btn-primary flex items-center gap-2">
+            <Save size={16} /> {systemLoading ? 'Salvando...' : 'Salvar Configurações'}
+          </button>
+        </form>
       )}
 
       {/* ── EMAIL ── */}

@@ -16,8 +16,22 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     await requireAdmin()
-    const data = await req.json()
-    const product = await prisma.product.create({ data })
+    const body = await req.json()
+    const { name, description, price, image, categoryId, available } = body
+
+    if (!name?.trim()) return NextResponse.json({ error: 'Nome obrigatório' }, { status: 400 })
+    if (typeof price !== 'number' || price < 0) return NextResponse.json({ error: 'Preço inválido' }, { status: 400 })
+
+    const product = await prisma.product.create({
+      data: {
+        name: name.trim(),
+        description: description?.trim() || null,
+        price,
+        image: image || null,
+        categoryId: categoryId || null,
+        available: available !== false,
+      },
+    })
     await writeLogFromSession({ action: 'CREATE', entity: 'PRODUCT', entityId: product.id, description: `Produto criado: ${product.name}`, req })
     return NextResponse.json(product)
   } catch {

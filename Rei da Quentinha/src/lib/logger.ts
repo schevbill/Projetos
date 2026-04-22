@@ -1,8 +1,8 @@
 import { prisma } from './prisma'
 import { getSession } from './auth'
 
-type Action = 'CREATE' | 'UPDATE' | 'DELETE' | 'LOGIN'
-type Entity = 'USER' | 'ORDER' | 'PRODUCT' | 'COUPON' | 'ADDRESS' | 'MOTOBOY' | 'PRINTER' | 'CONFIG' | 'CATEGORY'
+type Action = 'CREATE' | 'UPDATE' | 'DELETE' | 'LOGIN' | 'LOGIN_BLOCKED' | 'ERROR'
+type Entity = 'USER' | 'ORDER' | 'PRODUCT' | 'COUPON' | 'ADDRESS' | 'MOTOBOY' | 'PRINTER' | 'CONFIG' | 'CATEGORY' | 'VEHICLE_TYPE' | 'SYSTEM'
 
 interface LogOptions {
   action: Action
@@ -59,4 +59,22 @@ export async function writeLogFromSession(
   } catch {
     // silently ignore
   }
+}
+
+export async function writeErrorLog(opts: {
+  description: string
+  entity?: Entity
+  entityId?: string
+  req?: Request
+  error?: unknown
+}) {
+  const detail = opts.error instanceof Error ? opts.error.message : String(opts.error ?? '')
+  await writeLog({
+    action: 'ERROR',
+    entity: opts.entity ?? 'SYSTEM',
+    entityId: opts.entityId,
+    description: opts.description,
+    req: opts.req,
+    after: detail ? { erro: detail } : undefined,
+  })
 }

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { writeLogFromSession } from '@/lib/logger'
+import { encrypt, decrypt } from '@/lib/crypto'
 
 async function getConfig() {
   return prisma.configPix.upsert({
@@ -9,7 +10,7 @@ async function getConfig() {
     update: {},
     create: {
       id: 'default',
-      pixKey: process.env.PIX_KEY || '',
+      pixKey: process.env.PIX_KEY ? encrypt(process.env.PIX_KEY) : '',
       pixName: process.env.PIX_NAME || '',
       pixCity: process.env.PIX_CITY || '',
     },
@@ -21,7 +22,7 @@ export async function GET() {
     await requireAdmin()
     const config = await getConfig()
     return NextResponse.json({
-      pixKey: config.pixKey,
+      pixKey: decrypt(config.pixKey),
       pixName: config.pixName,
       pixCity: config.pixCity,
     })
@@ -35,6 +36,10 @@ export async function POST(req: Request) {
     await requireAdmin()
     const { pixKey, pixName, pixCity } = await req.json()
 
+    if (!pixKey?.trim()) return NextResponse.json({ error: 'Chave PIX obrigatória' }, { status: 400 })
+    if (!pixName?.trim()) return NextResponse.json({ error: 'Nome do recebedor obrigatório' }, { status: 400 })
+    if (!pixCity?.trim()) return NextResponse.json({ error: 'Cidade obrigatória' }, { status: 400 })
+
     const prev = await prisma.configPix.findUnique({
       where: { id: 'default' },
       select: { pixKey: true, pixName: true, pixCity: true },
@@ -42,19 +47,15 @@ export async function POST(req: Request) {
 
     await prisma.configPix.upsert({
       where: { id: 'default' },
-      update: { pixKey, pixName, pixCity },
-      create: { id: 'default', pixKey, pixName, pixCity },
+      update: { pixKey: encrypt(pixKey), pixName, pixCity },
+      create: { id: 'default', pixKey: encrypt(pixKey), pixName, pixCity },
     })
-
-    process.env.PIX_KEY = pixKey
-    process.env.PIX_NAME = pixName
-    process.env.PIX_CITY = pixCity
 
     await writeLogFromSession({
       action: 'UPDATE', entity: 'CONFIG', entityId: 'pix',
       description: 'Configurações PIX atualizadas',
-      before: prev ?? undefined,
-      after: { pixKey, pixName, pixCity },
+      before: prev ? { pixKey: '***', pixName: prev.pixName, pixCity: prev.pixCity } : undefined,
+      after: { pixKey: '***', pixName, pixCity },
       req,
     })
 

@@ -18,25 +18,30 @@ interface LogEntry {
 }
 
 const ACTION_COLORS: Record<string, string> = {
-  CREATE: 'bg-green-100 text-green-700',
-  UPDATE: 'bg-blue-100 text-blue-700',
-  DELETE: 'bg-red-100 text-red-700',
-  LOGIN:  'bg-purple-100 text-purple-700',
+  CREATE:        'bg-green-100 text-green-700',
+  UPDATE:        'bg-blue-100 text-blue-700',
+  DELETE:        'bg-red-100 text-red-700',
+  LOGIN:         'bg-purple-100 text-purple-700',
+  LOGIN_BLOCKED: 'bg-orange-100 text-orange-700',
+  ERROR:         'bg-red-100 text-red-800',
 }
 
 const ACTION_LABELS: Record<string, string> = {
-  CREATE: 'Criação',
-  UPDATE: 'Edição',
-  DELETE: 'Exclusão',
-  LOGIN:  'Login',
+  CREATE:        'Criação',
+  UPDATE:        'Edição',
+  DELETE:        'Exclusão',
+  LOGIN:         'Login',
+  LOGIN_BLOCKED: 'Login Bloqueado',
+  ERROR:         'Erro',
 }
 
 const ENTITY_LABELS: Record<string, string> = {
   USER: 'Usuário', ORDER: 'Pedido', PRODUCT: 'Produto',
   COUPON: 'Cupom', ADDRESS: 'Endereço', MOTOBOY: 'Motoboy',
-  PRINTER: 'Impressora', CONFIG: 'Config', CATEGORY: 'Categoria',
+  PRINTER: 'Impressora', CATEGORY: 'Categoria',
   VEHICLE_TYPE: 'Tipo de Veículo',
   CONFIG: 'Configuração',
+  SYSTEM: 'Sistema',
 }
 
 const FIELD_LABELS: Record<string, string> = {
@@ -50,6 +55,8 @@ const FIELD_LABELS: Record<string, string> = {
   code: 'Código',
   pixKey: 'Chave PIX', pixName: 'Nome PIX', pixCity: 'Cidade PIX',
   host: 'Servidor SMTP', port: 'Porta', user: 'Usuário SMTP', from: 'Remetente',
+  whatsappCustomer: 'WhatsApp Cliente', whatsappMotoboy: 'WhatsApp Motoboy',
+  logRetentionDays: 'Retenção de Logs (dias)',
 }
 
 function formatValue(val: unknown): string {

@@ -18,7 +18,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Imagem muito grande. Máximo 5MB.' }, { status: 400 })
     }
 
-    const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg'
+    // Extensão derivada do MIME type (não do nome do arquivo)
+    const mimeToExt: Record<string, string> = {
+      'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif',
+    }
+    const ext = mimeToExt[file.type] || 'jpg'
     const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
     const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'products')
     await mkdir(uploadDir, { recursive: true })

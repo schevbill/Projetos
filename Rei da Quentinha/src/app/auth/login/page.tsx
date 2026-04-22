@@ -10,6 +10,7 @@ function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect') || null
+  const reason = searchParams.get('reason')
   const [form, setForm] = useState({ email: '', password: '' })
   const [emailTouched, setEmailTouched] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -40,6 +41,12 @@ function LoginForm() {
   }
 
   return (
+    <>
+      {reason === 'inatividade' && (
+        <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
+          Sua sessão expirou por inatividade. Faça login novamente.
+        </div>
+      )}
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
@@ -80,6 +87,7 @@ function LoginForm() {
         {loading ? 'Entrando...' : 'Entrar'}
       </button>
     </form>
+    </>
   )
 }
 

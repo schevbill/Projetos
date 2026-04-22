@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { signToken } from '@/lib/auth'
 import { cookies } from 'next/headers'
-import { validateEmail, validateCpfCnpj } from '@/lib/validators'
+import { validateEmail, validateCpfCnpj, validatePassword } from '@/lib/validators'
 import { writeLog } from '@/lib/logger'
 
 export async function POST(req: Request) {
@@ -16,6 +16,9 @@ export async function POST(req: Request) {
 
     const emailErr = validateEmail(email)
     if (emailErr) return NextResponse.json({ error: emailErr }, { status: 400 })
+
+    const passErr = validatePassword(password)
+    if (passErr) return NextResponse.json({ error: passErr }, { status: 400 })
 
     if (cpfCnpj) {
       const docErr = validateCpfCnpj(cpfCnpj)

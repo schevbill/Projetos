@@ -28,12 +28,56 @@ const PAYMENT_LABELS: Record<string, string> = {
   PIX: 'PIX', CREDIT_CARD: 'Cartão Crédito', DEBIT_CARD: 'Cartão Débito', CASH: 'Dinheiro'
 }
 
+const WA_STATUS_CONFIG: Record<string, { icon: string; message: string }> = {
+  CONFIRMED:        { icon: '✅', message: 'Seu pedido foi *confirmado* e já está sendo preparado!' },
+  PREPARING:        { icon: '🍱', message: 'Nossa equipe está *preparando* seu pedido com todo carinho. Em breve estará a caminho!' },
+  READY:            { icon: '🔔', message: 'Seu pedido está *pronto* e aguardando o entregador!' },
+  DELIVERING:       { icon: '🛵', message: 'Seu pedido *saiu para entrega* e já está a caminho. Prepare-se para receber!' },
+  DELIVERED:        { icon: '🎉', message: 'Seu pedido foi *entregue*! Esperamos que aproveite. Bom apetite! 😋' },
+  CANCELLED:        { icon: '❌', message: 'Infelizmente seu pedido foi *cancelado*. Em caso de dúvidas, entre em contato conosco.' },
+  PAID:             { icon: '💰', message: 'Seu *pagamento foi confirmado*! Seu pedido será preparado em breve.' },
+  PENDING:          { icon: '⏳', message: 'Seu pedido está *aguardando confirmação de pagamento*.' },
+  REFUNDED:         { icon: '↩️', message: 'O *reembolso* do seu pedido foi processado. O valor será estornado conforme a forma de pagamento.' },
+}
+
+function buildWhatsAppMsg(order: Order, status: string, isPayment = false) {
+  const cfg = WA_STATUS_CONFIG[status]
+  if (!cfg) return null
+  const itemsList = order.items.map(i => `  • ${i.quantity}x ${i.product.name}`).join('\n')
+  const total = order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+  const lines = [
+    `${cfg.icon} *Rei da Quentinha*`,
+    ``,
+    `Olá, *${order.customerName}*!`,
+    cfg.message,
+    ``,
+    `*Pedido:* #${order.id.slice(-6).toUpperCase()}`,
+    `*Itens:*`,
+    itemsList,
+    ``,
+    `*Total:* ${total}`,
+    `*Pagamento:* ${PAYMENT_LABELS[order.paymentMethod] || order.paymentMethod}`,
+  ]
+  if (order.notes) lines.push(`*Obs:* ${order.notes}`)
+  return lines.join('\n')
+}
+
+function openWhatsAppCustomer(order: Order, status: string, isPayment = false) {
+  if (!order.customerPhone) return
+  const msg = buildWhatsAppMsg(order, status, isPayment)
+  if (!msg) return
+  const phone = order.customerPhone.replace(/\D/g, '')
+  const phoneWithCountry = phone.startsWith('55') ? phone : `55${phone}`
+  window.open(`https://wa.me/${phoneWithCountry}?text=${encodeURIComponent(msg)}`, '_blank')
+}
+
 export default function AdminOrders() {
   const [orders, setOrders] = useState<Order[]>([])
   const [filter, setFilter] = useState('')
   const [motoboys, setMotoboys] = useState<Motoboy[]>([])
   const [selected, setSelected] = useState<Order | null>(null)
   const [loading, setLoading] = useState(false)
+  const [sysConfig, setSysConfig] = useState({ whatsappCustomer: true, whatsappMotoboy: true })
 
   const load = () => {
     const url = filter ? `/api/orders?status=${filter}` : '/api/orders'
@@ -42,8 +86,11 @@ export default function AdminOrders() {
 
   useEffect(() => { load() }, [filter])
   useEffect(() => { fetch('/api/motoboys').then(r => r.json()).then(setMotoboys) }, [])
+  useEffect(() => {
+    fetch('/api/config-system').then(r => r.ok ? r.json() : null).then(d => { if (d) setSysConfig(d) })
+  }, [])
 
-  const updateStatus = async (id: string, status: string) => {
+  const updateStatus = async (id: string, status: string, order: Order) => {
     setLoading(true)
     try {
       const res = await fetch(`/api/orders/${id}`, {
@@ -55,6 +102,7 @@ export default function AdminOrders() {
       toast.success('Status atualizado!')
       load()
       if (selected?.id === id) setSelected(await res.json())
+      if (sysConfig.whatsappCustomer) openWhatsAppCustomer(order, status)
     } catch {
       toast.error('Erro ao atualizar')
     } finally {
@@ -62,22 +110,54 @@ export default function AdminOrders() {
     }
   }
 
-  const updatePayment = async (id: string, paymentStatus: string) => {
+  const updatePayment = async (id: string, paymentStatus: string, order: Order) => {
     const res = await fetch(`/api/orders/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ paymentStatus }),
     })
-    if (res.ok) { toast.success('Pagamento atualizado!'); load() }
+    if (res.ok) {
+      toast.success('Pagamento atualizado!')
+      load()
+      if (sysConfig.whatsappCustomer) openWhatsAppCustomer(order, paymentStatus, true)
+    }
   }
 
-  const assignMotoboy = async (id: string, motoboyId: string) => {
+  const assignMotoboy = async (id: string, motoboyId: string, order: Order) => {
     const res = await fetch(`/api/orders/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ motoboyId: motoboyId || null }),
     })
-    if (res.ok) { toast.success('Motoboy atribuído!'); load() }
+    if (!res.ok) return
+    toast.success('Motoboy atribuído!')
+    load()
+
+    if (!motoboyId || !sysConfig.whatsappMotoboy) return
+    const motoboy = motoboys.find(m => m.id === motoboyId)
+    if (!motoboy?.phone) return
+
+    const phone = motoboy.phone.replace(/\D/g, '')
+    const phoneWithCountry = phone.startsWith('55') ? phone : `55${phone}`
+    const itemsList = order.items.map(i => `  • ${i.quantity}x ${i.product.name}`).join('\n')
+    const total = order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    const msg = [
+      `🛵 *Novo Pedido para Entrega* 🛵`,
+      ``,
+      `*Pedido:* #${order.id.slice(-6).toUpperCase()}`,
+      `*Cliente:* ${order.customerName}`,
+      `*Fone:* ${order.customerPhone}`,
+      `*Endereço:* ${order.address}`,
+      ``,
+      `*Itens:*`,
+      itemsList,
+      ``,
+      `*Total:* ${total}`,
+      `*Pagamento:* ${PAYMENT_LABELS[order.paymentMethod] || order.paymentMethod}${order.paymentStatus === 'PAID' ? ' ✅ Pago' : ' ⏳ Aguardando'}`,
+      order.notes ? `\n*Obs:* ${order.notes}` : '',
+    ].filter(l => l !== undefined && l !== null).join('\n').trim()
+
+    window.open(`https://wa.me/${phoneWithCountry}?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   const printOrder = (order: Order) => {
@@ -148,6 +228,7 @@ export default function AdminOrders() {
             <div className="flex justify-between items-start mb-3">
               <div>
                 <span className="font-mono text-sm text-gray-500">#{order.id.slice(-6).toUpperCase()}</span>
+                <p className="text-xs text-gray-400">{new Date(order.createdAt).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                 <h3 className="font-bold text-gray-800">{order.customerName}</h3>
                 <p className="text-sm text-gray-500">{order.customerPhone}</p>
               </div>
@@ -174,7 +255,7 @@ export default function AdminOrders() {
             <div className="flex flex-wrap gap-2">
               <select
                 value={order.status}
-                onChange={e => updateStatus(order.id, e.target.value)}
+                onChange={e => updateStatus(order.id, e.target.value, order)}
                 disabled={loading}
                 className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-brand-400"
               >
@@ -183,7 +264,7 @@ export default function AdminOrders() {
 
               <select
                 value={order.paymentStatus}
-                onChange={e => updatePayment(order.id, e.target.value)}
+                onChange={e => updatePayment(order.id, e.target.value, order)}
                 className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-brand-400"
               >
                 <option value="PENDING">Pagto. Pendente</option>
@@ -193,7 +274,7 @@ export default function AdminOrders() {
 
               <select
                 value={order.motoboyId || ''}
-                onChange={e => assignMotoboy(order.id, e.target.value)}
+                onChange={e => assignMotoboy(order.id, e.target.value, order)}
                 className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-brand-400"
               >
                 <option value="">Motoboy...</option>

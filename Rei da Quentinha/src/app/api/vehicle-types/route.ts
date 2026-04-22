@@ -4,8 +4,13 @@ import { requireAdmin } from '@/lib/auth'
 import { writeLogFromSession } from '@/lib/logger'
 
 export async function GET() {
-  const types = await prisma.vehicleType.findMany({ orderBy: { name: 'asc' } })
-  return NextResponse.json(types)
+  try {
+    await requireAdmin()
+    const types = await prisma.vehicleType.findMany({ orderBy: { name: 'asc' } })
+    return NextResponse.json(types)
+  } catch {
+    return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
+  }
 }
 
 export async function POST(req: Request) {

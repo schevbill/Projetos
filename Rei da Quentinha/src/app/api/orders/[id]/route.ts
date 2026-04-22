@@ -1,17 +1,26 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { requireAdmin } from '@/lib/auth'
+import { requireAdmin, getSession } from '@/lib/auth'
 import { printToThermal } from '@/lib/print'
-import { writeLogFromSession } from '@/lib/logger'
+import { writeLogFromSession, writeErrorLog } from '@/lib/logger'
 import { sendOrderStatusEmail } from '@/lib/email'
 
-export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const order = await prisma.order.findUnique({
     where: { id },
     include: { items: { include: { product: true } }, motoboy: true, coupon: true },
   })
   if (!order) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+  // IDOR: se há sessão e o usuário não é admin, só pode ver os próprios pedidos
+  const session = await getSession()
+  if (session && session.role !== 'ADMIN') {
+    if (order.userId && order.userId !== session.id) {
+      return NextResponse.json({ error: 'Não autorizado' }, { status: 403 })
+    }
+  }
+
   return NextResponse.json(order)
 }
 
@@ -102,7 +111,9 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     }
 
     return NextResponse.json(order)
-  } catch {
+  } catch (err) {
+    const { id } = await params
+    await writeErrorLog({ description: `Erro ao atualizar pedido #${id.slice(-6).toUpperCase()}`, entity: 'ORDER', entityId: id, req, error: err })
     return NextResponse.json({ error: 'Erro' }, { status: 400 })
   }
 }
