@@ -1,0 +1,506 @@
+[23/04/2026 10:54:42] === Inicio da verificacao ===
+[23/04/2026 10:54:43] 25 issues com status 'Tarefas pendentes' encontradas.
+[23/04/2026 10:54:44] OK - Comentario postado em BILL-1: Autenticação de Usuário
+[23/04/2026 10:54:45] OK - Comentario postado em BILL-2: Gestão de Produtos
+[23/04/2026 10:54:47] OK - Comentario postado em BILL-8: Validação de formulário
+[23/04/2026 10:54:48] OK - Comentario postado em BILL-7: Criar tela de login
+[23/04/2026 10:54:50] OK - Comentario postado em BILL-6: Criar endpoint /auth/login
+[23/04/2026 10:54:51] OK - Comentario postado em BILL-5: Login de usuário
+[23/04/2026 10:54:52] OK - Comentario postado em BILL-4: Segurança
+[23/04/2026 10:54:53] OK - Comentario postado em BILL-3: Dashboard
+[23/04/2026 10:54:55] OK - Comentario postado em BILL-15: Criar listagem no frontend
+[23/04/2026 10:54:56] OK - Comentario postado em BILL-14: Criar endpoint /products
+[23/04/2026 10:54:57] OK - Comentario postado em BILL-13: Listar produtos
+[23/04/2026 10:54:58] OK - Comentario postado em BILL-12: Erro 500 no login
+[23/04/2026 10:54:59] OK - Comentario postado em BILL-11: Validação de e-mail único
+[23/04/2026 10:55:01] OK - Comentario postado em BILL-10: Criar endpoint /auth/register
+[23/04/2026 10:55:02] OK - Comentario postado em BILL-9: Cadastro de usuário
+[23/04/2026 10:55:03] OK - Comentario postado em BILL-23: Reset de senha
+[23/04/2026 10:55:04] OK - Comentario postado em BILL-22: Frontend dashboard
+[23/04/2026 10:55:05] OK - Comentario postado em BILL-21: Endpoint /dashboard
+[23/04/2026 10:55:06] OK - Comentario postado em BILL-20: Dashboard
+[23/04/2026 10:55:07] OK - Comentario postado em BILL-19: Produto sem preço
+[23/04/2026 10:55:08] OK - Comentario postado em BILL-18: Validação backend
+[23/04/2026 10:55:09] OK - Comentario postado em BILL-17: Endpoint POST /products
+[23/04/2026 10:55:10] OK - Comentario postado em BILL-16: Criar produto
+[23/04/2026 10:55:12] OK - Comentario postado em BILL-25: Envio de e-mail
+[23/04/2026 10:55:12] OK - Comentario postado em BILL-24: Endpoint forgot-password
+[23/04/2026 10:55:12] Concluido: 25 comentario(s) novo(s) postado(s).
+[23/04/2026 10:55:12] === Fim da verificacao ===
+
+[23/04/2026 10:55:55] === Inicio da verificacao ===
+[23/04/2026 10:55:56] 25 issues com status 'Tarefas pendentes' encontradas.
+[23/04/2026 10:56:15] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 10:56:15] === Fim da verificacao ===
+
+[23/04/2026 11:04:44] === Inicio da verificacao ===
+[23/04/2026 11:04:45] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:04:46] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:04:47] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 11:04:47] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:04:48] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:04:49] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:04:49] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:04:50] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:04:51] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:04:51] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:04:52] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:04:52] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:04:53] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:04:53] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 11:04:54] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:04:55] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:04:55] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:04:56] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:04:56] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:04:57] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:04:57] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:04:58] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:04:58] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:04:59] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:05:00] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:05:00] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:05:00] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 11:05:00] === Fim da verificacao ===
+
+[23/04/2026 11:06:12] === Inicio da verificacao ===
+[23/04/2026 11:06:13] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:06:13] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:06:14] Gerando analise Claude para BILL-2: Gestão de Produtos
+[23/04/2026 11:06:15] ERRO em BILL-2: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CaMdwvLHDtp6P2Mwm5aio'}
+[23/04/2026 11:06:15] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:06:16] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:06:16] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:06:17] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:06:17] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:06:17] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:06:18] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:06:18] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:06:18] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:06:19] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:06:20] Gerando analise Claude para BILL-11: Validação de e-mail único
+[23/04/2026 11:06:21] ERRO em BILL-11: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CaMdxLKBE5kS1Lnujztj1'}
+[23/04/2026 11:06:21] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:06:21] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:06:22] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:06:22] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:06:23] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:06:23] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:06:23] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:06:24] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:06:24] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:06:25] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:06:26] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:06:26] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:06:26] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 11:06:26] === Fim da verificacao ===
+
+[23/04/2026 11:08:34] === Inicio da verificacao ===
+[23/04/2026 11:08:35] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:08:36] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:08:36] Gerando analise Claude para BILL-2: Gestão de Produtos
+[23/04/2026 11:08:37] ERRO em BILL-2: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CaMe8NPU1x2hNQq9CLhB5'}
+[23/04/2026 11:08:37] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:08:38] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:08:38] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:08:38] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:08:39] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:08:39] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:08:40] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:08:40] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:08:41] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:08:41] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:08:42] Gerando analise Claude para BILL-11: Validação de e-mail único
+[23/04/2026 11:08:42] ERRO em BILL-11: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CaMe8korTpwfuiowfgqGp'}
+[23/04/2026 11:08:43] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:08:43] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:08:44] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:08:44] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:08:45] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:08:45] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:08:46] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:08:46] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:08:46] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:08:47] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:08:47] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:08:48] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:08:48] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 11:08:48] === Fim da verificacao ===
+
+[23/04/2026 11:16:33] === Inicio da verificacao ===
+[23/04/2026 11:16:34] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:16:35] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:16:37] Gerando analise Gemini para BILL-2: Gestão de Produtos
+[23/04/2026 11:16:37] ERRO em BILL-2: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+Please retry in 6.736910301s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, retry_delay {
+  seconds: 6
+}
+]
+[23/04/2026 11:16:38] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:16:40] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:16:40] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:16:42] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:16:43] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:16:44] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:16:44] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:16:45] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:16:45] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:16:47] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:16:48] Gerando analise Gemini para BILL-11: Validação de e-mail único
+[23/04/2026 11:16:48] ERRO em BILL-11: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+Please retry in 56.011593196s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, retry_delay {
+  seconds: 56
+}
+]
+[23/04/2026 11:16:49] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:16:50] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:16:50] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:16:51] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:16:51] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:16:52] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:16:52] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:16:53] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:16:53] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:16:54] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:16:54] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:16:55] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:16:55] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 11:16:55] === Fim da verificacao ===
+
+[23/04/2026 11:27:16] === Inicio da verificacao ===
+[23/04/2026 11:27:17] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:27:17] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:27:19] Gerando analise Gemini para BILL-2: Gestão de Produtos
+[23/04/2026 11:27:19] ERRO em BILL-2: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+Please retry in 25.321636551s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, retry_delay {
+  seconds: 25
+}
+]
+[23/04/2026 11:27:19] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:27:20] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:27:20] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:27:21] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:27:22] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:27:22] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:27:23] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:27:24] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:27:24] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:27:25] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:27:26] Gerando analise Gemini para BILL-11: Validação de e-mail único
+[23/04/2026 11:27:26] ERRO em BILL-11: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+Please retry in 17.763684832s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"
+  quota_id: "GenerateContentInputTokensPerModelPerMinute-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerMinutePerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.0-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+}
+, retry_delay {
+  seconds: 17
+}
+]
+[23/04/2026 11:27:27] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:27:28] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:27:28] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:27:28] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:27:29] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:27:29] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:27:30] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:27:31] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:27:31] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:27:31] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:27:31] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:27:32] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:27:32] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 11:27:32] === Fim da verificacao ===
+
+[23/04/2026 11:35:32] === Inicio da verificacao ===
+[23/04/2026 11:35:32] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 11:35:33] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:35:33] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:35:34] Gerando analise Ollama para BILL-2: Gestão de Produtos
+[23/04/2026 11:35:36] ERRO em BILL-2: 404 Client Error: Not Found for url: http://localhost:11434/api/chat
+[23/04/2026 11:35:37] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:35:37] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:35:38] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:35:38] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:35:39] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:35:40] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:35:40] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:35:41] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:35:42] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:35:42] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:35:43] Gerando analise Ollama para BILL-11: Validação de e-mail único
+[23/04/2026 11:35:45] ERRO em BILL-11: 404 Client Error: Not Found for url: http://localhost:11434/api/chat
+[23/04/2026 11:35:46] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:35:47] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:35:48] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:35:48] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:35:49] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:35:49] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:35:50] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:35:50] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:35:50] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:35:51] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:35:51] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:42:56] === Inicio da verificacao ===
+[23/04/2026 11:42:56] Usando Ollama em http://localhost:11434 com modelo 'deepseek-v3.1:671b-cloud'.
+[23/04/2026 11:42:58] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:42:58] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:42:59] Gerando analise Ollama para BILL-2: Gestão de Produtos
+[23/04/2026 11:43:46] OK - Comentario postado em BILL-2: Gestão de Produtos
+[23/04/2026 11:43:47] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:43:47] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:43:48] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:43:48] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:43:49] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:43:50] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:43:50] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:43:50] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:43:51] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:43:52] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:43:53] Gerando analise Ollama para BILL-11: Validação de e-mail único
+[23/04/2026 11:44:12] OK - Comentario postado em BILL-11: Validação de e-mail único
+[23/04/2026 11:44:13] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:44:14] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:44:14] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:44:15] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:44:15] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:44:16] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:44:16] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:44:16] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:44:17] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:44:17] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:44:18] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:44:19] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:44:19] Concluido: 2 comentario(s) novo(s) postado(s).
+[23/04/2026 11:44:19] === Fim da verificacao ===
+
+[23/04/2026 11:46:05] === Inicio da verificacao ===
+[23/04/2026 11:46:05] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 11:46:05] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:46:06] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:46:07] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 11:46:07] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:46:07] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:46:07] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:46:08] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:46:08] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:46:09] Gerando analise Ollama para BILL-3: Dashboard
+[23/04/2026 11:47:07] OK - Comentario postado em BILL-3: Dashboard
+[23/04/2026 11:47:07] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:47:07] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:47:08] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:47:08] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:47:09] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 11:47:09] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:47:10] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:47:10] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:47:11] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:47:11] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:47:12] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:47:12] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:47:12] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:47:13] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:47:13] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:47:14] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:47:14] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:47:14] Concluido: 1 comentario(s) novo(s) postado(s).
+[23/04/2026 11:47:14] === Fim da verificacao ===
+
+[23/04/2026 11:50:21] === Inicio da verificacao ===
+[23/04/2026 11:50:21] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 11:50:22] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 11:50:23] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 11:50:23] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 11:50:24] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 11:50:25] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 11:50:26] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 11:50:26] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 11:50:27] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 11:50:27] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 11:50:27] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 11:50:28] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 11:50:29] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 11:50:29] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 11:50:30] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 11:50:30] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 11:50:31] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 11:50:31] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 11:50:32] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 11:50:33] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 11:50:33] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 11:50:34] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 11:50:34] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 11:50:35] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 11:50:35] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 11:50:36] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 11:50:36] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 11:50:36] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 11:50:36] === Fim da verificacao ===
+

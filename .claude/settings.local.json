@@ -17,7 +17,19 @@
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('hex'\\)\\)\")",
       "Bash(node -e ' *)",
       "Bash(node -e \"const d=new Date\\(\\); d.setDate\\(d.getDate\\(\\)-29\\); console.log\\(d.toISOString\\(\\).split\\('T'\\)[0]\\)\")",
-      "Bash(node -e \"console.log\\(new Date\\(\\).toISOString\\(\\).split\\('T'\\)[0]\\)\")"
+      "Bash(node -e \"console.log\\(new Date\\(\\).toISOString\\(\\).split\\('T'\\)[0]\\)\")",
+      "Bash(pip install *)",
+      "Bash(python agente.py --projetos)",
+      "Bash(python agente.py --projeto BILL)",
+      "Bash(python -c ' *)",
+      "Bash(python comentar_issues.py)",
+      "Bash(python -W ignore comentar_issues.py)",
+      "Bash(python monitorar_issues.py)",
+      "Bash(python -W ignore monitorar_issues.py)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(python -m pip install anthropic --quiet)",
+      "Bash(python -m pip install google-generativeai --quiet)"
     ]
   }
 }
