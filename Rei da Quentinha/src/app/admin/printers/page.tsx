@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { Plus, Pencil, Trash2, Printer, Star, Wifi } from 'lucide-react'
+import { Plus, Pencil, Trash2, Printer, Star, Wifi, CheckCircle } from 'lucide-react'
 
 interface PrinterItem { id: string; name: string; ip?: string | null; port?: number | null; type: string; isDefault: boolean }
 
@@ -13,7 +13,22 @@ export default function AdminPrinters() {
   const [editing, setEditing] = useState<PrinterItem | null>(null)
   const [form, setForm] = useState(empty)
   const [loading, setLoading] = useState(false)
-  const [testing, setTesting] = useState(false)
+  const [testingId, setTestingId] = useState<string | null>(null)
+
+  const testPrinter = async (p: PrinterItem) => {
+    if (!p.ip) { toast.error('Configure o IP da impressora antes de testar'); return }
+    setTestingId(p.id)
+    try {
+      const res = await fetch(`/api/printers/${p.id}/test`, { method: 'POST' })
+      const data = await res.json()
+      if (!res.ok) toast.error(data.error || 'Falha ao imprimir')
+      else toast.success(`Página de teste enviada para ${p.name}!`)
+    } catch {
+      toast.error('Erro de conexão com a impressora')
+    } finally {
+      setTestingId(null)
+    }
+  }
 
   const load = () => fetch('/api/printers').then(r => r.json()).then(setPrinters)
   useEffect(() => { load() }, [])
@@ -102,6 +117,15 @@ export default function AdminPrinters() {
                   <Star size={12} /> Definir padrão
                 </button>
               )}
+              <button
+                onClick={() => testPrinter(p)}
+                disabled={testingId === p.id}
+                className="text-xs border border-green-300 text-green-700 px-2 py-1 rounded-lg hover:bg-green-50 flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Enviar página de teste para a impressora"
+              >
+                <CheckCircle size={12} />
+                {testingId === p.id ? 'Enviando...' : 'Testar impressão'}
+              </button>
               <button onClick={() => openEdit(p)} className="btn-secondary flex items-center gap-1 text-sm py-1 px-2">
                 <Pencil size={14} /> Editar
               </button>

@@ -3,19 +3,20 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Package, Tag, Users, Truck, Printer,
-  ClipboardList, UtensilsCrossed, LogOut, Settings, ScrollText
+  ClipboardList, UtensilsCrossed, LogOut, Settings, ScrollText, BarChart2
 } from 'lucide-react'
 
 const links = [
-  { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/orders', label: 'Pedidos', icon: ClipboardList },
-  { href: '/admin/products', label: 'Produtos', icon: Package },
-  { href: '/admin/coupons', label: 'Cupons', icon: Tag },
-  { href: '/admin/users', label: 'Usuários', icon: Users },
-  { href: '/admin/motoboys', label: 'Motoboys', icon: Truck },
-  { href: '/admin/printers', label: 'Impressoras', icon: Printer },
-  { href: '/admin/configuracoes', label: 'Configurações', icon: Settings },
-  { href: '/admin/logs', label: 'Logs', icon: ScrollText },
+  { href: '/admin',              label: 'Dashboard',    icon: LayoutDashboard },
+  { href: '/admin/orders',       label: 'Pedidos',      icon: ClipboardList },
+  { href: '/admin/products',     label: 'Produtos',     icon: Package },
+  { href: '/admin/coupons',      label: 'Cupons',       icon: Tag },
+  { href: '/admin/users',        label: 'Usuários',     icon: Users },
+  { href: '/admin/motoboys',     label: 'Motoboys',     icon: Truck },
+  { href: '/admin/printers',     label: 'Impressoras',  icon: Printer },
+  { href: '/admin/relatorios',   label: 'Relatórios',   icon: BarChart2 },
+  { href: '/admin/configuracoes',label: 'Configurações',icon: Settings },
+  { href: '/admin/logs',         label: 'Logs',         icon: ScrollText },
 ]
 
 export default function AdminSidebar() {

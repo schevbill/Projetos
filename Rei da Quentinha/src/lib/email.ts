@@ -213,6 +213,48 @@ function resolveFrom(from: string, user: string) {
   return from
 }
 
+export async function sendPasswordResetEmail(to: string, name: string, resetLink: string) {
+  const config = await prisma.configEmail.findUnique({ where: { id: 'default' } })
+  if (!config?.active || !config.user || !config.pass) {
+    throw new Error('E-mail não configurado. Configure o servidor SMTP nas Configurações.')
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: config.host,
+    port: config.port,
+    secure: config.port === 465,
+    auth: { user: config.user, pass: decrypt(config.pass) },
+    tls: { rejectUnauthorized: false },
+  })
+
+  const body = `
+    <p style="color:#555;font-size:15px;margin:0 0 20px;">Olá, <strong>${name}</strong>!</p>
+    <p style="color:#555;font-size:15px;margin:0 0 24px;">
+      Recebemos uma solicitação para redefinir a senha da sua conta no <strong>Rei da Quentinha</strong>.
+    </p>
+    <div style="text-align:center;margin:32px 0;">
+      <a href="${resetLink}"
+         style="display:inline-block;background:#e53e3e;color:#fff;font-size:16px;font-weight:700;
+                padding:14px 36px;border-radius:8px;text-decoration:none;letter-spacing:0.3px;">
+        Redefinir Minha Senha
+      </a>
+    </div>
+    <p style="color:#888;font-size:13px;margin:0 0 8px;">
+      Este link é válido por <strong>1 hora</strong>. Após este prazo, será necessário solicitar um novo link.
+    </p>
+    <p style="color:#888;font-size:13px;margin:0;">
+      Se você não solicitou a redefinição de senha, ignore este e-mail. Sua senha permanece a mesma.
+    </p>
+  `
+
+  await transporter.sendMail({
+    from: resolveFrom(config.from, config.user),
+    to,
+    subject: 'Redefinição de senha — Rei da Quentinha',
+    html: baseTemplate('Redefinir Senha', '#e53e3e', '🔐', body),
+  })
+}
+
 export async function sendTestEmail(to: string) {
   const config = await prisma.configEmail.findUnique({ where: { id: 'default' } })
   if (!config?.user || !config.pass) throw new Error('SMTP não configurado. Configure o servidor SMTP nas Configurações.')

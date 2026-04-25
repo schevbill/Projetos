@@ -30,7 +30,9 @@
       "Skill(claude-api:*)",
       "Bash(python -m pip install anthropic --quiet)",
       "Bash(python -m pip install google-generativeai --quiet)",
-      "Bash(del \"D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\Projeto Jira Python\\\\comentar_issues.py\")"
+      "Bash(del \"D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\Projeto Jira Python\\\\comentar_issues.py\")",
+      "Bash(xargs grep *)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\Rei da Quentinha\\\\src\" -Recurse | Where-Object { $_.Name -eq \"route.ts\" } | Select-Object -ExpandProperty FullName)"
     ]
   }
 }

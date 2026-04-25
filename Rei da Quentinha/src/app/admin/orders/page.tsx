@@ -1,7 +1,29 @@
 'use client'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { Printer, RefreshCw } from 'lucide-react'
+import { Printer, RefreshCw, CalendarDays } from 'lucide-react'
+
+const PERIOD_PRESETS = [
+  { label: 'Hoje',     days: 1 },
+  { label: '7 dias',   days: 7 },
+  { label: '15 dias',  days: 15 },
+  { label: '30 dias',  days: 30 },
+  { label: 'Este mês', days: 0 },
+  { label: 'Todos',    days: -1 },
+]
+
+function getPeriodRange(days: number): { from: string; to: string } | null {
+  if (days === -1) return null
+  const nowBrazil = new Date(Date.now() - 3 * 60 * 60 * 1000)
+  const todayStr = nowBrazil.toISOString().split('T')[0]
+  if (days === 0) {
+    const fromStr = new Date(Date.UTC(nowBrazil.getUTCFullYear(), nowBrazil.getUTCMonth(), 1)).toISOString().split('T')[0]
+    return { from: fromStr, to: todayStr }
+  }
+  const d = new Date(nowBrazil)
+  d.setUTCDate(d.getUTCDate() - (days - 1))
+  return { from: d.toISOString().split('T')[0], to: todayStr }
+}
 
 interface OrderItem { quantity: number; price: number; product: { name: string } }
 interface Motoboy { id: string; name: string; phone: string }
@@ -74,17 +96,21 @@ function openWhatsAppCustomer(order: Order, status: string, isPayment = false) {
 export default function AdminOrders() {
   const [orders, setOrders] = useState<Order[]>([])
   const [filter, setFilter] = useState('')
+  const [period, setPeriod] = useState(1)
   const [motoboys, setMotoboys] = useState<Motoboy[]>([])
   const [selected, setSelected] = useState<Order | null>(null)
   const [loading, setLoading] = useState(false)
   const [sysConfig, setSysConfig] = useState({ whatsappCustomer: true, whatsappMotoboy: true })
 
   const load = () => {
-    const url = filter ? `/api/orders?status=${filter}` : '/api/orders'
-    fetch(url).then(r => r.json()).then(setOrders)
+    const params = new URLSearchParams()
+    if (filter) params.set('status', filter)
+    const range = getPeriodRange(period)
+    if (range) { params.set('from', range.from); params.set('to', range.to) }
+    fetch(`/api/orders?${params.toString()}`).then(r => r.json()).then(setOrders)
   }
 
-  useEffect(() => { load() }, [filter])
+  useEffect(() => { load() }, [filter, period])
   useEffect(() => { fetch('/api/motoboys').then(r => r.json()).then(setMotoboys) }, [])
   useEffect(() => {
     fetch('/api/config-system').then(r => r.ok ? r.json() : null).then(d => { if (d) setSysConfig(d) })
@@ -211,15 +237,37 @@ export default function AdminOrders() {
         <button onClick={load} className="btn-secondary flex items-center gap-2"><RefreshCw size={16} /> Atualizar</button>
       </div>
 
-      <div className="flex gap-2 mb-6 flex-wrap">
-        <button onClick={() => setFilter('')} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${!filter ? 'bg-brand-500 text-white' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-          Todos
-        </button>
-        {STATUSES.map(s => (
-          <button key={s} onClick={() => setFilter(s)} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === s ? 'bg-brand-500 text-white' : 'bg-white text-gray-600 border hover:bg-gray-50'}`}>
-            {STATUS_LABELS[s]}
+      {/* Filtro de período */}
+      <div className="card p-4 mb-4 flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-2 text-gray-600 font-medium text-sm">
+          <CalendarDays size={16} className="text-brand-500" />
+          Período:
+        </div>
+        <div className="flex gap-1 flex-wrap">
+          {PERIOD_PRESETS.map(p => (
+            <button key={p.days} onClick={() => setPeriod(p.days)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${period === p.days ? 'bg-brand-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Filtro de status */}
+      <div className="card p-4 mb-6 flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-2 text-gray-600 font-medium text-sm whitespace-nowrap">
+          Status:
+        </div>
+        <div className="flex gap-1 flex-wrap">
+          <button onClick={() => setFilter('')} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${!filter ? 'bg-brand-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+            Todos
           </button>
-        ))}
+          {STATUSES.map(s => (
+            <button key={s} onClick={() => setFilter(s)} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${filter === s ? 'bg-brand-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+              {STATUS_LABELS[s]}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">

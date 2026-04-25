@@ -44,6 +44,7 @@ const STATUS_LABELS: Record<string, string> = {
 function fmt(v: number) { return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }
 
 const PRESETS = [
+  { label: 'Hoje', days: 1 },
   { label: '7 dias', days: 7 },
   { label: '15 dias', days: 15 },
   { label: '30 dias', days: 30 },
@@ -51,17 +52,17 @@ const PRESETS = [
 ]
 
 function getPresetRange(days: number) {
-  const todayUTC = new Date().toISOString().split('T')[0]
-  let fromUTC: string
+  const nowBrazil = new Date(Date.now() - 3 * 60 * 60 * 1000)
+  const todayStr = nowBrazil.toISOString().split('T')[0]
+  let fromStr: string
   if (days === 0) {
-    const now = new Date()
-    fromUTC = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString().split('T')[0]
+    fromStr = new Date(Date.UTC(nowBrazil.getUTCFullYear(), nowBrazil.getUTCMonth(), 1)).toISOString().split('T')[0]
   } else {
-    const d = new Date()
+    const d = new Date(nowBrazil)
     d.setUTCDate(d.getUTCDate() - (days - 1))
-    fromUTC = d.toISOString().split('T')[0]
+    fromStr = d.toISOString().split('T')[0]
   }
-  return { from: fromUTC, to: todayUTC }
+  return { from: fromStr, to: todayStr }
 }
 
 const CustomTooltipOrders = ({ active, payload, label }: any) => {

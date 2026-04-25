@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import AddressManager, { type AddressData } from '@/components/AddressManager'
 import toast from 'react-hot-toast'
-import { User, Phone, Mail, CreditCard, Calendar, Lock, Save } from 'lucide-react'
-import { formatPhone, validatePhone } from '@/lib/validators'
+import { User, Phone, Mail, CreditCard, Calendar, Lock, Save, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react'
+import { formatPhone, validatePhone, validatePassword, checkPasswordRules } from '@/lib/validators'
 
 interface UserProfile {
   id: string
@@ -23,6 +23,8 @@ export default function PerfilPage() {
   const [form, setForm] = useState({ name: '', phone: '', password: '', confirmPassword: '' })
   const [addresses, setAddresses] = useState<AddressData[]>([])
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
 
   useEffect(() => {
     fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(data => {
@@ -38,8 +40,11 @@ export default function PerfilPage() {
     e.preventDefault()
     if (addresses.length === 0) { toast.error('Cadastre pelo menos um endereço de entrega'); return }
     if (form.phone && validatePhone(form.phone)) { toast.error(validatePhone(form.phone)!); return }
-    if (form.password && form.password !== form.confirmPassword) { toast.error('Senhas não conferem'); return }
-    if (form.password && form.password.length < 6) { toast.error('Senha deve ter pelo menos 6 caracteres'); return }
+    if (form.password) {
+      const passErr = validatePassword(form.password)
+      if (passErr) { toast.error(passErr); return }
+      if (form.password !== form.confirmPassword) { toast.error('Senhas não conferem'); return }
+    }
 
     setLoading(true)
     try {
@@ -171,25 +176,81 @@ export default function PerfilPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nova senha</label>
-                <input
-                  type="password"
-                  className="input-field"
-                  placeholder="••••••••"
-                  autoComplete="new-password"
-                  value={form.password}
-                  onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className={`input-field pr-10 ${form.password && validatePassword(form.password) ? 'border-red-400 focus:ring-red-300' : form.password && !validatePassword(form.password) ? 'border-green-400 focus:ring-green-300' : ''}`}
+                    placeholder="••••••••"
+                    autoComplete="new-password"
+                    value={form.password}
+                    onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    onMouseDown={() => setShowPassword(true)}
+                    onMouseUp={() => setShowPassword(false)}
+                    onMouseLeave={() => setShowPassword(false)}
+                    onTouchStart={() => setShowPassword(true)}
+                    onTouchEnd={() => setShowPassword(false)}
+                    title="Segure para ver a senha"
+                  >
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
+                {form.password && (() => {
+                  const rules = checkPasswordRules(form.password)
+                  const items = [
+                    { ok: rules.minLength,  label: 'Mínimo 8 caracteres' },
+                    { ok: rules.hasUpper,   label: '1 letra maiúscula' },
+                    { ok: rules.hasNumber,  label: '1 número' },
+                    { ok: rules.hasSpecial, label: '1 caractere especial (!@#$...)' },
+                  ]
+                  return (
+                    <div className="mt-2 grid grid-cols-2 gap-1">
+                      {items.map(item => (
+                        <div key={item.label} className={`flex items-center gap-1.5 text-xs font-medium transition-colors ${item.ok ? 'text-green-600' : 'text-gray-400'}`}>
+                          <div className={`w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0 ${item.ok ? 'bg-green-500' : 'bg-gray-200'}`}>
+                            {item.ok && <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3 5.5L6.5 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                          </div>
+                          {item.label}
+                        </div>
+                      ))}
+                    </div>
+                  )
+                })()}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Confirmar nova senha</label>
-                <input
-                  type="password"
-                  className="input-field"
-                  placeholder="••••••••"
-                  autoComplete="new-password"
-                  value={form.confirmPassword}
-                  onChange={e => setForm(f => ({ ...f, confirmPassword: e.target.value }))}
-                />
+                <div className="relative">
+                  <input
+                    type={showConfirm ? 'text' : 'password'}
+                    className={`input-field pr-10 ${form.confirmPassword && form.password !== form.confirmPassword ? 'border-red-400 focus:ring-red-300' : form.confirmPassword && form.password === form.confirmPassword ? 'border-green-400 focus:ring-green-300' : ''}`}
+                    placeholder="••••••••"
+                    autoComplete="new-password"
+                    value={form.confirmPassword}
+                    onChange={e => setForm(f => ({ ...f, confirmPassword: e.target.value }))}
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    onMouseDown={() => setShowConfirm(true)}
+                    onMouseUp={() => setShowConfirm(false)}
+                    onMouseLeave={() => setShowConfirm(false)}
+                    onTouchStart={() => setShowConfirm(true)}
+                    onTouchEnd={() => setShowConfirm(false)}
+                    title="Segure para ver a senha"
+                  >
+                    {showConfirm ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                  {form.confirmPassword && (
+                    <div className="absolute right-10 top-1/2 -translate-y-1/2">
+                      {form.password === form.confirmPassword
+                        ? <CheckCircle size={16} className="text-green-500" />
+                        : <XCircle size={16} className="text-red-400" />}
+                    </div>
+                  )}
+                </div>
                 {form.confirmPassword && form.password !== form.confirmPassword && (
                   <p className="text-red-500 text-xs mt-1">Senhas não conferem</p>
                 )}

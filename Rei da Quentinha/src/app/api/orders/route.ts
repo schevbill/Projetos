@@ -9,8 +9,20 @@ export async function GET(req: Request) {
     await requireAdmin()
     const { searchParams } = new URL(req.url)
     const status = searchParams.get('status')
+    const from   = searchParams.get('from')
+    const to     = searchParams.get('to')
+
+    const where: Record<string, unknown> = {}
+    if (status) where.status = status
+    if (from || to) {
+      const dateFilter: Record<string, Date> = {}
+      if (from) dateFilter.gte = new Date(from + 'T03:00:00.000Z')
+      if (to)   dateFilter.lt  = new Date(new Date(to + 'T03:00:00.000Z').getTime() + 86400000)
+      where.createdAt = dateFilter
+    }
+
     const orders = await prisma.order.findMany({
-      where: status ? { status } : undefined,
+      where,
       include: { items: { include: { product: true } }, motoboy: true, coupon: true },
       orderBy: { createdAt: 'desc' },
     })

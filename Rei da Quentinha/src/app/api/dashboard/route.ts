@@ -5,17 +5,20 @@ import { requireAdmin } from '@/lib/auth'
 export async function GET() {
   try {
     await requireAdmin()
-    const todayStr = new Date().toISOString().split('T')[0]
-    const today = new Date(todayStr + 'T00:00:00.000Z')
+    // Início e fim do dia de hoje no horário de Brasília (UTC-3)
+    const nowBrazil = new Date(Date.now() - 3 * 60 * 60 * 1000)
+    const todayStr = nowBrazil.toISOString().split('T')[0]
+    const todayStart = new Date(todayStr + 'T03:00:00.000Z')   // 00:00 BRT = 03:00 UTC
+    const todayEnd   = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000)
 
     const [totalOrders, todayOrders, pendingOrders, deliveredOrders, totalRevenue, todayRevenue, topProducts, recentOrders] =
       await Promise.all([
         prisma.order.count({ where: { paymentStatus: 'PAID' } }),
-        prisma.order.count({ where: { createdAt: { gte: today } } }),
-        prisma.order.count({ where: { status: { in: ['PENDING', 'CONFIRMED', 'PREPARING'] } } }),
-        prisma.order.count({ where: { status: 'DELIVERED' } }),
+        prisma.order.count({ where: { createdAt: { gte: todayStart, lt: todayEnd } } }),
+        prisma.order.count({ where: { createdAt: { gte: todayStart, lt: todayEnd }, status: { in: ['PENDING', 'CONFIRMED', 'PREPARING'] } } }),
+        prisma.order.count({ where: { createdAt: { gte: todayStart, lt: todayEnd }, status: 'DELIVERED' } }),
         prisma.order.aggregate({ where: { paymentStatus: 'PAID' }, _sum: { total: true } }),
-        prisma.order.aggregate({ where: { createdAt: { gte: today }, paymentStatus: 'PAID' }, _sum: { total: true } }),
+        prisma.order.aggregate({ where: { createdAt: { gte: todayStart, lt: todayEnd }, paymentStatus: 'PAID' }, _sum: { total: true } }),
         prisma.orderItem.groupBy({
           by: ['productId'],
           _sum: { quantity: true },
