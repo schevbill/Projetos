@@ -504,3 +504,692 @@ violations {
 [23/04/2026 11:50:36] Nenhuma issue nova encontrada. Nada a fazer.
 [23/04/2026 11:50:36] === Fim da verificacao ===
 
+[23/04/2026 22:43:12] === Inicio da verificacao ===
+[23/04/2026 22:43:12] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 22:43:14] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 22:43:15] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 22:43:16] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 22:43:16] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 22:43:17] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 22:43:17] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 22:43:18] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 22:43:19] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 22:43:19] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 22:43:20] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 22:43:20] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 22:43:21] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 22:43:22] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 22:43:22] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 22:43:23] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 22:43:23] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 22:43:24] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 22:43:25] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 22:43:25] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 22:43:25] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 22:43:26] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 22:43:26] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 22:43:26] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 22:43:27] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 22:43:27] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 22:43:28] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 22:43:28] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 22:43:28] === Fim da verificacao ===
+
+[23/04/2026 22:46:52] === Inicio da verificacao ===
+[23/04/2026 22:46:52] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 22:46:54] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 22:46:54] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 22:46:55] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 22:46:56] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 22:46:56] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 22:46:57] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 22:46:58] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 22:46:58] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 22:46:59] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 22:47:00] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 22:47:00] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 22:47:01] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 22:47:02] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 22:47:02] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 22:47:03] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 22:47:04] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 22:47:05] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 22:47:05] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 22:47:06] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 22:47:06] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 22:47:07] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 22:47:07] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 22:47:08] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 22:47:09] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 22:47:09] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 22:47:10] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 22:47:10] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 22:47:10] === Fim da verificacao ===
+
+[23/04/2026 22:48:09] === Inicio da verificacao ===
+[23/04/2026 22:48:09] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 22:48:09] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 22:48:10] Gerando analise Ollama para BILL-1: Autenticação de Usuário
+[23/04/2026 22:48:29] OK - Comentario postado em BILL-1: Autenticação de Usuário
+[23/04/2026 22:48:30] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 22:48:31] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 22:48:31] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 22:48:31] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 22:48:32] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 22:48:32] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 22:48:32] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 22:48:33] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 22:48:33] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 22:48:34] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 22:48:34] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 22:48:35] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 22:48:35] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 22:48:36] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 22:48:36] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 22:48:36] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 22:48:37] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 22:48:37] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 22:48:38] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 22:48:38] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 22:48:39] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 22:48:40] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 22:48:40] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 22:48:41] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 22:48:41] Concluido: 1 comentario(s) novo(s) postado(s).
+[23/04/2026 22:48:41] === Fim da verificacao ===
+
+[23/04/2026 22:53:01] === Inicio da verificacao ===
+[23/04/2026 22:53:01] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 22:53:02] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 22:53:03] Gerando analise Ollama para BILL-1: Autenticação de Usuário
+[23/04/2026 22:53:18] OK - Comentario postado em BILL-1: Autenticação de Usuário
+[23/04/2026 22:53:18] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 22:53:19] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 22:53:19] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 22:53:20] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 22:53:21] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 22:53:21] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 22:53:22] Gerando analise Ollama para BILL-3: Dashboard
+[23/04/2026 22:53:31] OK - Comentario postado em BILL-3: Dashboard
+[23/04/2026 22:53:32] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 22:53:32] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 22:53:33] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 22:53:33] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 22:53:34] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 22:53:34] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 22:53:35] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 22:53:36] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 22:53:36] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 22:53:37] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 22:53:37] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 22:53:38] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 22:53:38] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 22:53:39] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 22:53:40] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 22:53:40] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 22:53:41] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 22:53:41] Concluido: 2 comentario(s) novo(s) postado(s).
+[23/04/2026 22:53:41] === Fim da verificacao ===
+
+[23/04/2026 23:08:42] === Inicio da verificacao ===
+[23/04/2026 23:08:42] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 23:08:42] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 23:08:43] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 23:08:43] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 23:08:44] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 23:08:45] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 23:08:45] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 23:08:46] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 23:08:47] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 23:08:47] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 23:08:48] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 23:08:49] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 23:08:49] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 23:08:50] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 23:08:50] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 23:08:51] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 23:08:51] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 23:08:51] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 23:08:52] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 23:08:52] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 23:08:53] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 23:08:53] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 23:08:54] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 23:08:55] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 23:08:55] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 23:08:56] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 23:08:56] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 23:08:56] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 23:08:56] === Fim da verificacao ===
+
+[23/04/2026 23:15:06] === Inicio da verificacao ===
+[23/04/2026 23:15:06] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 23:15:07] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 23:15:08] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 23:15:08] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 23:15:09] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 23:15:10] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 23:15:11] Gerando analise Ollama para BILL-6: Criar endpoint /auth/login
+[23/04/2026 23:15:30] OK - Comentario postado em BILL-6: Criar endpoint /auth/login
+[23/04/2026 23:15:30] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 23:15:31] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 23:15:31] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 23:15:32] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 23:15:32] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 23:15:33] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 23:15:33] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 23:15:35] Gerando analise Ollama para BILL-11: Validação de e-mail único
+[23/04/2026 23:15:44] OK - Comentario postado em BILL-11: Validação de e-mail único
+[23/04/2026 23:15:44] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 23:15:45] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 23:15:45] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 23:15:46] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 23:15:47] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 23:15:47] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 23:15:47] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 23:15:48] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 23:15:48] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 23:15:49] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 23:15:49] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 23:15:49] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 23:15:49] Concluido: 2 comentario(s) novo(s) postado(s).
+[23/04/2026 23:15:49] === Fim da verificacao ===
+
+[23/04/2026 23:30:49] === Inicio da verificacao ===
+[23/04/2026 23:30:49] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 23:30:50] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 23:30:51] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 23:30:52] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 23:30:52] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 23:30:53] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 23:30:53] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 23:30:54] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 23:30:54] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 23:30:55] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 23:30:56] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 23:30:56] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 23:30:57] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 23:30:57] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 23:30:58] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 23:30:58] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 23:30:59] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 23:31:00] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 23:31:00] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 23:31:01] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 23:31:01] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 23:31:02] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 23:31:02] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 23:31:03] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 23:31:03] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 23:31:04] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 23:31:05] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 23:31:05] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 23:31:05] === Fim da verificacao ===
+
+[23/04/2026 23:46:05] === Inicio da verificacao ===
+[23/04/2026 23:46:05] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[23/04/2026 23:46:06] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[23/04/2026 23:46:07] Ignorando BILL-1 — ja tem comentario do agente.
+[23/04/2026 23:46:08] Ignorando BILL-2 — ja tem comentario do agente.
+[23/04/2026 23:46:08] Ignorando BILL-8 — ja tem comentario do agente.
+[23/04/2026 23:46:09] Ignorando BILL-7 — ja tem comentario do agente.
+[23/04/2026 23:46:10] Ignorando BILL-6 — ja tem comentario do agente.
+[23/04/2026 23:46:10] Ignorando BILL-5 — ja tem comentario do agente.
+[23/04/2026 23:46:11] Ignorando BILL-4 — ja tem comentario do agente.
+[23/04/2026 23:46:12] Ignorando BILL-3 — ja tem comentario do agente.
+[23/04/2026 23:46:13] Ignorando BILL-15 — ja tem comentario do agente.
+[23/04/2026 23:46:13] Ignorando BILL-14 — ja tem comentario do agente.
+[23/04/2026 23:46:14] Ignorando BILL-13 — ja tem comentario do agente.
+[23/04/2026 23:46:15] Ignorando BILL-12 — ja tem comentario do agente.
+[23/04/2026 23:46:15] Ignorando BILL-11 — ja tem comentario do agente.
+[23/04/2026 23:46:16] Ignorando BILL-10 — ja tem comentario do agente.
+[23/04/2026 23:46:16] Ignorando BILL-9 — ja tem comentario do agente.
+[23/04/2026 23:46:17] Ignorando BILL-23 — ja tem comentario do agente.
+[23/04/2026 23:46:17] Ignorando BILL-22 — ja tem comentario do agente.
+[23/04/2026 23:46:18] Ignorando BILL-21 — ja tem comentario do agente.
+[23/04/2026 23:46:19] Ignorando BILL-20 — ja tem comentario do agente.
+[23/04/2026 23:46:19] Ignorando BILL-19 — ja tem comentario do agente.
+[23/04/2026 23:46:19] Ignorando BILL-18 — ja tem comentario do agente.
+[23/04/2026 23:46:20] Ignorando BILL-17 — ja tem comentario do agente.
+[23/04/2026 23:46:21] Ignorando BILL-16 — ja tem comentario do agente.
+[23/04/2026 23:46:21] Ignorando BILL-25 — ja tem comentario do agente.
+[23/04/2026 23:46:22] Ignorando BILL-24 — ja tem comentario do agente.
+[23/04/2026 23:46:22] Nenhuma issue nova encontrada. Nada a fazer.
+[23/04/2026 23:46:22] === Fim da verificacao ===
+
+[24/04/2026 00:01:22] === Inicio da verificacao ===
+[24/04/2026 00:01:22] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 00:01:24] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 00:01:24] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 00:01:25] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 00:01:26] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 00:01:26] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 00:01:27] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 00:01:28] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 00:01:28] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 00:01:29] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 00:01:29] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 00:01:30] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 00:01:30] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 00:01:31] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 00:01:32] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 00:01:32] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 00:01:33] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 00:01:33] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 00:01:34] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 00:01:35] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 00:01:35] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 00:01:36] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 00:01:36] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 00:01:37] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 00:01:37] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 00:01:38] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 00:01:38] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 00:01:38] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 00:01:38] === Fim da verificacao ===
+
+[24/04/2026 00:16:38] === Inicio da verificacao ===
+[24/04/2026 00:16:38] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 00:16:39] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 00:16:40] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 00:16:41] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 00:16:41] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 00:16:42] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 00:16:43] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 00:16:43] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 00:16:44] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 00:16:45] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 00:16:45] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 00:16:46] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 00:16:46] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 00:16:47] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 00:16:48] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 00:16:48] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 00:16:49] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 00:16:49] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 00:16:50] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 00:16:51] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 00:16:51] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 00:16:52] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 00:16:52] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 00:16:53] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 00:16:53] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 00:16:54] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 00:16:55] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 00:16:55] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 00:16:55] === Fim da verificacao ===
+
+[24/04/2026 00:31:55] === Inicio da verificacao ===
+[24/04/2026 00:31:55] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 00:31:57] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 00:31:57] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 00:31:58] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 00:31:59] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 00:31:59] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 00:32:00] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 00:32:01] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 00:32:01] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 00:32:02] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 00:32:03] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 00:32:03] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 00:32:03] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 00:32:04] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 00:32:04] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 00:32:05] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 00:32:05] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 00:32:06] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 00:32:07] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 00:32:07] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 00:32:08] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 00:32:09] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 00:32:09] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 00:32:10] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 00:32:11] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 00:32:11] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 00:32:11] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 00:32:11] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 00:32:11] === Fim da verificacao ===
+
+[24/04/2026 00:47:11] === Inicio da verificacao ===
+[24/04/2026 00:47:11] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 00:47:12] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 00:47:13] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 00:47:14] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 00:47:14] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 00:47:15] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 00:47:16] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 00:47:16] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 00:47:17] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 00:47:17] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 00:47:18] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 00:47:18] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 00:47:19] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 00:47:19] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 00:47:20] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 00:47:20] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 00:47:21] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 00:47:22] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 00:47:22] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 00:47:23] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 00:47:24] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 00:47:24] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 00:47:25] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 00:47:25] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 00:47:26] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 00:47:26] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 00:47:26] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 00:47:26] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 00:47:26] === Fim da verificacao ===
+
+[24/04/2026 01:02:26] === Inicio da verificacao ===
+[24/04/2026 01:02:26] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 01:02:28] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 01:02:29] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 01:02:29] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 01:02:30] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 01:02:31] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 01:02:32] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 01:02:32] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 01:02:33] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 01:02:33] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 01:02:34] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 01:02:35] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 01:02:35] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 01:02:35] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 01:02:36] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 01:02:36] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 01:02:37] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 01:02:38] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 01:02:38] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 01:02:39] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 01:02:40] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 01:02:40] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 01:02:41] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 01:02:41] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 01:02:42] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 01:02:43] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 01:02:43] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 01:02:43] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 01:02:43] === Fim da verificacao ===
+
+[24/04/2026 01:17:43] === Inicio da verificacao ===
+[24/04/2026 01:17:43] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 01:17:44] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 01:17:45] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 01:17:46] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 01:17:47] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 01:17:47] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 01:17:48] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 01:17:48] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 01:17:49] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 01:17:50] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 01:17:50] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 01:17:51] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 01:17:51] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 01:17:52] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 01:17:53] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 01:17:54] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 01:17:54] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 01:17:55] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 01:17:55] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 01:17:56] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 01:17:56] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 01:17:57] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 01:17:58] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 01:17:58] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 01:17:58] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 01:17:59] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 01:17:59] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 01:17:59] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 01:17:59] === Fim da verificacao ===
+
+[24/04/2026 01:32:59] === Inicio da verificacao ===
+[24/04/2026 01:32:59] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 01:33:00] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 01:33:01] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 01:33:02] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 01:33:03] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 01:33:03] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 01:33:04] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 01:33:04] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 01:33:05] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 01:33:05] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 01:33:06] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 01:33:06] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 01:33:07] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 01:33:08] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 01:33:08] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 01:33:09] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 01:33:10] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 01:33:10] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 01:33:11] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 01:33:12] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 01:33:12] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 01:33:12] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 01:33:13] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 01:33:13] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 01:33:14] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 01:33:14] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 01:33:15] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 01:33:15] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 01:33:15] === Fim da verificacao ===
+
+[24/04/2026 01:48:15] === Inicio da verificacao ===
+[24/04/2026 01:48:15] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 01:48:16] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 01:48:17] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 01:48:18] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 01:48:18] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 01:48:19] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 01:48:20] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 01:48:20] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 01:48:21] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 01:48:22] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 01:48:22] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 01:48:23] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 01:48:23] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 01:48:24] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 01:48:25] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 01:48:26] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 01:48:26] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 01:48:27] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 01:48:28] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 01:48:28] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 01:48:29] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 01:48:29] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 01:48:30] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 01:48:30] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 01:48:31] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 01:48:31] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 01:48:32] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 01:48:32] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 01:48:32] === Fim da verificacao ===
+
+[24/04/2026 02:03:32] === Inicio da verificacao ===
+[24/04/2026 02:03:32] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 02:03:33] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 02:03:34] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 02:03:35] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 02:03:36] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 02:03:36] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 02:03:37] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 02:03:38] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 02:03:38] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 02:03:39] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 02:03:40] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 02:03:40] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 02:03:41] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 02:03:41] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 02:03:42] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 02:03:42] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 02:03:43] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 02:03:44] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 02:03:45] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 02:03:45] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 02:03:46] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 02:03:46] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 02:03:47] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 02:03:48] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 02:03:48] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 02:03:49] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 02:03:49] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 02:03:49] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 02:03:49] === Fim da verificacao ===
+
+[24/04/2026 02:15:23] === Inicio da verificacao ===
+[24/04/2026 02:15:23] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 02:15:24] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 02:15:25] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 02:15:26] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 02:15:26] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 02:15:27] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 02:15:28] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 02:15:28] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 02:15:29] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 02:15:29] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 02:15:30] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 02:15:30] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 02:15:31] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 02:15:32] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 02:15:32] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 02:15:32] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 02:15:33] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 02:15:33] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 02:15:34] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 02:15:34] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 02:15:35] Gerando analise Ollama para BILL-20: Dashboard
+[24/04/2026 02:15:50] OK - Comentario postado em BILL-20: Dashboard
+[24/04/2026 02:15:51] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 02:15:51] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 02:15:51] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 02:15:52] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 02:15:52] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 02:15:53] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 02:15:53] Concluido: 1 comentario(s) novo(s) postado(s).
+[24/04/2026 02:15:53] === Fim da verificacao ===
+
+[24/04/2026 02:30:53] === Inicio da verificacao ===
+[24/04/2026 02:30:53] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 02:30:54] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 02:30:55] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 02:30:56] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 02:30:56] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 02:30:57] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 02:30:58] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 02:30:58] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 02:30:59] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 02:31:00] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 02:31:00] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 02:31:00] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 02:31:01] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 02:31:02] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 02:31:02] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 02:31:03] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 02:31:04] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 02:31:04] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 02:31:04] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 02:31:05] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 02:31:05] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 02:31:05] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 02:31:06] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 02:31:06] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 02:31:07] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 02:31:07] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 02:31:08] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 02:31:08] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 02:31:08] === Fim da verificacao ===
+
+[24/04/2026 06:28:42] === Inicio da verificacao ===
+[24/04/2026 06:28:42] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 06:28:43] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 06:28:44] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 06:28:44] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 06:28:45] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 06:28:46] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 06:28:46] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 06:28:47] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 06:28:48] Gerando analise Ollama para BILL-4: Segurança
+[24/04/2026 06:29:03] OK - Comentario postado em BILL-4: Segurança
+[24/04/2026 06:29:04] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 06:29:05] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 06:29:05] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 06:29:06] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 06:29:06] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 06:29:07] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 06:29:07] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 06:29:08] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 06:29:09] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 06:29:09] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 06:29:10] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 06:29:10] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 06:29:11] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 06:29:11] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 06:29:11] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 06:29:12] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 06:29:13] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 06:29:13] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 06:29:13] Concluido: 1 comentario(s) novo(s) postado(s).
+[24/04/2026 06:29:13] === Fim da verificacao ===
+
+[24/04/2026 06:44:13] === Inicio da verificacao ===
+[24/04/2026 06:44:13] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 06:44:14] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 06:44:15] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 06:44:15] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 06:44:16] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 06:44:17] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 06:44:17] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 06:44:18] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 06:44:19] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 06:44:19] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 06:44:20] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 06:44:21] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 06:44:21] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 06:44:22] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 06:44:23] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 06:44:23] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 06:44:24] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 06:44:24] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 06:44:25] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 06:44:26] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 06:44:26] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 06:44:27] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 06:44:27] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 06:44:28] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 06:44:29] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 06:44:29] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 06:44:29] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 06:44:29] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 06:44:29] === Fim da verificacao ===
+
+[24/04/2026 06:59:29] === Inicio da verificacao ===
+[24/04/2026 06:59:29] Usando Ollama em http://localhost:11434 com modelo 'qwen2.5-coder:7b'.
+[24/04/2026 06:59:30] 25 issue(s) com status 'Tarefas pendentes' encontrada(s).
+[24/04/2026 06:59:31] Ignorando BILL-1 — ja tem comentario do agente.
+[24/04/2026 06:59:31] Ignorando BILL-2 — ja tem comentario do agente.
+[24/04/2026 06:59:32] Ignorando BILL-8 — ja tem comentario do agente.
+[24/04/2026 06:59:32] Ignorando BILL-7 — ja tem comentario do agente.
+[24/04/2026 06:59:33] Ignorando BILL-6 — ja tem comentario do agente.
+[24/04/2026 06:59:34] Ignorando BILL-5 — ja tem comentario do agente.
+[24/04/2026 06:59:34] Ignorando BILL-4 — ja tem comentario do agente.
+[24/04/2026 06:59:35] Ignorando BILL-3 — ja tem comentario do agente.
+[24/04/2026 06:59:35] Ignorando BILL-15 — ja tem comentario do agente.
+[24/04/2026 06:59:36] Ignorando BILL-14 — ja tem comentario do agente.
+[24/04/2026 06:59:37] Ignorando BILL-13 — ja tem comentario do agente.
+[24/04/2026 06:59:37] Ignorando BILL-12 — ja tem comentario do agente.
+[24/04/2026 06:59:38] Ignorando BILL-11 — ja tem comentario do agente.
+[24/04/2026 06:59:38] Ignorando BILL-10 — ja tem comentario do agente.
+[24/04/2026 06:59:39] Ignorando BILL-9 — ja tem comentario do agente.
+[24/04/2026 06:59:39] Ignorando BILL-23 — ja tem comentario do agente.
+[24/04/2026 06:59:40] Ignorando BILL-22 — ja tem comentario do agente.
+[24/04/2026 06:59:40] Ignorando BILL-21 — ja tem comentario do agente.
+[24/04/2026 06:59:41] Ignorando BILL-20 — ja tem comentario do agente.
+[24/04/2026 06:59:42] Ignorando BILL-19 — ja tem comentario do agente.
+[24/04/2026 06:59:42] Ignorando BILL-18 — ja tem comentario do agente.
+[24/04/2026 06:59:43] Ignorando BILL-17 — ja tem comentario do agente.
+[24/04/2026 06:59:44] Ignorando BILL-16 — ja tem comentario do agente.
+[24/04/2026 06:59:44] Ignorando BILL-25 — ja tem comentario do agente.
+[24/04/2026 06:59:44] Ignorando BILL-24 — ja tem comentario do agente.
+[24/04/2026 06:59:44] Nenhuma issue nova encontrada. Nada a fazer.
+[24/04/2026 06:59:44] === Fim da verificacao ===
+

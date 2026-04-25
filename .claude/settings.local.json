@@ -29,7 +29,8 @@
       "Skill(claude-api)",
       "Skill(claude-api:*)",
       "Bash(python -m pip install anthropic --quiet)",
-      "Bash(python -m pip install google-generativeai --quiet)"
+      "Bash(python -m pip install google-generativeai --quiet)",
+      "Bash(del \"D:\\\\Renato\\\\Desenvolvimento\\\\Projetos\\\\Projeto Jira Python\\\\comentar_issues.py\")"
     ]
   }
 }
